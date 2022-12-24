@@ -29,20 +29,31 @@ VALUES
     ('Fierce', 'Soft', 'DISCRAFT', 173, 3, 4, -2, 0, 'Putter', 'Backup', 'Pink', 'PP / Mountain design', 7),
     ('Fierce', 'ESP', 'DISCRAFT', 170, 3, 4, -2, 0, 'Putter', 'Backup', 'Unknown', 'Tour Series Edition - Tie Die blend', 7),
     
-    ('Tomb', 'Swirly S-Blend', 'INFTD', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Yellow', 'Black', 7),
+    ('Tomb', 'Swirly S-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Yellow', 'Black', 7),
     
     ('Zone', 'Z Cryztal Flx Glo', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Orange', 'Get Freaky - Metallic Purple', 7),
     
     ('Sapphire', 'Opto', 'LATITUDE 64°', 175, 10, 6, -2, 1.5, 'Control', 'Emily', 'Orange', 'Silver', 7),
     
-    ('Enforcer', 'Lucid', 'Dynamic Discs', 172, 12, 4, 0.5, 4, 'Driver', 'Loan', 'Blue', 'Gold Woodgrain', 7),
-    ('Enforcer', 'Fuzion Bio', 'Dynamic Discs', 172, 12, 4, 0.5, 4, 'Driver', 'Loan', 'Yellow', 'Blue', 7),
+
+
+
+    
+    ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Tie Die', 'Purple', 7),
+    ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Yellow Speckle', 'Purple', 7),
+    ('Judge', 'Fuzion', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Pink', '2018 World Champion Paige Shue - Darler Blue', 7),
+    ('Judge', 'Fuzion', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Pink', '2018 World Champion Paige Shue - Lighter Blue', 6),
+    ('Harp', 'BT Soft', 'WESTSIDE DISCS', 174, 4, 3, 0, 3, 'Putter', 'Loan', 'Yellow', 'Red', 7),
+    ('Harp', 'BT Medium', 'WESTSIDE DISCS', 173, 4, 3, 0, 3, 'Putter', 'Loan', 'Blue', 'Physics of Flight - Gold', 7),
+    ('Harp', 'UNKNOWN', 'WESTSIDE DISCS', 176, 4, 3, 0, 3, 'Putter', 'Loan', 'Clear', 'Ricky Wysocki 2x World Champion - Red', 7),
+    ('Enforcer', 'Lucid', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Driver', 'Loan', 'Blue', 'Gold Woodgrain', 7),
+    ('Enforcer', 'Fuzion Bio', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Driver', 'Loan', 'Yellow', 'Blue', 7),
     ('Ballista Pro', 'Opto', 'LATITUDE 64°', 174, 14, 4, 0, 3, 'Driver', 'Loan', 'Pink Glimmer', `PDGA Pro Worlds '21 - Black`, 7),
-    ('Defender', 'Fuzion', 'Dynamic Discs', 172, 13, 5, 0, 3, 'Driver', 'Loan', 'Orange', 'Silver Holographic', 7),
+    ('Defender', 'Fuzion', 'DYNAMIC DISCS', 172, 13, 5, 0, 3, 'Driver', 'Loan', 'Orange', 'Silver Holographic', 7),
     
     ('Valkyrie', 'DX', 'INNOVA DISC GOLF', 175, 9, 4, -2, 2, 'Control', 'Loan', 'Pink', 'Silver', 5),
     ('Leopard', 'DX', 'INNOVA DISC GOLF', 149, 6, 5, -2, 1, 'Control', 'Loan', 'Pink', 'Silver', 5),
-    ('PD', 'D-Line', 'Discmania', 171, 10, 4, 0, 3, 'Control Driver', 'Loan', 'White', 'X-Out - Black', 5),
+    ('PD', 'D-Line', 'DISCMANIA', 171, 10, 4, 0, 3, 'Control Driver', 'Loan', 'White', 'X-Out - Black', 5),
     ('Beast', 'DX', 'INNOVA DISC GOLF', 168, 10, 5, -2, 2, 'Control Driver', 'Loan', 'White', 'Gold', 4),
     ('Wraith', 'DX', 'INNOVA DISC GOLF', 175, 11, 5, -1, 3, 'Distance Driver', 'Loan', 'Orange', 'White', 5),
     

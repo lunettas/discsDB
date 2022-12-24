@@ -1,5 +1,5 @@
 USE Discs;
-INSERT INTO silasdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Bag, Color, Stamp, SleepyScale)
+INSERT INTO silasdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`)
 VALUES
 		('Judge', 'Fuzion', 'DD', 175, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Ice Cream DyeMax', 5),
 		('Judge', 'Lucid-X', 'DD', 175, 2, 4, 0, 1, 'Putter', 'Main Bag', 'Pink', 'Oil Slick PS Bar', 7),

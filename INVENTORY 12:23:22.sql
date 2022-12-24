@@ -1,5 +1,5 @@
 USE Discs;
-INSERT INTO silasdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Bag, Color, Stamp, SleepyScale)
+INSERT INTO silasdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`)
 VALUES
 		('Judge', 'Fuzion', 'DD', 175, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Ice Cream DyeMax', 5),
 		('Judge', 'Lucid-X', 'DD', 175, 2, 4, 0, 1, 'Putter', 'Main Bag', 'Pink', 'Oil Slick PS Bar', 7),
@@ -37,7 +37,7 @@ VALUES
 		('Escape', 'Fuzion', 'DD', 173, 9, 5, '-1', 2, 'Control Driver', 'Main Bag', 'Red', 'Purple HE Good Energy', 7),
 		('Hatchet', 'VIP', 'WS', 169, 9, 6, '-2', 1, 'Control Driver', 'Main Bag', 'Pink', 'Green Stock', 7),
 		('Felon', 'Lucid-X', 'DD', 176, 9, 3, 0.5, 4, 'Control Driver', 'Main Bag', 'Pink', '2019 TS', 6),
-		('Felon', 'Lucid-X Glimmer', 'DD', 176, 9, 3, 0.5, 4, 'Control Driver', 'Main Bag', 'Pink', '2021 TS', 6),
+		('Felon', 'Lucid-X Glimmer', 'DD', 176, 9, 3, 0.5, 4, 'Control Driver', 'Main Bag', 'Pink', '2021 EO TS', 6),
 		('Trespass', 'Fuzion', 'DD', 175, 12, 5, '-0.5', 3, 'Distance Driver', 'Main Bag', 'White', 'Candy Cane DyeMax', 6),
 		('Trespass', 'Hybrid', 'DD', 173, 12, 5, '-0.5', 3, 'Distance Driver', 'Main Bag', 'Pink', 'PMBF La Paz', 7),
 		('Rive', 'Royal-Proto', 'L64', 175, 13, 5, 0, 3.5, 'Distance Driver', 'Main Bag', 'Orange', 'Prototype', 6),
@@ -123,7 +123,7 @@ VALUES
 		('Shark', 'DX', 'INVA', null, 4, 4, 0, 2, 'Mid-Range', 'Emily', 'Purple', 'Sugarbush', 6),
 		('Condor', 'Star', 'INVA', null, 3, 4, 0, 2, 'Mid-Range', 'Collection', 'White', 'Green Stock', 7),
 		('Trust', 'Grand', 'L64', 174, 5, 5, 0, 2, 'Mid-Range', 'Collection', 'Blue', 'Silver Prototype', 8),
-		('Beetle', 'Opto', 'L64', 174, 1, 7, -1, 0, 'Mid-Range', 'Collection', 'Pink', 'Bluie L64 Skull', 7),
+		('Beetle', 'Opto', 'L64', 174, 1, 7, -1, 0, 'Mid-Range', 'Collection', 'Pink', 'Blue L64 Skull', 7),
 		('Drone', 'Big Z', 'DCRFT', null, 5, 3, 1, 4, 'Mid-Range', 'Emily', 'Green', 'Black Stock', 6),
 		('Verdict', 'Lucid-X', 'DD', 180, 5, 4, 0, 3.5, 'Mid-Range', 'Collection', 'Pink', 'TS 2020', 7),
 		('Buzzz', 'Crystal', 'DCRFT', 177, 5, 4, -1, 1, 'Mid-Range', 'Emily', 'Green', 'Blue PP OTB Bee', 9),
@@ -160,7 +160,7 @@ VALUES
 		('Raider', 'Lucid', 'DD', 176, 13, 5, '-0.5', 3, 'Distance Driver', 'Collection', 'White', 'Blue Misprint Stock', 9),
 		('Raider', 'Fuzion', 'DD', 174, 13, 5, '-0.5', 3, 'Distance Driver', 'Collection', 'Pink', 'Gold Yin Yang', 7),
 		('Raider', 'Fuzion', 'DD', 174, 13, 5, '-0.5', 3, 'Distance Driver', 'Collection', 'Pink', 'Gold Yin Yang', 8),
-		('Raider', 'Bio Fuzion', 'DD', 173, 13, 5, '-0.5', 3, 'Distance Driver', 'Collection', 'Pink', 'Silver', 5),
+		('Raider', 'Bio Fuzion', 'DD', 173, 13, 5, '-0.5', 3, 'Distance Driver', 'Collection', 'Pink', 'Silver Am Match Play', 5),
 		('Judge', 'Fuzion', 'DD', 174, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Green Misprint Lucid', 9),
 		('Judge', 'Fuzion', 'DD', 174, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Green Misprint Lucid', 9),
 		('Pure', 'Zero Moonshine', 'L64', 176, 3, 3, '-1', 1, 'Putter', 'Collection', 'White', 'Red 2020 AM Match Play', 9),

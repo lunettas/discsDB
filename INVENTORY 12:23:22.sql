@@ -243,3 +243,5 @@ VALUES
 		('Cro', 'Star', 'INNOVA DISC GOLF', 175, 5, 3, 0, 2, 'Mid-Range', 'Collection', 'Yellow', 'Silver First Run', 7),
         ('D1', '750G', 'Prodigy Disc Golf', 174, 12, 5, 0, 3, 'Distance Driver', 'Collection', 'Yellow', 'MO TS 2020', 8)
         ;
+
+		-- Get rid of this file? need code review! :)

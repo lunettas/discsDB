@@ -15,3 +15,5 @@ Color VARCHAR(100),
 Stamp VARCHAR(100),
 `Condition` INT
 );
+
+-- Get rid of this file? need code review! :)

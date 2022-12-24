@@ -186,3 +186,5 @@ VALUES
         ('Diamond', 'Opto', 'L64', 154, 8, 6, -3, 1, 'Fairway Driver', 'Emily', 'White', 'Blue Stock', 6),
 		('Sapphire', 'Opto', 'L64', 157, 10, 6, -2, 1.5, 'Control Driver', 'Emily', 'Pink', 'Blue Stock', 8),
         ('Sapphire', 'Opto Sparkle', 'L64', 155, 10, 6, -2, 1.5, 'Control Driver', 'Emily', 'Green', 'Green Reindeer', 8);
+
+		-- Get rid of this file? need code review! :)

@@ -208,7 +208,7 @@ VALUES
 		('War Horse', 'VIP', 'WS', 170, 13, 4, 0, 4, 'Distance Driver', 'Collection', 'Blue', 'Green and Silver Misprint', 9),
 		('Convict', 'Lucid', 'DD', 174, 9, 5, -.5, 3, 'Control Driver', 'Collection', 'Yellow', 'Purple and BlueDisc Golf', 8),
 		('Pioneer ', 'Gold Burst', 'L64', 173, 9, 3, 0, 4, 'Control Driver', 'Collection', 'Blue', 'Silver and Purple Am Match Play', 8),
-		('Hell Fire', 'Pro-Line', 'DGA', 171, 10, 3, 0, 5, 'Control Driver', 'Collection', 'Blue', 'Pink DELA', 8),
+		('HellFire', 'Pro-Line', 'DGA', 171, 10, 3, 0, 5, 'Control Driver', 'Collection', 'Blue', 'Pink DELA', 8),
 		('Maverick', 'Lucid-X Chameleon', 'DD', 176, 7, 5, 0, 2, 'Fairway Driver', 'Emily', 'Red', '2021 ZM TS', 7),
 		('Maverick', 'Lucid', 'DD', 172, 7, 5, 0, 2, 'Fairway Driver', 'Emily', 'Clear', 'Purple and Silver Misprint Stock', 7),
 		('Maverick', 'Lucid', 'DD', 172, 7, 5, 0, 2, 'Fairway Driver', 'Emily', 'Clear', 'Purple and Silver Misprint Stock', 7),

@@ -1,4 +1,5 @@
 USE discs;
+drop table silasdiscs;
 CREATE TABLE silasdiscs (
 ID INT PRIMARY KEY AUTO_INCREMENT,
 Mold VARCHAR(100),

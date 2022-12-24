@@ -17,6 +17,8 @@ Stamp VARCHAR(100),
 `Sleepy Scale` INT
 );
 
+USE discs;
+drop table jcdiscs;
 CREATE TABLE jcdiscs (
 ID INT PRIMARY KEY AUTO_INCREMENT,
 Mold VARCHAR(100),

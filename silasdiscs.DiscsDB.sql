@@ -50,3 +50,5 @@ select * from jcdiscs;
 -- CREATE TABLE jcwant (
 
 -- );
+
+-- Get rid of this file? need code review! :)

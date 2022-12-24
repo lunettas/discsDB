@@ -42,5 +42,5 @@ select * from silasdiscs where mold = 'Fierce';
 select * from jcdiscs;
 select * from jcdiscs where mold = 'Fierce';
 
--- hi
+-- hi, bye :)
 

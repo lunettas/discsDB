@@ -102,3 +102,4 @@ select * from jcdiscs where mold = 'Fierce';
 -- 9-10 Control
 -- 11+ Distance
 
+-- commit daily ;)

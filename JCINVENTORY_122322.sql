@@ -55,7 +55,7 @@ VALUES
     ('Underworld', 'Vip', 'WESTSIDE DISCS', 173, 7, 6, -3, 1, 'Fairway Driver', 'Backup', 'Green', 'Silver', 6),
     ('Diamond', 'Opto Air', 'LATITUDE 64°', 139, 8, 6, -3, 1, 'Fairway Driver', 'Backup', 'Teal', 'Bronze', 6),
     ('River', 'Opto', 'LATITUDE 64°', 174, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'Pink Glitter', 'John E McCray - Black', 7),
-    ('River', 'Opto', 'LATITUDE 64°', 173, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'White Glitter', '10 Year Anniversary = Magenta Dots', 7),
+    ('River', 'Opto', 'LATITUDE 64°', 173, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'White Glitter', '10 Year Anniversary - Magenta Dots', 7),
     ('Teebird', 'Star Glow', 'INNOVA DISC GOLF', 173, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Purple', 'Jen Allen Tour Series - Blue', 7),
 
 
@@ -83,7 +83,7 @@ VALUES
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Orange', '10 Year Anniversary', 8),
     ('Bolt', 'Silas', 'LATITUDE 64°', 174, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Pink Glimmer', 'Silas', 4),
 
-    ('Sapphire', 'Opto', 'LATITUDE 64°', 175, 10, 6, -2, 1.5, 'Control', 'Emily', 'Orange', 'Silver', 7),
+    ('Sapphire', 'Opto', 'LATITUDE 64°', 175, 10, 6, -2, 1.5, 'Control Driver', 'Emily', 'Orange', 'Silver', 7),
 
     ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Tie Die', 'Purple', 7),
     ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Yellow Speckle', 'Purple', 7),
@@ -108,14 +108,14 @@ VALUES
     ('Lace', 'Vibram', 'UNKNOWN', 165, 14, 6, -1, 1, 'Distance Driver', 'Sale / Trade', 'White', 'Rainbow Speckles', 4),
     
     
-    ('UNKNOWN', 'DX', 'UNKNOWN', 171, 8, 5, -2, 2, 'Control', 'Sale / Trade', 'Orange', 'Green', 5)
+    ('UNKNOWN', 'DX', 'UNKNOWN', 171, 8, 5, -2, 2, 'Control Driver', 'Sale / Trade', 'Orange', 'Green', 5)
 	;
 
 -- 'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade', 'Loan'
 select * from silasdiscs;
 select * from silasdiscs where mold = 'Fierce';
 select * from jcdiscs;
-select * from jcdiscs where mold = 'Fierce';
+select * from jcdiscs where mold = 'Fierce' order by plastic;
 
 -- 'Putter', 'Mid-Range', 'Fairway Driver' , 'Control Driver', 'Distance Driver'
 

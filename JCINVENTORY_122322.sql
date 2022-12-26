@@ -33,13 +33,15 @@ VALUES
     ('Zone', 'Z Cryztal Flx Glo', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Orange', 'Get Freaky - Metallic Purple', 7),
 
 
+    ('Compass', 'Opto', 'LATITUDE 64°', 176, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink', 'Fall Fling II - Red', 6),
+
 
     ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Blue', 'Ghost Stamp - Metallic Purple', 7),
     ('Tomb', 'I-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Red', 'Silver', 6),
     ('Fierce', 'Special Blend', 'DISCRAFT', 174, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Yellow', 'Rainbow Shatter', 6),
     ('Fierce', 'Big Z', 'DISCRAFT', 172, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Orange', '2021 Ledgestone Edition - Orange', 5),
     ('Zone', 'Z', 'DISCRAFT', 174, 4, 3, 0, 3, 'Putter', 'Side Bag', 'Purple', 'Paul McBeth - 5X World Champion - Silver Daisy', 6),
-    ('Fuse', 'Gold-X', 'LATITUDE 64°', 173, 5, 6, -1, 0, 'Mid-Range', 'Side Bag', 'Yellow', 'John E McCray Team Series V.2 2022'- Metallic Blue, 6),
+    ('Fuse', 'Gold-X', 'LATITUDE 64°', 173, 5, 6, -1, 0, 'Mid-Range', 'Side Bag', 'Yellow', 'John E McCray Team Series V.2 2022- Metallic Blue', 6),
     ('Justice', 'Lucid Plastic', 'DYNAMIC DISCS', 163, 5, 1, 0.5, 4, 'Mid-Range', 'Side Bag', 'Pink', '2022 Dynamic Discs Open - Rainbow', 6),
     ('Diamond', 'Gold Line Orbit', 'LATITUDE 64°', 151, 8, 6, -3, 1, 'Fairway Driver', 'Side Bag', 'Purple', '10 Year Anniversary - Magenta', 6),
     ('Diamond', 'Opto', 'LATITUDE 64°', 158, 8, 6, -3, 1, 'Fairway Driver', 'Side Bag', 'Red', 'Blue', 6),
@@ -91,7 +93,7 @@ VALUES
     ('Harp', 'BT Medium', 'WESTSIDE DISCS', 173, 4, 3, 0, 3, 'Putter', 'Loan', 'Blue', 'Physics of Flight - Gold', 7),
     ('Harp', 'UNKNOWN', 'WESTSIDE DISCS', 176, 4, 3, 0, 3, 'Putter', 'Loan', 'Clear', 'Ricky Wysocki 2x World Champion - Red', 7),
     ('Enforcer', 'Lucid', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Distance Driver', 'Loan', 'Blue', 'Gold Woodgrain', 7),
-    ('Ballista Pro', 'Opto', 'LATITUDE 64°', 174, 14, 4, 0, 3, 'Distance Driver', 'Loan', 'Pink Glimmer', `PDGA Pro Worlds '21 - Black`, 7),
+    ('Ballista Pro', 'Opto', 'LATITUDE 64°', 174, 14, 4, 0, 3, 'Distance Driver', 'Loan', 'Pink Glimmer', 'PDGA Pro Worlds 2021 - Black', 7),
     ('Defender', 'Fuzion', 'DYNAMIC DISCS', 172, 13, 5, 0, 3, 'Distance Driver', 'Loan', 'Orange', 'Silver Holographic', 7),
     
     
@@ -106,7 +108,7 @@ VALUES
     ('Lace', 'Vibram', 'UNKNOWN', 165, 14, 6, -1, 1, 'Distance Driver', 'Sale / Trade', 'White', 'Rainbow Speckles', 4),
     
     
-    ('UNKNOWN', 'DX', 'UNKNOWN', 171, 8, 5, -2, 2, 'Control', 'Sale / Trade', 'Orange', 'Green', 5),
+    ('UNKNOWN', 'DX', 'UNKNOWN', 171, 8, 5, -2, 2, 'Control', 'Sale / Trade', 'Orange', 'Green', 5)
 	;
 
 -- 'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade', 'Loan'

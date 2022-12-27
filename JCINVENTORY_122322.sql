@@ -1,6 +1,21 @@
 -- USE discs;
 INSERT INTO jcdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`)
 VALUES
+    ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Blue', 'Ghost Stamp - Metallic Purple', 7),
+    ('Tomb', 'I-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Red', 'Silver', 6),
+    ('Fierce', 'Special Blend', 'DISCRAFT', 174, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Yellow', 'Rainbow Shatter', 6),
+    ('Fierce', 'Big Z', 'DISCRAFT', 172, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Orange', '2021 Ledgestone Edition - Orange', 5),
+    ('Zone', 'Z', 'DISCRAFT', 174, 4, 3, 0, 3, 'Putter', 'Side Bag', 'Purple', 'Paul McBeth - 5X World Champion - Silver Daisy', 6),
+    ('Fuse', 'Gold-X', 'LATITUDE 64°', 173, 5, 6, -1, 0, 'Mid-Range', 'Side Bag', 'Yellow', 'John E McCray Team Series V.2 2022- Metallic Blue', 6),
+    ('Justice', 'Lucid Plastic', 'DYNAMIC DISCS', 163, 5, 1, 0.5, 4, 'Mid-Range', 'Side Bag', 'Pink', '2022 Dynamic Discs Open - Rainbow', 6),
+    ('Diamond', 'Gold Line Orbit', 'LATITUDE 64°', 151, 8, 6, -3, 1, 'Fairway Driver', 'Side Bag', 'Purple', '10 Year Anniversary - Magenta', 6),
+    ('Diamond', 'Opto', 'LATITUDE 64°', 158, 8, 6, -3, 1, 'Fairway Driver', 'Side Bag', 'Red', 'Blue', 6),
+    ('FD', 'S-Blend', 'DISCMANIA', 173, 7, 6, -1, 1, 'Fairway Driver', 'Side Bag', 'Blue', 'California/Colorado Stamp - Blue', 6),
+    ('Monarch', 'Champion', 'INNOVA DISC GOLF', 175, 10, 5, -4, 1, 'Control Driver', 'Side Bag', 'Orange', 'Silver', 6),
+    ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Side Bag', 'Pink', '10 Year Anniversary - Magenta', 6),
+    ('Enforcer', 'Fuzion Bio', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Distance Driver', 'Side Bag', 'Yellow', 'Blue', 7),
+
+
 	('Fierce', 'Special Blend', 'DISCRAFT', 172, 3, 4, -2, 0, 'Putter', 'Backup', 'Purple', 'Purple Shatter', 7),
     ('Fierce', 'Special Blend', 'DISCRAFT', 174, 3, 4, -2, 0, 'Putter', 'Backup', 'Yellow', 'Rainbow Shatter', 7),
     ('Fierce', 'Special Blend', 'DISCRAFT', 173, 3, 4, -2, 0, 'Putter', 'Backup', 'Yellow', 'Rainbow Shatter', 7),
@@ -28,27 +43,23 @@ VALUES
     ('Fierce', 'Soft', 'DISCRAFT', 173, 3, 4, -2, 0, 'Putter', 'Backup', 'Pink', 'PP / Mountain design', 7),
     ('Fierce', 'ESP', 'DISCRAFT', 170, 3, 4, -2, 0, 'Putter', 'Backup', 'Unknown', 'Tour Series Edition - Tie Die blend', 7),
     
-    ('Tomb', 'Swirly S-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Yellow', 'Black', 7),
+    ('Tomb', 'I-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Dalton', 'Red', 'Silver', 6),
+    ('Tomb', 'Swirly S-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Yellow', 'Mummy Stamp - Black', 7),
+    ('Tomb', 'C-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Dalton', 'Light Orange', 'Ghost Stamp - Magenta Purple', 6),
+    ('Pig', 'Glow Star Plastic', 'INNOVA DISC GOLF', 166, 3, 1, 0, 3, 'Putter', 'Backup', 'White', 'Rainbow', 6),
     
     ('Zone', 'Z Cryztal Flx Glo', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Orange', 'Get Freaky - Metallic Purple', 7),
 
 
+    ('Fuse', 'Opto', 'LATITUDE 64°', 181, 5, 6, -1, 0, 'Mid-Range', 'Backup', 'Orange', 'Purple', 6),
+    ('Buzzz', 'Pro D', 'DISCRAFT', 175, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'White', 'Blue', 5),
+    ('Buzzz', 'Crystal Flx Sparkle', 'DISCRAFT', 180, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Green', 'Ledgestone Edition 2021 - Light Pink', 7),
+    ('Buzzz', 'ESP', 'DISCRAFT', NULL, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Pink', 'Green', 6),
+    ('Buzzz', 'Big Z', 'DISCRAFT', 177, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Blue', 'Silver', 6),
+    ('Buzzz', 'Big Z', 'DISCRAFT', NULL, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Green', 'Blue Silver Metallic Shatter', 6),
     ('Compass', 'Opto', 'LATITUDE 64°', 176, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink', 'Fall Fling II - Red', 6),
 
 
-    ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Blue', 'Ghost Stamp - Metallic Purple', 7),
-    ('Tomb', 'I-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Red', 'Silver', 6),
-    ('Fierce', 'Special Blend', 'DISCRAFT', 174, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Yellow', 'Rainbow Shatter', 6),
-    ('Fierce', 'Big Z', 'DISCRAFT', 172, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Orange', '2021 Ledgestone Edition - Orange', 5),
-    ('Zone', 'Z', 'DISCRAFT', 174, 4, 3, 0, 3, 'Putter', 'Side Bag', 'Purple', 'Paul McBeth - 5X World Champion - Silver Daisy', 6),
-    ('Fuse', 'Gold-X', 'LATITUDE 64°', 173, 5, 6, -1, 0, 'Mid-Range', 'Side Bag', 'Yellow', 'John E McCray Team Series V.2 2022- Metallic Blue', 6),
-    ('Justice', 'Lucid Plastic', 'DYNAMIC DISCS', 163, 5, 1, 0.5, 4, 'Mid-Range', 'Side Bag', 'Pink', '2022 Dynamic Discs Open - Rainbow', 6),
-    ('Diamond', 'Gold Line Orbit', 'LATITUDE 64°', 151, 8, 6, -3, 1, 'Fairway Driver', 'Side Bag', 'Purple', '10 Year Anniversary - Magenta', 6),
-    ('Diamond', 'Opto', 'LATITUDE 64°', 158, 8, 6, -3, 1, 'Fairway Driver', 'Side Bag', 'Red', 'Blue', 6),
-    ('FD', 'S-Blend', 'DISCMANIA', 173, 7, 6, -1, 1, 'Fairway Driver', 'Side Bag', 'Blue', 'California/Colorado Stamp - Blue', 6),
-    ('Monarch', 'Champion', 'INNOVA DISC GOLF', 175, 10, 5, -4, 1, 'Control Driver', 'Side Bag', 'Orange', 'Silver', 6),
-    ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Side Bag', 'Pink', '10 Year Anniversary - Magenta', 6),
-    ('Enforcer', 'Fuzion Bio', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Distance Driver', 'Side Bag', 'Yellow', 'Blue', 7),
 
 
 
@@ -57,20 +68,29 @@ VALUES
     ('River', 'Opto', 'LATITUDE 64°', 174, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'Pink Glitter', 'John E McCray - Black', 7),
     ('River', 'Opto', 'LATITUDE 64°', 173, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'White Glitter', '10 Year Anniversary - Magenta Dots', 7),
     ('Teebird', 'Star Glow', 'INNOVA DISC GOLF', 173, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Purple', 'Jen Allen Tour Series - Blue', 7),
+    ('Instinct', 'Neo', 'DISCMANIA', 174, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Blue', 'Silver', 6),
+    
+
+
 
 
     ('Road Runner', 'Star', 'INNOVA DISC GOLF', 167, 9, 5, -4, 1, 'Control Driver', 'Backup', 'Yellow', 'Black', 6),
+    ('Hatchet', 'VIP', 'WESTSIDE DISCS', 174, 9, 6, -2, 1, 'Control Driver', 'Backup', 'Pink', 'Axe Stamp - Blue', 6),
+    ('Falk', 'K1-Line', 'KASTAPLAST', NULL, 9, 6, -2, 1, 'Control Driver', 'Dalton', 'Blue', 'Black', 6),
     ('TD', 'C-Line', 'DISCMANIA', 175, 10, 5, -2, 1, 'Control Driver', 'Backup', 'Clear-Yellow', 'Gold', 6),
     ('Enemy', 'Star Plastic', 'Unknown', 169, 9, 3, 0, 4, 'Control Driver', 'Backup', 'Blue', 'Bronze', 7),
     ('Felon', 'Lucid Air', 'LATITUDE 64°', 159, 9, 3, 0.5, 4, 'Control Driver', 'Backup', 'Orange', 'Blue-Green', 7),
 
 
+    ('Mamba', 'Starlite', 'INNOVA DISC GOLF', 156, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'No Stamp', 6),
     ('Mamba', 'Star', 'INNOVA DISC GOLF', 171, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Red', 'Rainbow Blend', 6),
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 174, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'Gold', 5),
+    ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Green', 'Silver', 5),
+    ('Grace', 'Royal - Grand', 'LATITUDE 64°', 173, 11, 6, -1, 2, 'Distance Driver', 'Backup', 'Pink', 'Misprint - Silver', 6),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 162, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Orange', '12 Time World Champion Ken Climo - Black', 6),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 175, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Light Orange', 'No Stamp', 6),
-    ('Tern', 'Star', 'INNOVA DISC GOLF', 170, 12, 6, -2, 2, 'Distance Driver', 'Backup', 'Orange', 'Santa Cruz Hand Mouth', 7),
     ('Mystere', 'Star', 'INNOVA DISC GOLF', 171, 11, 6, -2, 2, 'Distance Driver', 'Backup', 'Purple', 'Santa Cruz Hand Mouth', 7),
+    ('Tern', 'Star', 'INNOVA DISC GOLF', 170, 12, 6, -2, 2, 'Distance Driver', 'Backup', 'Orange', 'Santa Cruz Hand Mouth', 7),
 
 
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Red', '10 Year Anniversary', 7),
@@ -122,3 +142,7 @@ select * from jcdiscs where mold = 'Fierce' order by plastic;
 -- 11+ Distance
 
 -- commit daily ;)
+
+show tables;
+drop table silasdiscs;
+drop table jcdiscs;

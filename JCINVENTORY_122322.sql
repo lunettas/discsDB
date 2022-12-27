@@ -67,6 +67,7 @@ VALUES
     ('Diamond', 'Opto Air', 'LATITUDE 64°', 139, 8, 6, -3, 1, 'Fairway Driver', 'Backup', 'Teal', 'Bronze', 6),
     ('River', 'Opto', 'LATITUDE 64°', 174, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'Pink Glitter', 'John E McCray - Black', 7),
     ('River', 'Opto', 'LATITUDE 64°', 173, 7, 7, -1, 1, 'Fairway Driver', 'Backup', 'White Glitter', '10 Year Anniversary - Magenta Dots', 7),
+    ('TeeBird', 'GStar', 'INNOVA DISC GOLF', 173, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Orange', 'Gold', 7),
     ('Teebird', 'Star Glow', 'INNOVA DISC GOLF', 173, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Purple', 'Jen Allen Tour Series - Blue', 7),
     ('Instinct', 'Neo', 'DISCMANIA', 174, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Blue', 'Silver', 6),
     
@@ -78,8 +79,14 @@ VALUES
     ('Hatchet', 'VIP', 'WESTSIDE DISCS', 174, 9, 6, -2, 1, 'Control Driver', 'Backup', 'Pink', 'Axe Stamp - Blue', 6),
     ('Falk', 'K1-Line', 'KASTAPLAST', NULL, 9, 6, -2, 1, 'Control Driver', 'Dalton', 'Blue', 'Black', 6),
     ('TD', 'C-Line', 'DISCMANIA', 175, 10, 5, -2, 1, 'Control Driver', 'Backup', 'Clear-Yellow', 'Gold', 6),
+    ('Thunderbird', 'Champion', 'INNOVA DISC GOLF', 173, 9, 5, 0, 2, 'Control Driver', 'Backup', 'Red', 'Green', 7),
+    ('Raptor', 'Big Z', 'DISCRAFT', NULL, 9, 4, 0, 3, 'Control Driver', 'Backup', 'Pink', 'Silver', 7),
+    ('Fireball', 'Neutron', 'AXIOM DISCS', 172, 9, 3.5, 0, 3.5, 'Control Driver', 'Backup', 'Purple', 'White', 7),
+    ('Firebird', 'Champion', 'INNOVA DISC GOLF', 173, 9, 3, 0, 4, 'Control Driver', 'Backup', 'Yellow', 'Black', 7),
     ('Enemy', 'Star Plastic', 'Unknown', 169, 9, 3, 0, 4, 'Control Driver', 'Backup', 'Blue', 'Bronze', 7),
     ('Felon', 'Lucid Air', 'LATITUDE 64°', 159, 9, 3, 0.5, 4, 'Control Driver', 'Backup', 'Orange', 'Blue-Green', 7),
+    ('Starfire', 'Champion', 'INNOVA DISC GOLF', 175, 10, 4, 0, 3, 'Control Driver', 'Backup', 'Red', 'Blue', 7),
+    ('Figher', 'Icon Edition', 'LEGACY DISCS', 174, 10, 3, 0, 5, 'Control Driver', 'Backup', 'White', 'Rainbow', 7),
 
 
     ('Mamba', 'Starlite', 'INNOVA DISC GOLF', 156, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'No Stamp', 6),
@@ -91,6 +98,7 @@ VALUES
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 175, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Light Orange', 'No Stamp', 6),
     ('Mystere', 'Star', 'INNOVA DISC GOLF', 171, 11, 6, -2, 2, 'Distance Driver', 'Backup', 'Purple', 'Santa Cruz Hand Mouth', 7),
     ('Tern', 'Star', 'INNOVA DISC GOLF', 170, 12, 6, -2, 2, 'Distance Driver', 'Backup', 'Orange', 'Santa Cruz Hand Mouth', 7),
+    ('Rampage', 'Icon Edition', 'LEGACY DISCS', 175, 14, 5, -1, 4, 'Distance Driver', 'Backup', 'Pink', 'Rainbow', 7),
 
 
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Red', '10 Year Anniversary', 7),

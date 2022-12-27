@@ -48,6 +48,7 @@ VALUES
     ('Tomb', 'C-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Dalton', 'Light Orange', 'Ghost Stamp - Magenta Purple', 6),
     ('Pig', 'Glow Star Plastic', 'INNOVA DISC GOLF', 166, 3, 1, 0, 3, 'Putter', 'Backup', 'White', 'Rainbow', 6),
     
+    ('Ghost', 'Icon Edition', 'LEGACY DISCS', 180, 4, 5, 0, 3, 'Putter', 'Backup', 'Light Blue', 'Black', 7),
     ('Zone', 'Z Cryztal Flx Glo', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Orange', 'Get Freaky - Metallic Purple', 7),
 
 
@@ -57,7 +58,10 @@ VALUES
     ('Buzzz', 'ESP', 'DISCRAFT', NULL, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Pink', 'Green', 6),
     ('Buzzz', 'Big Z', 'DISCRAFT', 177, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Blue', 'Silver', 6),
     ('Buzzz', 'Big Z', 'DISCRAFT', NULL, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Green', 'Blue Silver Metallic Shatter', 6),
+    ('Gauge', 'Icon Edition', 'LEGACY DISCS', 181, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink Swirl', 'Rainbow', 7),
     ('Compass', 'Opto', 'LATITUDE 64°', 176, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink', 'Fall Fling II - Red', 6),
+    ('Method', 'Neo', 'DISCMANIA', 177, 5, 5, 0, 3, 'Mid-Range', 'Backup', 'Blue', 'Red', 6),
+    ('Roc3', 'Champion', 'INNOVA DISC GOLF', 180, 5, 4, 0, 3, 'Mid-Range', 'Backup', 'Orange', 'Blue', 6),
 
 
 
@@ -85,6 +89,7 @@ VALUES
     ('Firebird', 'Champion', 'INNOVA DISC GOLF', 173, 9, 3, 0, 4, 'Control Driver', 'Backup', 'Yellow', 'Black', 7),
     ('Enemy', 'Star Plastic', 'Unknown', 169, 9, 3, 0, 4, 'Control Driver', 'Backup', 'Blue', 'Bronze', 7),
     ('Felon', 'Lucid Air', 'LATITUDE 64°', 159, 9, 3, 0.5, 4, 'Control Driver', 'Backup', 'Orange', 'Blue-Green', 7),
+    ('Musket', 'Gold', 'LATITUDE 64°', 174, 10, 5, 0.5, 2, 'Control Driver', 'Silas', 'Pink', 'Silver', 7),
     ('Starfire', 'Champion', 'INNOVA DISC GOLF', 175, 10, 4, 0, 3, 'Control Driver', 'Backup', 'Red', 'Blue', 7),
     ('Figher', 'Icon Edition', 'LEGACY DISCS', 174, 10, 3, 0, 5, 'Control Driver', 'Backup', 'White', 'Rainbow', 7),
 
@@ -94,10 +99,18 @@ VALUES
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 174, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'Gold', 5),
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Green', 'Silver', 5),
     ('Grace', 'Royal - Grand', 'LATITUDE 64°', 173, 11, 6, -1, 2, 'Distance Driver', 'Backup', 'Pink', 'Misprint - Silver', 6),
+    ('Wraith', 'Star', 'INNOVA DISC GOLF', 173, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Yellow', 'garrett Gurthie Tour Series - Red Metallic', 7),
+    ('Wraith', 'Star', 'INNOVA DISC GOLF', 172, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Yellow', 'World Championships 2021 - Green', 7),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 162, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Orange', '12 Time World Champion Ken Climo - Black', 6),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 175, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Light Orange', 'No Stamp', 6),
+    ('Wraith', 'Champion', 'INNOVA DISC GOLF', 175, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Blue', 'Silver Shatter', 7),
     ('Mystere', 'Star', 'INNOVA DISC GOLF', 171, 11, 6, -2, 2, 'Distance Driver', 'Backup', 'Purple', 'Santa Cruz Hand Mouth', 7),
     ('Tern', 'Star', 'INNOVA DISC GOLF', 170, 12, 6, -2, 2, 'Distance Driver', 'Backup', 'Orange', 'Santa Cruz Hand Mouth', 7),
+    ('Destroyer', 'Star', 'INNOVA DISC GOLF', NULL, 12, 5, -1, 3, 'Distance Driver', 'Backup', 'Blue', 'No Stamp', 5),
+    ('Destroyer', 'Star', 'INNOVA DISC GOLF', 175, 12, 5, -1, 3, 'Distance Driver', 'Backup', 'Orange', 'Ricky Wysocki 2x World Champion - Rainbow', 7),
+    ('Razeti', 'Royal Plastic', 'PRODISCUS', 175, 12, 5, 0, 3, 'Distance Driver', 'Backup', 'Blue', 'Metallic Blue', 7),
+    ('Kotare', 'Royal Plastic', 'RPM DISCS', 174, 12, 5, 0, 3, 'Distance Driver', 'Backup', 'White', 'Metallic Red', 7),
+    ('Sheriff', 'Lucid', 'DYNAMIC DISCS', 175, 13, 5, -1, 2, 'Distance Driver', 'Backup', 'Yellow', 'Silver', 7),
     ('Rampage', 'Icon Edition', 'LEGACY DISCS', 175, 14, 5, -1, 4, 'Distance Driver', 'Backup', 'Pink', 'Rainbow', 7),
 
 
@@ -105,10 +118,11 @@ VALUES
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Orange', '10 Year Anniversary', 5),
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Red', '10 Year Anniversary', 8),
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Orange', '10 Year Anniversary', 8),
-    ('Bolt', 'Silas', 'LATITUDE 64°', 174, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Pink Glimmer', 'Silas', 4),
+    ('Bolt', 'Silas', 'LATITUDE 64°', 174, 13, 6, -2, 3, 'Distance Driver', 'Collection', 'Pink Glimmer', 'Silas', 4),
 
     ('Sapphire', 'Opto', 'LATITUDE 64°', 175, 10, 6, -2, 1.5, 'Control Driver', 'Emily', 'Orange', 'Silver', 7),
 
+    ('Judge', 'Fuzion', 'DYNAMIC DISCS', 174, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Joshycsm Stamp - Green', 4),
     ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Tie Die', 'Purple', 7),
     ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Yellow Speckle', 'Purple', 7),
     ('Judge', 'Fuzion', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Pink', '2018 World Champion Paige Shue - Darler Blue', 7),

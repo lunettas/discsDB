@@ -73,10 +73,6 @@ VALUES
     ('Mystere', 'Star', 'INNOVA DISC GOLF', 171, 11, 6, -2, 2, 'Distance Driver', 'Backup', 'Purple', 'Santa Cruz Hand Mouth', 7),
 
 
-
-
-
-
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Red', '10 Year Anniversary', 7),
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Orange', '10 Year Anniversary', 5),
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Red', '10 Year Anniversary', 8),

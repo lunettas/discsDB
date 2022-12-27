@@ -27,7 +27,7 @@ Glide INT,
 Turn DECIMAL(2,1),
 Fade DECIMAL(2,1),
 Slot ENUM( 'Putter', 'Mid-Range', 'Fairway Driver' , 'Control Driver', 'Distance Driver'),
-Category ENUM('Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade'),
+Category ENUM('Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade', 'Loan'),
 Color VARCHAR(100),
 Stamp VARCHAR(100),
 `Sleepy Scale` INT
@@ -50,3 +50,5 @@ select * from jcdiscs;
 -- CREATE TABLE jcwant (
 
 -- );
+
+-- Get rid of this file? need code review! :)

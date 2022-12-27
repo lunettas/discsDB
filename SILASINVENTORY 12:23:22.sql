@@ -184,7 +184,6 @@ VALUES
 		('Raptor', 'Z', 'Discraft', 171, 9, 4, 0, 3, 'Control Driver', 'Emily', 'Yellow', 'Silver Stock', 8),
 		('Jade', 'Opto', 'Latitude 64°', 156, 9, 6, -2, 1, 'Control Driver', 'Emily', 'Blue', 'White Dynamic DiscsO 2021', 7),
 		('TeeBird3', 'GStar', 'Innova Disc Golf', 157, 8, 4, 0, 2, 'Fairway Driver', 'Emily', 'Green', 'Silver Stock', 8),
-		('TeeBird3', 'GStar', 'Innova Disc Golf', 157, 8, 4, 0, 2, 'Fairway Driver', 'Emily', 'Green', 'Silver Stock', 8),
 		('Leopard', 'GStar', 'Innova Disc Golf', Null, 6, 5, -2, 1, 'Fairway Driver', 'Emily', 'Orange', 'Multi Color Stock', 8),
 		('Leopard', 'Star', 'Innova Disc Golf', 172, 6, 5, -2, 1, 'Fairway Driver', 'Emily', 'Blue', 'Yellow Stock', 8),
 		('Leopard', 'Pro', 'Innova Disc Golf', 175, 6, 5, -2, 1, 'Fairway Driver', 'Emily', 'White', 'TyeDye', 4),

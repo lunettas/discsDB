@@ -120,6 +120,7 @@ VALUES
 		('EMAC Truth', 'Fuzion Burst', 'Dynamic Discs', 171, 5, 5, 0, 2, 'Mid-Range', 'Emily', 'Blue', 'Gold Stock', 6),
 		('EMAC Truth', 'Lucid-X Glimmer', 'Dynamic Discs', 174, 5, 5, 0, 2, 'Mid-Range', 'Emily', 'Blue', 'TS 2020 ', 6),
 		('EMAC Truth', 'Lucid Sparkle', 'Dynamic Discs', 172, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Pink', 'Gold Stock', 7),
+		('EMAC Truth', 'Lucid Sparkle', 'Dynamic Discs', 171, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Red', 'GBlack SKIN$ MATCH 2019', 7),
 		('Mako3', 'Star', 'Innova Disc Golf', 177, 5, 5, 0, 0, 'Mid-Range', 'Emily', 'White', 'Misprint Stock', 7),
 		('Shark', 'DX', 'Innova Disc Golf', null, 4, 4, 0, 2, 'Mid-Range', 'Emily', 'Purple', 'Sugarbush', 6),
 		('Condor', 'Star', 'Innova Disc Golf', null, 3, 4, 0, 2, 'Mid-Range', 'Collection', 'White', 'Green Stock', 7),
@@ -138,7 +139,7 @@ VALUES
 		('Archer', 'Big Z', 'Discraft', Null, 5, 4, -4, 1, 'Mid-Range', 'Emily', 'Green', 'Oils Slick Stock', 7),
 		('Reactor', 'Eclipse Glow', 'MVP Disc Sports', 176, 5, 5, -.5, 1.5, 'Mid-Range', 'Collection', 'Green', 'Silver EK ES 2021', 8),
 		('Compass', 'Gold', 'Latitude 64°', 179, 5, 5, 0, 1, 'Mid-Range', 'Emily', 'White', 'Pizza Kitty DyeMax', 7),
-		('Diamond', 'Gold Orbit', 'Latitude 64°', 151, 8, 6, -3, 1, 'Fairway Driver', 'Emily', 'Pink', 'Purple 10 Year', 7),
+		('Diamond', 'Gold Line Orbit', 'Latitude 64°', 151, 8, 6, -3, 1, 'Fairway Driver', 'Emily', 'Pink', 'Purple 10 Year', 7),
 		('Diamond', 'Opto', 'Latitude 64°', 171, 8, 6, -3, 1, 'Fairway Driver', 'Emily', 'Blue', 'Green and Red Misprint', 8),
 		('Diamond', 'Opto', 'Latitude 64°', 154, 8, 6, -3, 1, 'Fairway Driver', 'Emily', 'White', 'Blue Stock', 6),
 		('Sapphire', 'Opto', 'Latitude 64°', 157, 10, 6, -2, 1.5, 'Control Driver', 'Emily', 'Pink', 'Blue Stock', 8),
@@ -166,6 +167,7 @@ VALUES
 		('Judge', 'Fuzion', 'Dynamic Discs', 174, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Green Misprint Lucid', 9),
 		('Pure', 'Zero Moonshine', 'Latitude 64°', 176, 3, 3, '-1', 1, 'Putter', 'Collection', 'White', 'Red 2020 AM Match Play', 9),
 		('Trespass', 'Fuzion', 'Dynamic Discs', 174, 12, 5, '-0.5', 3, 'Distance Driver', 'Backup', 'White', 'BB  Phill DyeMax', 7),
+		('Trespass', 'Fuzion', 'Dynamic Discs', 175, 12, 5, '-0.5', 3, 'Distance Driver', 'Backup', 'White', 'Baseball DyeMax', 9),
 		('Trespass', 'Lucid', 'Dynamic Discs', 173, 12, 5, '-0.5', 3, 'Distance Driver', 'Backup', 'Pink', 'Gold Stock', 8),
 		('Trespass', 'Lucid', 'Dynamic Discs', 173, 12, 5, '-0.5', 3, 'Distance Driver', 'Backup', 'Pink', 'Silver and Red Misprint Stock', 9),
 		('Trespass', 'Lucid', 'Dynamic Discs', 175, 12, 5, '-0.5', 3, 'Distance Driver', 'Backup', 'White', 'Green Reindeer', 8),
@@ -240,5 +242,6 @@ VALUES
 		('Boss', 'Blizzard Champion', 'Innova Disc Golf', Null, 13, 5, -1, 3, 'Distance Driver', 'Collection', 'Black', 'Silver DW Stock', 6),
 		('Boss', 'Champion', 'Innova Disc Golf', Null, 13, 5, -1, 3, 'Distance Driver', 'Collection', 'TyeDye', 'Silver Stock', 6),
 		('Cro', 'Star', 'Innova Disc Golf', 175, 5, 3, 0, 2, 'Mid-Range', 'Collection', 'Yellow', 'Silver First Run', 7),
-        ('D1', '750G', 'Prodigy Disc Golf', 174, 12, 5, 0, 3, 'Distance Driver', 'Collection', 'Yellow', 'MO TS 2020', 8)
-        ;
+        ('D1', '750G', 'Prodigy Disc Golf', 174, 12, 5, 0, 3, 'Distance Driver', 'Collection', 'Yellow', 'MO TS 2020', 8),
+        ('Rive', 'Gold Line Orbit', 'Latitude 64°', 173, 13, 5, 0, 3.5, 'Distance Driver', 'Collection', 'Pink', 'Purple TT Tour Series 2022', 10)
+		;

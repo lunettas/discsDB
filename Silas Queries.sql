@@ -22,6 +22,12 @@ Select * From silasdiscs WHERE  Mold = 'Boss'  UNION ALL Select * FROM jcdiscs W
 Select * From silasdiscs WHERE  Weight <=169  UNION ALL Select * FROM jcdiscs WHERE  Weight <=169;
 
 -- Flight numbers
-Select DISTINCT Mold, Speed, Glide, Turn, Fade From silasdiscs
-ORDER BY Speed, (Turn + Fade), Glide
+Select DISTINCT Mold, Speed, Glide, Turn, Fade, (Turn + Fade) AS Stability From silasdiscs
+ORDER BY Speed, Stability
+;
+
+Select DISTINCT Mold, Speed, Glide, Turn, Fade, (Turn + Fade) AS Stability From silasdiscs
+UNION 
+Select DISTINCT Mold, Speed, Glide, Turn, Fade, (Turn + Fade) AS Stability From jcdiscs
+ORDER BY Speed, Stability
 ;

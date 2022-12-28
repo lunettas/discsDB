@@ -16,7 +16,7 @@ WHERE Weight !='Null'
 ORDER BY Stability DESC, Weight DESC,`Sleepy Scale` DESC;
 
 -- Basic UNION
-Select * From silasdiscs WHERE  Mold = 'Boss'  UNION ALL Select * FROM jcdiscs WHERE  Mold = 'Boss';
+Select * From silasdiscs UNION ALL Select * FROM jcdiscs;
 
 -- Find lightweight 
 Select * From silasdiscs WHERE  Weight <=169  UNION ALL Select * FROM jcdiscs WHERE  Weight <=169;
@@ -31,3 +31,14 @@ UNION
 Select DISTINCT Mold, Speed, Glide, Turn, Fade, (Turn + Fade) AS Stability From jcdiscs
 ORDER BY Speed, Stability
 ;
+
+SELECT Mold, COUNT(*) AS Count FROM silasdiscs 
+GROUP BY Mold ORDER BY Count DESC LIMIT 5;
+
+SELECT Mold, COUNT(*) AS Count FROM jcdiscs
+GROUP BY Mold ORDER BY Count DESC LIMIT 5;
+
+SELECT Mold, COUNT(*) AS Count FROM
+(SELECT * FROM silasdiscs UNION ALL Select * FROM jcdiscs) AS totalDiscs
+GROUP BY Mold ORDER BY Count DESC;
+

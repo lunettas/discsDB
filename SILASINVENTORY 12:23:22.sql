@@ -120,7 +120,7 @@ VALUES
 		('EMAC Truth', 'Fuzion Burst', 'Dynamic Discs', 171, 5, 5, 0, 2, 'Mid-Range', 'Emily', 'Blue', 'Gold Stock', 6),
 		('EMAC Truth', 'Lucid-X Glimmer', 'Dynamic Discs', 174, 5, 5, 0, 2, 'Mid-Range', 'Emily', 'Blue', 'TS 2020 ', 6),
 		('EMAC Truth', 'Lucid Sparkle', 'Dynamic Discs', 172, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Pink', 'Gold Stock', 7),
-		('EMAC Truth', 'Lucid Sparkle', 'Dynamic Discs', 171, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Red', 'GBlack SKIN$ MATCH 2019', 7),
+		('EMAC Truth', 'Lucid Sparkle', 'Dynamic Discs', 171, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Red', 'Black SKIN$ MATCH 2019', 7),
 		('Mako3', 'Star', 'Innova Disc Golf', 177, 5, 5, 0, 0, 'Mid-Range', 'Emily', 'White', 'Misprint Stock', 7),
 		('Shark', 'DX', 'Innova Disc Golf', null, 4, 4, 0, 2, 'Mid-Range', 'Emily', 'Purple', 'Sugarbush', 6),
 		('Condor', 'Star', 'Innova Disc Golf', null, 3, 4, 0, 2, 'Mid-Range', 'Collection', 'White', 'Green Stock', 7),

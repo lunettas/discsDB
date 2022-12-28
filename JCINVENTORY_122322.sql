@@ -15,7 +15,6 @@ VALUES
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Side Bag', 'Pink', '10 Year Anniversary - Magenta', 6),
     ('Enforcer', 'Fuzion Bio', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Distance Driver', 'Side Bag', 'Yellow', 'Blue', 7),
 
-
 	('Fierce', 'Special Blend', 'DISCRAFT', 172, 3, 4, -2, 0, 'Putter', 'Backup', 'Purple', 'Purple Shatter', 7),
     ('Fierce', 'Special Blend', 'DISCRAFT', 174, 3, 4, -2, 0, 'Putter', 'Backup', 'Yellow', 'Rainbow Shatter', 7),
     ('Fierce', 'Special Blend', 'DISCRAFT', 173, 3, 4, -2, 0, 'Putter', 'Backup', 'Yellow', 'Rainbow Shatter', 7),
@@ -47,7 +46,7 @@ VALUES
     ('Tomb', 'Swirly S-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Yellow', 'Mummy Stamp - Black', 7),
     ('Tomb', 'C-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Dalton', 'Light Orange', 'Ghost Stamp - Magenta Purple', 6),
     ('Pig', 'Glow Star Plastic', 'INNOVA DISC GOLF', 166, 3, 1, 0, 3, 'Putter', 'Backup', 'White', 'Rainbow', 6),
-    
+
     ('Ghost', 'Icon Edition', 'LEGACY DISCS', 180, 4, 5, 0, 3, 'Putter', 'Backup', 'Light Blue', 'Black', 7),
     ('Zone', 'Swirl ESP', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Blue', 'Limited Edition 2022 Tour Series Adam Hammes - Black', 7),
     ('Zone', 'Swirl ESP', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Blue', 'Limited Edition 2022 Tour Series Adam Hammes - Black', 7),
@@ -59,9 +58,10 @@ VALUES
     ('Zone', 'Big Z FLX', 'DISCRAFT', NULL, 4, 3, 0, 3, 'Putter', 'Backup', 'Yellow', '2022 LedgeStone Edition - Rainbow', 7),
     ('Zone', 'Z FLX Metallic', 'DISCRAFT', NULL, 4, 3, 0, 3, 'Putter', 'Backup', 'Pink-Purple', '2022 LedgeStone Edition - Magenta', 7),
     ('Zone', 'Titanium - Puddle Topped', 'DISCRAFT', 174, 4, 3, 0, 3, 'Putter', 'Backup', 'Purple', 'Red', 7),
+    ('Rat', 'Star', 'INNOVA DISC GOLF', 175, 4, 2, 0, 3, 'Mid-Range', 'Backup', 'Red', 'Black', 6),
+    ('Tactic', 'Hard EXO', 'DISCMANIA', 176, 4, 2, 0, 3, 'Mid-Range', 'Backup', 'Pink', 'Silver', 6),
     ('Razor Claw 3', 'Meta', 'DISCMANIA', 173, 4, 2, 0, 4, 'Mid-Range', 'Sale / Trade', 'Pink', 'Eagle McMahon Signature Series Meta Tactic - Rainbow', 7),
     ('Razor Claw 3', 'Meta', 'DISCMANIA', 173, 4, 2, 0, 4, 'Mid-Range', 'Sale / Trade', 'Pink', 'Eagle McMahon Signature Series Meta Tactic - Rainbow', 7),
-
 
     ('Fuse', 'Opto', 'LATITUDE 64°', 177, 5, 6, -1, 0, 'Mid-Range', 'Backup', 'Pink Glimmer', '2022 Fundraiser Dynamic Discs Open Limited Edition Stamp - Gold', 7),
     ('Fuse', 'Opto', 'LATITUDE 64°', 181, 5, 6, -1, 0, 'Mid-Range', 'Backup', 'Orange', 'Purple', 6),
@@ -80,12 +80,15 @@ VALUES
     ('Gauge', 'Icon Edition', 'LEGACY DISCS', 181, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink Swirl', 'Rainbow', 7),
     ('Compass', 'Opto', 'LATITUDE 64°', 176, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink', 'Fall Fling II - Red', 6),
     ('EMAC Truth', 'Lucid-X Moonshine Silas', 'DYNAMIC DISCS', 180, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Pink', '2020 TS V4', 7),
+    ('EMAC Truth', 'Lucid', 'DYNAMIC DISCS', 174, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Yellow', 'Black', 6),
+    ('Malta', 'ESP', 'DISCRAFT', 176, 5, 4, 1, 3, 'Mid-Range', 'Backup', 'Purple', 'Black', 6),
     ('Kaxe', 'K1-Glow', 'KASTAPLAST', 174, 6, 4, 0, 3, 'Mid-Range', 'Backup', 'White', '2022 - Blue', 6),
     ('Method', 'Neo', 'DISCMANIA', 177, 5, 5, 0, 3, 'Mid-Range', 'Backup', 'Blue', 'Red', 6),
     ('Pyro', 'Prism Plasma', 'AXIOM DISCS', 179, 5, 4, 0, 2.5, 'Mid-Range', 'Backup', 'Gold-Tan', 'Black', 7),
     ('Pyro', 'Prism Neutron', 'AXIOM DISCS', 179, 5, 4, 0, 2.5, 'Mid-Range', 'Backup', 'Pink-Red', 'Black', 7),
     ('Pyro', 'Prism Plasma', 'AXIOM DISCS', 179, 5, 4, 0, 2.5, 'Mid-Range', 'Backup', 'Pink', 'Yellow Sparkle', 7),
     ('Roc3', 'Champion', 'INNOVA DISC GOLF', 180, 5, 4, 0, 3, 'Mid-Range', 'Backup', 'Orange', 'Blue', 6),
+    ('MD4', 'Champion Plastic', 'DISCMANIA', 169, 5, 4, 0, 3, 'Mid-Range', 'Backup', 'Orange', 'X-Out - Black', 6),
     ('Buzzz OS', 'ESP', 'DISCRAFT', 177, 5, 4, 0, 3, 'Mid-Range', 'Backup', '?', '?', 7),
     ('Buzzz OS', 'ESP', 'DISCRAFT', 177, 5, 4, 0, 3, 'Mid-Range', 'Backup', '?', '?', 7),
     ('Buzzz OS', 'Elite Z', 'DISCRAFT', 177, 5, 4, 0, 3, 'Mid-Range', 'Backup', '?', '?', 7),
@@ -93,10 +96,6 @@ VALUES
     ('Justice', 'Lucid Plastic', 'DYNAMIC DISCS', 176, 5, 1, 0.5, 4, 'Mid-Range', 'Backup', 'Yellow', 'Green', 6),
     ('Pursuit', 'Icon Edition', 'LEGACY DISCS', 175, 5, 3, 0, 3, 'Mid-Range', 'Backup', 'White', 'Metallic Teal', 7),
     ('Gator3', 'Champion', 'INNOVA DISC GOLF', 175, 5, 2, 0, 3, 'Mid-Range', 'Backup', 'Green', 'Team Champion Series Joel Freeman - Gold', 7),
-
-
-
-
 
     ('Underworld', 'Vip', 'WESTSIDE DISCS', 173, 7, 6, -3, 1, 'Fairway Driver', 'Backup', 'Green', 'Silver', 6),
     ('Diamond', 'Opto Air', 'LATITUDE 64°', 139, 8, 6, -3, 1, 'Fairway Driver', 'Backup', 'Teal', 'Bronze', 6),
@@ -107,10 +106,8 @@ VALUES
     ('TeeBird', 'GStar', 'INNOVA DISC GOLF', 173, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Orange', 'Gold', 7),
     ('Teebird', 'Star Glow', 'INNOVA DISC GOLF', 173, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Purple', 'Jen Allen Tour Series - Blue', 7),
     ('Instinct', 'Neo', 'DISCMANIA', 174, 7, 5, 0, 2, 'Fairway Driver', 'Backup', 'Blue', 'Silver', 6),
+    ('TeeBird3', 'Champion', 'INNOVA DISC GOLF', 157, 8, 4, 0, 2, 'Fairway Driver', 'Backup', 'Orange', 'Ricky Wysocki 2x World Champion - Green', 7),
     
-
-
-
     ('Sidewinder', 'Star', 'INNOVA DISC GOLF', 173, 9, 5, -3, 1, 'Control Driver', 'Backup', 'Green', 'Aqua Metallic', 7),
     ('Road Runner', 'Star', 'INNOVA DISC GOLF', 167, 9, 5, -4, 1, 'Control Driver', 'Backup', 'Yellow', 'Black', 6),
     ('Insanity', 'Glow Plastic', 'AXIOM DISCS', 175, 9, 5, -2, 1.5, 'Control Driver', 'Backup', 'Clear - Red Rim', 'Halloween 2021 Special Edition - Purple / White', 7),
@@ -132,11 +129,12 @@ VALUES
     ('Invictus', 'Champion', 'INNOVA DISC GOLF', 175, 10, 4, 0, 3, 'Control Driver', 'Backup', 'Red', 'Factory Second - Black', 7),
     ('Figher', 'Icon Edition', 'LEGACY DISCS', 174, 10, 3, 0, 5, 'Control Driver', 'Backup', 'White', 'Rainbow', 7),
 
-
     ('Mamba', 'Starlite', 'INNOVA DISC GOLF', 156, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'No Stamp', 6),
     ('Mamba', 'Star', 'INNOVA DISC GOLF', 171, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Red', 'Rainbow Blend', 6),
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 174, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'Gold', 5),
+    ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'Silver', 5),
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Green', 'Silver', 5),
+    ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Purple', 'White', 7),
     ('Grace', 'Royal - Grand', 'LATITUDE 64°', 173, 11, 6, -1, 2, 'Distance Driver', 'Backup', 'Pink', 'Misprint - Silver', 6),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 173, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Yellow', 'garrett Gurthie Tour Series - Red Metallic', 7),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 172, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Yellow', 'World Championships 2021 - Green', 7),
@@ -149,6 +147,8 @@ VALUES
     ('Destroyer', 'Star', 'INNOVA DISC GOLF', 175, 12, 5, -1, 3, 'Distance Driver', 'Backup', 'Orange', 'Ricky Wysocki 2x World Champion - Rainbow', 7),
     ('Razeti', 'Royal Plastic', 'PRODISCUS', 175, 12, 5, 0, 3, 'Distance Driver', 'Backup', 'Blue', 'Metallic Blue', 7),
     ('Kotare', 'Royal Plastic', 'RPM DISCS', 174, 12, 5, 0, 3, 'Distance Driver', 'Backup', 'White', 'Metallic Red', 7),
+    ('Tempest', 'G Star Plastic', 'DGA Disc Golf', 172, 13, 5, -3, 2, 'Distance Driver', 'Backup', 'Green', 'Delaveaga Disc Golf Club Santa Cruz Stamp - Rainbow', 7),
+    ('Katana', 'Pro', 'INNOVA DISC GOLF', 172, 13, 5, -3, 3, 'Distance Driver', 'Backup', 'White', 'F2 Factory Second - Teal', 7),
     ('Daedalus', 'Champion', 'INNOVA DISC GOLF', 175, 13, 6, -3, 2, 'Distance Driver', 'Backup', 'Yellow', 'Silver Shatter', 4),
     ('Daedalus', 'Champion', 'INNOVA DISC GOLF', 166, 13, 6, -3, 2, 'Distance Driver', 'Backup', 'Orange', 'Silver Shatter', 4),
     ('Daedalus', 'Champion', 'INNOVA DISC GOLF', 175, 13, 6, -3, 2, 'Distance Driver', 'Backup', 'Blue', 'Silver Shatter', 7),
@@ -185,8 +185,7 @@ VALUES
     ('Enforcer', 'Lucid', 'DYNAMIC DISCS', 172, 12, 4, 0.5, 4, 'Distance Driver', 'Loan', 'Blue', 'Gold Woodgrain', 7),
     ('Ballista Pro', 'Opto', 'LATITUDE 64°', 174, 14, 4, 0, 3, 'Distance Driver', 'Loan', 'Pink Glimmer', 'PDGA Pro Worlds 2021 - Black', 7),
     ('Defender', 'Fuzion', 'DYNAMIC DISCS', 172, 13, 5, 0, 3, 'Distance Driver', 'Loan', 'Orange', 'Silver Holographic', 7),
-    
-    
+
     ('Valkyrie', 'DX', 'INNOVA DISC GOLF', 175, 9, 4, -2, 2, 'Control Driver', 'Loan', 'Pink', 'Silver', 5),
     ('Leopard', 'DX', 'INNOVA DISC GOLF', 149, 6, 5, -2, 1, 'Control Driver', 'Loan', 'Pink', 'Silver', 5),
     ('PD', 'D-Line', 'DISCMANIA', 171, 10, 4, 0, 3, 'Control Driver', 'Loan', 'White', 'X-Out - Black', 5),
@@ -196,7 +195,6 @@ VALUES
     
     ('Archangel', 'DX', 'INNOVA DISC GOLF', 171, 11, 5, -1, 3, 'Distance Driver', 'Sale / Trade', 'Orange', 'Blue', 5),
     ('Lace', 'Vibram', 'UNKNOWN', 165, 14, 6, -1, 1, 'Distance Driver', 'Sale / Trade', 'White', 'Rainbow Speckles', 4),
-    
     
     ('UNKNOWN', 'DX', 'UNKNOWN', 171, 8, 5, -2, 2, 'Control Driver', 'Sale / Trade', 'Orange', 'Green', 5)
 	;

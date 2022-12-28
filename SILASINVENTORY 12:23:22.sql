@@ -111,7 +111,7 @@ VALUES
 		('Harp', 'BT Moonshine', 'WESTSIDE DISCS', 175, 4, 3, 0, 3, 'Putter', 'Backup', 'Blue', 'Idelwild DGPT 2020', 6),
 		('Harp', 'BT Hard', 'WESTSIDE DISCS', 175, 4, 3, 0, 3, 'Putter', 'Backup', 'White', 'DYNAMIC DISCSO 2021', 6),
 		('Justice', 'Lucid Sparkle', 'DYNAMIC DISCS', 175, 5, 0, .5, 3, 'Mid-Range', 'Backup', 'Pink', 'JR ME DG', 6),
-		('Justice', 'Prim', 'DYNAMIC DISCS', 171, 5, 0, .5, 3, 'Mid-Range', 'Backup', 'Red', 'Stock', 6),
+		('Justice', 'Prime', 'DYNAMIC DISCS', 171, 5, 0, .5, 3, 'Mid-Range', 'Backup', 'Red', 'Stock', 6),
 		('Warship', 'Tournament', 'WESTSIDE DISCS', 177, 5, 6, 0, 1, 'Mid-Range', 'Emily', 'White', 'Demon DyeMax', 7),
 		('Warship', 'Tournament', 'WESTSIDE DISCS', 167, 5, 6, 0, 1, 'Mid-Range', 'Emily', 'White', 'Gold Stock Old Flight Numbers', 7),
 		('Warship', 'VIP', 'WESTSIDE DISCS', 174, 5, 6, 0, 1, 'Mid-Range', 'Emily', 'White', 'Fly Guy', 8),

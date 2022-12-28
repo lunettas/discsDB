@@ -49,8 +49,16 @@ VALUES
     ('Pig', 'Glow Star Plastic', 'INNOVA DISC GOLF', 166, 3, 1, 0, 3, 'Putter', 'Backup', 'White', 'Rainbow', 6),
     
     ('Ghost', 'Icon Edition', 'LEGACY DISCS', 180, 4, 5, 0, 3, 'Putter', 'Backup', 'Light Blue', 'Black', 7),
+    ('Zone', 'Swirl ESP', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Blue', 'Limited Edition 2022 Tour Series Adam Hammes - Black', 7),
+    ('Zone', 'Swirl ESP', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Blue', 'Limited Edition 2022 Tour Series Adam Hammes - Black', 7),
+    ('Zone', 'CryZtal Z FLX', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Pink', 'Limited Edition Brodie Smith Get Freaky - Metallic Blue', 7),
+    ('Zone', 'CryZtal Z FLX', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Pink', 'Limited Edition Brodie Smith Get Freaky - Metallic Blue', 7),
     ('Zone', 'Cryztal Flx Glo Z', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Orange', 'Get Freaky - Metallic Purple', 7),
     ('Zone', 'Cryztal Flx Glo Z', 'DISCRAFT', 173, 4, 3, 0, 3, 'Putter', 'Backup', 'Orange', 'Get Freaky - Metallic Purple', 7),
+    ('Zone', 'Cryztal Glo Z', 'DISCRAFT', NULL, 4, 3, 0, 3, 'Putter', 'Backup', 'Yellow', '2022 LedgeStone Edition - Black', 7),
+    ('Zone', 'Big Z FLX', 'DISCRAFT', NULL, 4, 3, 0, 3, 'Putter', 'Backup', 'Yellow', '2022 LedgeStone Edition - Rainbow', 7),
+    ('Zone', 'Z FLX Metallic', 'DISCRAFT', NULL, 4, 3, 0, 3, 'Putter', 'Backup', 'Pink-Purple', '2022 LedgeStone Edition - Magenta', 7),
+    ('Zone', 'Titanium - Puddle Topped', 'DISCRAFT', 174, 4, 3, 0, 3, 'Putter', 'Backup', 'Purple', 'Red', 7),
     ('Razor Claw 3', 'Meta', 'DISCMANIA', 173, 4, 2, 0, 4, 'Mid-Range', 'Sale / Trade', 'Pink', 'Eagle McMahon Signature Series Meta Tactic - Rainbow', 7),
     ('Razor Claw 3', 'Meta', 'DISCMANIA', 173, 4, 2, 0, 4, 'Mid-Range', 'Sale / Trade', 'Pink', 'Eagle McMahon Signature Series Meta Tactic - Rainbow', 7),
 
@@ -71,8 +79,20 @@ VALUES
     ('Buzzz', 'Big Z', 'DISCRAFT', NULL, 5, 4, -1, 1, 'Mid-Range', 'Backup', 'Green', 'Blue Silver Metallic Shatter', 6),
     ('Gauge', 'Icon Edition', 'LEGACY DISCS', 181, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink Swirl', 'Rainbow', 7),
     ('Compass', 'Opto', 'LATITUDE 64°', 176, 5, 5, 0, 1, 'Mid-Range', 'Backup', 'Pink', 'Fall Fling II - Red', 6),
+    ('EMAC Truth', 'Lucid-X Moonshine Silas', 'DYNAMIC DISCS', 180, 5, 5, 0, 2, 'Mid-Range', 'Backup', 'Pink', '2020 TS V4', 7),
+    ('Kaxe', 'K1-Glow', 'KASTAPLAST', 174, 6, 4, 0, 3, 'Mid-Range', 'Backup', 'White', '2022 - Blue', 6),
     ('Method', 'Neo', 'DISCMANIA', 177, 5, 5, 0, 3, 'Mid-Range', 'Backup', 'Blue', 'Red', 6),
+    ('Pyro', 'Prism Plasma', 'AXIOM DISCS', 179, 5, 4, 0, 2.5, 'Mid-Range', 'Backup', 'Gold-Tan', 'Black', 7),
+    ('Pyro', 'Prism Neutron', 'AXIOM DISCS', 179, 5, 4, 0, 2.5, 'Mid-Range', 'Backup', 'Pink-Red', 'Black', 7),
+    ('Pyro', 'Prism Plasma', 'AXIOM DISCS', 179, 5, 4, 0, 2.5, 'Mid-Range', 'Backup', 'Pink', 'Yellow Sparkle', 7),
     ('Roc3', 'Champion', 'INNOVA DISC GOLF', 180, 5, 4, 0, 3, 'Mid-Range', 'Backup', 'Orange', 'Blue', 6),
+    ('Buzzz OS', 'ESP', 'DISCRAFT', 177, 5, 4, 0, 3, 'Mid-Range', 'Backup', '?', '?', 7),
+    ('Buzzz OS', 'ESP', 'DISCRAFT', 177, 5, 4, 0, 3, 'Mid-Range', 'Backup', '?', '?', 7),
+    ('Buzzz OS', 'Elite Z', 'DISCRAFT', 177, 5, 4, 0, 3, 'Mid-Range', 'Backup', '?', '?', 7),
+    ('Justice', 'Lucid-X Chameleon', 'DYNAMIC DISCS', 173, 5, 1, 0.5, 4, 'Mid-Range', 'Backup', 'Blue', 'Kona Panis - Shimmer Red', 7),
+    ('Justice', 'Lucid Plastic', 'DYNAMIC DISCS', 176, 5, 1, 0.5, 4, 'Mid-Range', 'Backup', 'Yellow', 'Green', 6),
+    ('Pursuit', 'Icon Edition', 'LEGACY DISCS', 175, 5, 3, 0, 3, 'Mid-Range', 'Backup', 'White', 'Metallic Teal', 7),
+    ('Gator3', 'Champion', 'INNOVA DISC GOLF', 175, 5, 2, 0, 3, 'Mid-Range', 'Backup', 'Green', 'Team Champion Series Joel Freeman - Gold', 7),
 
 
 

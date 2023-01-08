@@ -1,7 +1,9 @@
 -- USE discs;
 INSERT INTO jcdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`)
 VALUES
-    ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Blue', 'Ghost Stamp - Metallic Purple', 7),
+    ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Blue', 'Ghost Stamp - Metallic Purple', 6),
+    ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Blue', 'Ghost Stamp - Metallic Green', 7),
+    ('Tomb', 'Glow D-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'Blue', 'Ghost Stamp - Metallic Green', 7),
     ('Tomb', 'I-Blend', 'INFINITE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Side Bag', 'Red', 'Silver', 6),
     ('Fierce', 'Special Blend', 'DISCRAFT', 174, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Yellow', 'Rainbow Shatter', 6),
     ('Fierce', 'Big Z', 'DISCRAFT', 172, 3, 4, -2, 0, 'Putter', 'Side Bag', 'Orange', '2021 Ledgestone Edition - Orange', 5),
@@ -135,6 +137,7 @@ VALUES
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Yellow', 'Silver', 5),
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Green', 'Silver', 5),
     ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Purple', 'White', 7),
+    ('Mamba', 'Champion', 'INNOVA DISC GOLF', 175, 11, 6, -5, 1, 'Distance Driver', 'Backup', 'Orange', 'Black', 7),
     ('Grace', 'Royal - Grand', 'LATITUDE 64°', 173, 11, 6, -1, 2, 'Distance Driver', 'Backup', 'Pink', 'Misprint - Silver', 6),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 173, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Yellow', 'garrett Gurthie Tour Series - Red Metallic', 7),
     ('Wraith', 'Star', 'INNOVA DISC GOLF', 172, 11, 5, -1, 3, 'Distance Driver', 'Backup', 'Yellow', 'World Championships 2021 - Green', 7),
@@ -172,7 +175,74 @@ VALUES
     ('Bolt', 'Gold Line Orbit', 'LATITUDE 64°', 175, 13, 6, -2, 3, 'Distance Driver', 'Backup', 'Orange', '10 Year Anniversary', 8),
     ('Bolt', 'Silas', 'LATITUDE 64°', 174, 13, 6, -2, 3, 'Distance Driver', 'Collection', 'Pink Glimmer', 'Silas', 4),
 
+    ('Judge', 'Prime', 'DYNAMIC DISCS', 173, 2, 4, 0, 1, 'Putter', 'Dalton', 'Blue', 'Magenta Bar', 5),
+    ('Judge', 'Prime', 'DYNAMIC DISCS', 174, 2, 4, 0, 1, 'Putter', 'Dalton', 'Blue-Gray', 'Silver Bar', 5),
+    ('Warden', 'Prime', 'DYNAMIC DISCS', 175, 2, 4, 0, 0.5, 'Putter', 'Max', 'Dark Gray', 'Metallic Red', 7),
+    ('Warden', 'Classic Hybrid', 'DYNAMIC DISCS', 173, 2, 4, 0, 0.5, 'Putter', 'Max', 'Pink', 'Silver', 7),
+    ('Atlas', 'Two Piece Plastic', 'INNOVA DISC GOLF', NULL, 5, 4, 0, 1, 'Mid-Range', 'Max', 'Clear-Purple Rim', 'Red', 7),
+    ('Reactor', 'Eclipse Glow', 'MVP DISC SPORTS', 176, 5, 5, -0.5, 1.5, 'Mid-Range', 'Loan', 'Clear- White Rim', 'Silver EK ES 2021', 8),
+    ('Starfire', 'Pro', 'INNOVA DISC GOLF', 172, 10, 5, -1, 2, 'Control Driver', 'Loan', 'Yellow', 'Black', 5),
+    ('Beast', 'Pro', 'INNOVA DISC GOLF', 175, 10, 5, -2, 2, 'Control Driver', 'Loan', 'Orange-Yellow Tie Dye', 'White', 5),
+    ('Kaxe', 'K1-Line', 'KASTAPLAST', 174, 6, 4, 0, 3, 'Mid-Range', 'Dalton', 'White', 'Blue Metallic', 6),
+    ('Raider', 'Lucid', 'DYNAMIC DISCS', 176, 13, 5, -0.5, 3, 'Distance Driver', 'Max', 'Orange', 'Winger Fling 5 2022 - Purple', 6),
+    ('Undertaker', 'ESP', 'DISCRAFT', 173, 9, 5, -1, 2, 'Control Driver', 'Loan', 'Pink', 'Rainbow', 7),
+    ('Enigma', 'Neo Evolution', 'DISCMANIA', 175, 12, 5, -1, 2, 'Distance Driver', 'Loan', 'Blue', 'Green', 7),
+    ('Rive', 'Grand', 'LATITUDE 64°', 171, 13, 5, 0, 3.5, 'Distance Driver', 'Dalton', 'Blue', 'Gold Magenta - Misprint', 8),
+    ('Stal', 'K1-Line', 'KASTAPLAST', NULL, 9, 4, 0, 3, 'Control Driver', 'Dalton', 'Green', 'Purple', 6),
+    ('Koi', 'OG Rubber', 'ELEVATION DISC GOLF', 170, 3, 4, -1, 0, 'Putter', 'Dalton', 'Purple Dye', 'Black', 6),
+    ('Condor', 'Star', 'INNOVA DISC GOLF', NULL, 3, 4, 0, 2, 'Mid-Range', 'Dalton', 'Red', 'Black', 6),
+    ('Raider', 'Lucid', 'DYNAMIC DISCS', 173, 13, 5, -0.5, 3, 'Distance Driver', 'Dalton', 'Blue', 'No Stamp', 6),
+    ('Maverick', 'Prime Burst', 'DYNAMIC DISCS', 173, 7, 5, 0, 2, 'Fairway Driver', 'Dalton', 'Blue', 'Red', 4),
+    ('Escape', 'Prime Burst', 'DYNAMIC DISCS', 173, 9, 5, -1, 2, 'Control Driver', 'Dalton', 'Blue', 'Silver', 4),
+    ('Trespass', 'Prime Burst', 'DYNAMIC DISCS', 174, 12, 5, -0.5, 3, 'Distance Driver', 'Dalton', 'Red', 'Blue-Gray', 4),
+    ('EMAC Truth', 'Prime Burst', 'DYNAMIC DISCS', 177, 5, 5, 0, 2, 'Mid-Range', 'Dalton', 'Yellow', 'Green', 4),
+    ('Bounty', 'Prime Burst', 'DYNAMIC DISCS', 178, 4, 5, -1.5, 0.5, 'Mid-Range', 'Dalton', 'Blue', 'Teal', 4),
+    ('Method', 'Hard EXO', 'DISCMANIA', 177, 5, 5, 0, 3, 'Mid-Range', 'Dalton', 'White', 'Magenta', 4),
+    ('Judge', 'Prime Burst', 'DYNAMIC DISCS', 174, 2, 4, 0, 1, 'Putter', 'Dalton', 'Orange', 'Gold', 5),
+    ('Maiden', 'BT Hard', 'WESTSIDE DISCS', 173, 3, 4, 0, 1, 'Putter', 'Dalton', 'Purple', 'Blue', 6),
+    ('Maiden', 'BT Soft', 'WESTSIDE DISCS', 174, 3, 4, 0, 1, 'Putter', 'Dalton', 'Red', 'Silver', 6),
+    ('Reko', 'K3-Line', 'KASTAPLAST', NULL, 3, 3, 0, 1, 'Putter', 'Dalton', 'Yellow', 'Blue', 6),
+    ('Berg', 'K1-Line', 'KASTAPLAST', NULL, 1, 1, 0, 2, 'Putter', 'Dalton', 'White', 'Blue', 6),
+    ('Valkyrie', 'DX', 'INNOVA DISC GOLF', 163, 9, 4, -2, 2, 'Control Driver', 'Loan', 'Yellow', 'Black', 4),
+    ('Zone', 'Swirl ESP', 'DISCRAFT', NULL, 4, 3, 0, 3, 'Putter', 'Dalton', 'Red', '2021 DGPT Limited Edition', 6),
+    ('Atom', 'Proton Plastic', 'AXIOM DISCS', NULL, 3, 3, 0, 1, 'Putter', 'Backup', 'Blue - Black Rim', 'Black', 6),
+    ('Roach', 'Big Z', 'DISCRAFT', 174, 3, 4, -1, 1, 'Putter', 'Loan', 'Pink', 'Yellow-Gold', 6),
+    ('Svea', 'K1-Line', 'KASTAPLAST', NULL, 5, 6, -1, 0, 'Mid-Range', 'Dalton', 'Green', 'Black', 6),
+    ('Valkyrie', 'Champion', 'INNOVA DISC GOLF', 175, 9, 4, -2, 2, 'Control Driver', 'Loan', 'Orange-Red', 'Black', 6),
+    ('Sidewinder', 'Champion', 'INNOVA DISC GOLF', NULL, 9, 5, -3, 1, 'Control Driver', 'Dalton', 'Yellow', 'Purple', 5),
+    ('Beast', 'Blizzard Champion', 'INNOVA DISC GOLF', 161, 10, 5, -2, 2, 'Control Driver', 'Dalton', 'Red', 'No Stamp', 5),
+    ('Leopard', 'Champion', 'INNOVA DISC GOLF', NULL, 6, 5, -2, 1, 'Fairway Driver', 'Dalton', 'Yellow-Green', 'Green', 5),
+    ('Leopard', 'DX', 'INNOVA DISC GOLF', 148, 6, 5, -2, 1, 'Control Driver', 'Loan', 'Blue', 'White', 5),
+    ('Valkyrie', 'DX', 'INNOVA DISC GOLF', 169, 9, 4, -2, 2, 'Control Driver', 'Loan', 'Blue', 'Silver', 5),
+    ('EMAC Truth', 'Fuzion', 'DYNAMIC DISCS', 180, 5, 5, 0, 2, 'Mid-Range', 'Dalton', 'White', 'No Stamp', 6),
+    ('Diamond', 'Opto', 'LATITUDE 64°', 156, 8, 6, -3, 1, 'Fairway Driver', 'Dalton', 'White', 'No Stamp', 6),
+    ('Tilt', 'Lux Vapor', 'DISCMANIA', 172, 9, 1, 1, 6, 'Control Driver', 'Dalton', 'Purple', 'Simon Lizotte Creator Series - Silver', 6),
+    ('Warlock', 'SureGrip Plastic', 'GATEWAY DISC SPORTS', 173, 2, 3, 0, 1, 'Putter', 'Dalton', 'Orange', 'Black', 6),
+    ('Cohort', 'R-Blend', 'INFINITE DISCS', 175, 3.5, 4, 0, 1, 'Putter', 'Dalton', 'Orange', 'Purple', 6),
+    ('Luna', 'Jawbreaker', 'DISCRAFT', 174, 2, 3, 0, 3, 'Putter', 'Backup', 'Purple', '2021 Ledgestone Edition - Rainbow', 6),
+    ('Colt', 'DX', 'INNOVA DISC GOLF', 175, 3, 4, -1, 1, 'Putter', 'Backup', 'Pink', 'Black', 6),
+    ('Colt', 'DX', 'INNOVA DISC GOLF', 175, 3, 4, -1, 1, 'Putter', 'Backup', 'Pink', 'White', 4),
+    ('Colt', 'DX', 'INNOVA DISC GOLF', 175, 3, 4, -1, 1, 'Putter', 'Backup', 'Orange', 'Blue', 6),
+    ('Colt', 'XT', 'INNOVA DISC GOLF', 175, 3, 4, -1, 1, 'Putter', 'Backup', 'Orange', 'Blue', 6),
+    ('Colt', 'Star', 'INNOVA DISC GOLF', 175, 3, 4, -1, 1, 'Putter', 'Backup', 'Pink', 'Blue', 6),
+    ('EMAC Judge', 'Classic Blend', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Backup', 'Red', '1010 Discs Stamp', 5),
+    ('Phi', 'Glow', 'EV-7 DISC GOLF', 173, 3, 4, 0, 1, 'Putter', 'Backup', 'White', 'Black', 5),
+    ('Penrose', 'Glow', 'EV-7 DISC GOLF', 174, 2, 4, 0, 2, 'Putter', 'Backup', 'White', 'Magenta', 5),
+    ('Pure', 'Retro Line', 'LATITUDE 64°', 174, 3, 3, -1, 1, 'Putter', 'Loan', 'White', 'Rainbow', 5),
+    ('Pure', 'Zero Hard', 'LATITUDE 64°', 173, 3, 3, -1, 1, 'Putter', 'Dalton', 'Blue', 'Magenta', 6),
+    ('Pure', 'Opto', 'LATITUDE 64°', 176, 3, 3, -1, 1, 'Putter', 'Dalton', 'Red', 'Silver', 6),
+    ('Nomad', 'Electron Soft Plastic', 'MVP DISC SPORTS', NULL, 2, 4, 0, 1, 'Putter', 'Backup', 'Orange-Black Rim', 'James Conrad 2021 World Champion Special Edition - Silver/Black', 8),
+
+
+
+
+
     ('Sapphire', 'Opto', 'LATITUDE 64°', 175, 10, 6, -2, 1.5, 'Control Driver', 'Emily', 'Orange', 'Silver', 7),
+
+    ('P2', 'Speckle', 'DISCMANIA', NULL, 2, 3, 0, 1, 'Putter', 'Sale / Trade', 'Yellow', 'Blue - RFO Feather Stamp', 6),
+
+
+
 
     ('Judge', 'Fuzion', 'DYNAMIC DISCS', 174, 2, 4, 0, 1, 'Putter', 'Collection', 'White', 'Joshycsm Stamp - Green', 4),
     ('Judge', 'Lucid', 'DYNAMIC DISCS', 176, 2, 4, 0, 1, 'Putter', 'Loan', 'Tie Die', 'Purple', 7),
@@ -199,7 +269,7 @@ VALUES
     ('UNKNOWN', 'DX', 'UNKNOWN', 171, 8, 5, -2, 2, 'Control Driver', 'Sale / Trade', 'Orange', 'Green', 5)
 	;
 
--- 'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade', 'Loan', 'Dalton', 'Silas'
+-- 'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade', 'Loan', 'Dalton', 'Max', 'Silas' CATEGORY
 select * from silasdiscs;
 select * from silasdiscs where mold = 'Fierce';
 select * from jcdiscs;
@@ -210,13 +280,29 @@ Select * From silasdiscs WHERE  Mold = 'Boss'  UNION ALL Select * FROM jcdiscs W
 -- 'Putter', 'Mid-Range', 'Fairway Driver' , 'Control Driver', 'Distance Driver'
 
 -- 1-4 Putter
--- 5-6 Mid
--- 7-8 Fairway
--- 9-10 Control
--- 11+ Distance
+-- 5-6 Mid-Range
+-- 7-8 Fairway Driver
+-- 9-10 Control Driver
+-- 11+ Distance Driver
 
 -- commit daily ;)
 
 show tables;
 drop table silasdiscs;
 drop table jcdiscs;
+
+-- Queries
+
+-- Exchange 1
+select * from jcdiscs;
+select * from jcdiscs where category = 'Loan';
+select * from jcdiscs where id in (164, 165, 166, 167,168, 169);
+
+select * from silasdiscs where mold = 'Escape' or speed = 9;
+select * from silasdiscs where speed = 9 and glide = 5 and turn = -1 and fade = 2;
+select * from jcdiscs where speed = 9 and glide = 5 and turn = -1 and fade = 2;
+
+select count(*) as 'Number of Discs' from jcdiscs where category in ('Dalton', 'Max');
+
+
+-- Inserts

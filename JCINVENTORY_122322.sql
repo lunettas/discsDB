@@ -298,6 +298,8 @@ select * from jcdiscs;
 select * from jcdiscs where category = 'Loan';
 select * from jcdiscs where id in (164, 165, 166, 167,168, 169);
 
+select * from silasdiscs;
+select * from silasdiscs where category in ('Emily');
 select * from silasdiscs where mold = 'Escape' or speed = 9;
 select * from silasdiscs where speed = 9 and glide = 5 and turn = -1 and fade = 2;
 select * from jcdiscs where speed = 9 and glide = 5 and turn = -1 and fade = 2;

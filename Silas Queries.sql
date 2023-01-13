@@ -48,3 +48,6 @@ FROM silasDiscs
 WHERE ID IN(223, 232, 233, 231, 238, 159, 222, 171, 155, 154, 204, 203, 33, 200, 230, 111, 218, 120, 221)
 ORDER BY Speed, Stability;
 -- 238 wrong color? idk if the BD beast or roc3 are logged...
+
+select count(*) as 'Total Discs' from silasdiscs WHERE ID IN(223, 232, 233, 231, 238, 159, 222, 171, 155, 154, 204, 203, 33, 200, 230, 111, 218, 120, 221)
+ORDER BY Speed, Stability;

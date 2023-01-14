@@ -1,3 +1,4 @@
+CREATE DATABASE discs;
 USE discs;
 drop table silasdiscs;
 CREATE TABLE silasdiscs (

@@ -31,7 +31,8 @@ UNION
 Select DISTINCT Mold, Speed, Glide, Turn, Fade, (Turn + Fade) AS Stability From jcdiscs
 ORDER BY Speed, Stability
 ;
-
+SELECT * FROM silasdiscs WHERE Mold = 'jade';
+SELECT * FROM jcdiscs WHERE Mold = 'sapphire';
 SELECT Mold, COUNT(*) AS Count FROM silasdiscs 
 GROUP BY Mold ORDER BY Count DESC LIMIT 5;
 
@@ -54,3 +55,6 @@ select * from silasdiscs;
 -- disrupting in silas' branch xD
 select count(*) as 'Total Discs' from silasdiscs WHERE ID IN(223, 232, 233, 231, 238, 159, 222, 171, 155, 154, 204, 203, 33, 200, 230, 111, 218, 120, 221)
 ORDER BY Speed, Stability;
+
+
+select * from testdiscs;

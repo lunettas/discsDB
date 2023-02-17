@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>discs DB demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Input discs into the database here!</h1>
+    <!-- Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) -->
+    <form method="POST" action="/submit">
+        <div class="mb-3">
+          <label for="inputTable" class="form-label">Input Table</label>
+          <input type="text" class="form-control" id="inputTable" aria-describedby="tableHelp" name="table">
+          <div id="tableHelp" class="form-text">please select the table to input the discs into</div>
+        </div>
+        <div class="mb-3">
+          <label for="inputMold" class="form-label">Disc Mold</label>
+          <input type="text" class="form-control" id="inputMold" aria-describedby="moldHelp" name="mold">
+          <div id="moldHelp" class="form-text"><!-- add helper text here --></div>
+        </div>
+        <div class="mb-3">
+          <label for="inputPlastic" class="form-label">Disc Plastic</label>
+          <input type="text" class="form-control" id="inputPlastic" aria-describedby="plasticHelp" name="plastic
+          ">
+          <div id="plasticHelp" class="form-text">type of plastic disc is made with, see reference for help?</div>
+        </div>
+        <div class="mb-3">
+          <label for="inputBrand" class="form-label">Disc Brand</label>
+          <input type="text" class="form-control" id="inputBrand" aria-describedby="BrandHelp" name="brand">
+          <div id="BrandHelp" class="form-text"><!--helper txt here--></div>
+        </div>
+        <div class="mb-3">
+            <label for="inputWeight" class="form-label">Disc Weight</label>
+            <input type="number" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">
+            <div id="weightHelp" class="form-text"><!-- add helper text here --></div>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">Flight Numbers</span>
+            <input type="number" aria-label="Speed" class="form-control" name="speed">
+            <input type="number" aria-label="Glide" class="form-control" name="glide">
+            <input type="number" aria-label="Turn" class="form-control" name="turn">
+            <input type="number" aria-label="Fade" class="form-control" name="fade">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">Color and Stamp</span>
+            <input type="text" aria-label="Disc Color" class="form-control" name="color">
+            <input type="text" aria-label="Stamp" class="form-control" name="stamp">
+          </div>
+          <div class="mb-3">
+            <label for="inputSleepyScale" class="form-label">Disc SleepyScale</label>
+            <input type="text" class="form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyScale">
+            <div id="sleepyScaleHelp" class="form-text">10 - Never thrown, no ink, brand new condition 9 - Field tested or used for one or two rounds, no ink.                               8 - Lightly used with very minimal wear 7 - Used with some minor dings or scuffs but still in good shape  6 - Typical used disc with the usual dings, scratches but still worthy 5 - Kinda beat, significant wear, has lost a good bit of it's stability 4 - Beat up turnover disc with some evident war story wear 3 or under - Beat to Hades dog chew toy</div>
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<!-- front page should allow you to view by collection, type, or speed/stability desc -->

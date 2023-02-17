@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
+    <link rel="stylesheet" href="input.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="--bs-body-bg">
     <h1>Input discs into the database here!</h1>
     <!-- Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) -->
     <form method="POST" action="/submit">
         <div class="mb-3">
-          <label for="inputTable" class="form-label">Input Table</label>
-          <input type="text" class="form-control" id="inputTable" aria-describedby="tableHelp" name="table">
-          <div id="tableHelp" class="form-text">please select the table to input the discs into</div>
+          <!-- <label for="inputTable" class="form-label">Input Table</label> -->
+          <!-- <input type="select" class="form-control" id="inputTable" aria-describedby="tableHelp" name="table"> -->
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="table"> 
+            <option selected>Choose a table to input the discs into</option>
+            <option value="silasdiscs">Silas</option>
+            <option value="jcdiscs">JC</option>
+            <option value="testdiscs">Test</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="inputMold" class="form-label">Disc Mold</label>
@@ -22,8 +28,7 @@
         </div>
         <div class="mb-3">
           <label for="inputPlastic" class="form-label">Disc Plastic</label>
-          <input type="text" class="form-control" id="inputPlastic" aria-describedby="plasticHelp" name="plastic
-          ">
+          <input type="text" class="form-control" id="inputPlastic" aria-describedby="plasticHelp" name="plastic">
           <div id="plasticHelp" class="form-text">type of plastic disc is made with, see reference for help?</div>
         </div>
         <div class="mb-3">
@@ -40,8 +45,8 @@
             <span class="input-group-text">Flight Numbers</span>
             <input type="number" aria-label="Speed" class="form-control" name="speed">
             <input type="number" aria-label="Glide" class="form-control" name="glide">
-            <input type="number" aria-label="Turn" class="form-control" name="turn">
-            <input type="number" aria-label="Fade" class="form-control" name="fade">
+            <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn">
+            <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade">
           </div>
           <div class="input-group">
             <span class="input-group-text">Color and Stamp</span>
@@ -49,12 +54,39 @@
             <input type="text" aria-label="Stamp" class="form-control" name="stamp">
           </div>
           <div class="mb-3">
-            <label for="inputSleepyScale" class="form-label">Disc SleepyScale</label>
-            <input type="text" class="form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyScale">
+            <!-- <label for="inputSleepyScale" class="form-label">Disc SleepyScale</label> -->
+            <select type="number" class="form-select form-select-sm form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyscale">
+              <option selected>Sleepy Scale</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
             <div id="sleepyScaleHelp" class="form-text">10 - Never thrown, no ink, brand new condition 9 - Field tested or used for one or two rounds, no ink.                               8 - Lightly used with very minimal wear 7 - Used with some minor dings or scuffs but still in good shape  6 - Typical used disc with the usual dings, scratches but still worthy 5 - Kinda beat, significant wear, has lost a good bit of it's stability 4 - Beat up turnover disc with some evident war story wear 3 or under - Beat to Hades dog chew toy</div>
           </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
       </form>
+      <!-- <script>
+        // hide the button initially
+        document.getElementById("submit-another-response").style.display = "none";
+        
+        // add a submit event listener to the form
+        document.querySelector("form").addEventListener("submit", function(event) {
+          event.preventDefault(); // prevent the form from submitting
+          // show the button
+          document.getElementById("submit-another-response").style.display = "block";
+          // do any other processing or submission of the form data
+        });
+      </script>
+      <form action="/input" method="GET">
+        <button type="button" id="submit-another-response">Submit Another Response</button>
+      </form> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

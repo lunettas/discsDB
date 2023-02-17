@@ -2,6 +2,8 @@ const express = require('express');
 const mysql = require('mysql2/promise');
 const app = express();
 const port = 3000;
+const fs = require('fs');
+const path = require('path');
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/home.html');
@@ -11,6 +13,9 @@ app.get('/about', function (req, res) {
 });
 app.get('/input', function (req, res) {
   res.sendFile(__dirname + '/input.html');
+});
+app.get('/form', (req, res) => {
+  res.render('form'); // render the form page
 });
 
 
@@ -28,51 +33,53 @@ const pool = mysql.createPool({
 
 // parse incoming form data
 app.use(express.urlencoded({ extended: true }));
+// Define the file path for storing form submissions
+const filePath = path.join(__dirname, 'form-submissions.txt');
 
 // handle form submission
 app.post('/submit', async (req, res) => {
-    const { mold, plastic, brand, weight, speed, glide, turn, fade, color, stamp, sleepyscale } = req.body;
+    const { table, mold, plastic, brand, weight, speed, glide, turn, fade, color, stamp, sleepyscale } = req.body;
     console.log('Received form input:', req.body);
-    const formData = [
-      mold || null,
-      plastic || null,
-      brand || null,
-      weight || null,
-      speed || null,
-      glide || null,
-      turn || null,
-      fade || null,
-      color || null,
-      stamp || null,
-      sleepyscale || null
-    ];
-    try {
-        const conn = await pool.getConnection();
-        const result = await conn.execute(
-            'INSERT INTO testdiscs (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            formData
-        );
-        conn.release();
-        res.send('Disc added to the database!');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error adding disc to the database');
-    }
-});
+    console.log('speed', speed);
+    let slot;
+    if (speed>0 && speed <=4){slot = 'Putter';} else if (speed>4 && speed<7){slot = 'Mid-Range';}else if(speed>6&&speed<9){slot='Fairway Driver';}else if(speed>9&&speed<11){slot = 'Control Driver';}else if(speed>=11){slot='Distance Driver';}
+    console.log('slot', slot);
+      try {
+      const conn = await pool.getConnection();
+      const result = await conn.execute(
+            'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [
+        mold ?? null,
+        plastic ?? null,
+        brand ?? null,
+        weight ?? null,
+        speed ?? null,
+        glide ?? null,
+        turn ?? null,
+        fade ?? null,
+        slot ?? null,
+        color ?? null,
+        stamp ?? null,
+        sleepyscale ?? null
 
-// var mysql      = require('mysql2');
-// var connection = mysql.createConnection({
-//   host     : '127.0.0.1',
-//   user     : 'root',
-//   password : 'iamhackerman'
-// });
- 
-// connection.connect(function(err) {
-//   if (err) {
-//     console.error('error connecting: ' + err.stack);
-//     return;
-//   }
- 
-//   console.log('connected as id ' + connection.threadId);
-// });
+        ]
+      );
+      conn.release();
+      
+      //Write formData to file
+      const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, ${slot}, '${color}', '${stamp}', ${sleepyscale}),\n`;
+    fs.appendFile(filePath, formData, (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error storing form submission');
+      } else {
+        console.log('Disc added to the database and form submission stored!');
+        res.redirect('/input');
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error adding disc to the database');
+  }
+});
 

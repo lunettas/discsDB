@@ -38,20 +38,20 @@
         </div>
         <div class="mb-3">
             <label for="inputWeight" class="form-label">Disc Weight</label>
-            <input type="number" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">
+            <input type="number" value="175" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">
             <div id="weightHelp" class="form-text"><!-- add helper text here --></div>
           </div>
           <div class="input-group">
             <span class="input-group-text">Flight Numbers</span>
-            <input type="number" aria-label="Speed" class="form-control" name="speed">
-            <input type="number" aria-label="Glide" class="form-control" name="glide">
+            <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed">
+            <input type="number" aria-label="Glide" step=".5" min="1" maiclass="form-control" name="glide">
             <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn">
             <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade">
           </div>
           <div class="input-group">
             <span class="input-group-text">Color and Stamp</span>
             <input type="text" aria-label="Disc Color" class="form-control" name="color">
-            <input type="text" aria-label="Stamp" class="form-control" name="stamp">
+            <input type="text" value="Stock" aria-label="Stamp" class="form-control" name="stamp">
           </div>
           <div class="mb-3">
             <!-- <label for="inputSleepyScale" class="form-label">Disc SleepyScale</label> -->

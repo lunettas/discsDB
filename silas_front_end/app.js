@@ -41,14 +41,14 @@ const filePath = path.join(__dirname, 'form-submissions.txt');
 
 // handle form submission
 app.post('/submit', async (req, res) => {
-    const { table, mold, plastic, brand, weight, speed, glide, turn, fade, color, stamp, sleepyscale } = req.body;
+    const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
     console.log('Received form input:', req.body);
        let slot;
     if (speed>0 && speed <=4){slot = 'Putter';} else if (speed>4 && speed<7){slot = 'Mid-Range';}else if(speed>6&&speed<9){slot='Fairway Driver';}else if(speed>=9&&speed<11){slot = 'Control Driver';}else if(speed>=11){slot='Distance Driver';}    
  try {
       const conn = await pool.getConnection();
       const result = await conn.execute(
-            'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         mold ?? null,
         plastic ?? null,
@@ -59,6 +59,7 @@ app.post('/submit', async (req, res) => {
         turn ?? null,
         fade ?? null,
         slot ?? null,
+        category ?? null,
         color ?? null,
         stamp ?? null,
         sleepyscale ?? null
@@ -68,7 +69,7 @@ app.post('/submit', async (req, res) => {
       conn.release();
       
       //Write formData to file
-      const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${color}', '${stamp}', ${sleepyscale}),\n`;
+      const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', ${color}', '${stamp}', ${sleepyscale}),\n`;
     fs.appendFile(filePath, formData, (err) => {
       if (err) {
         console.error(err);

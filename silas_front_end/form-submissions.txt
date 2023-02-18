@@ -24,3 +24,5 @@ added category
 ('test', 'test', 'test', 175, 1, 1, 0.5, 0.5, 'Putter', 'Side Bag', blue', 'Stock', 10),
 ('test', 'test', 'test', 175, 1, 1, 0.5, 0.5, 'Putter', 'Main Bag', Blue', 'Stock', 10),
 ('Tilt', 'Meta', 'Discmania', 175, 9, 1, 1, 6, 'Control Driver', 'Simon', Pink', 'Stock', 10),
+('test', 'teq', 'test', 174, 1, 1.5, 1, 0.5, 'Putter', 'Side Bag', as', 'sd', 3),
+('test', 'test', 'test', 175, 1, 1, 0.5, 0.5, 'Putter', 'Main Bag', blue', 'stock', 1),

@@ -1,5 +1,6 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
+const connection = require('./db.js');
+
 const app = express();
 const port = 3000;
 const fs = require('fs');
@@ -21,17 +22,24 @@ app.get('/form', (req, res) => {
   res.render('form'); // render the form page
 });
 
+//route for autocomplete
+app.get('/autocomplete-values', (req, res) => {
+  const query = 'SELECT DISTINCT mold FROM silasdiscs';
+  connection.query(query, (error, results, fields) => {
+    if (error) throw error;
+    const values = results.map(result => result.name);
+    res.json(values);
+  });
+});
+
+app.get('/autocomplete.js', function(req, res) {
+  res.set('Content-Type', 'text/javascript');
+  res.sendFile(path.join(__dirname, 'autocomplete.js'));
+});
+
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);
-});
-
-// connect to mySQL
-const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'iamhackerman',
-  database: 'discs',
 });
 
 // parse incoming form data
@@ -46,7 +54,7 @@ app.post('/submit', async (req, res) => {
        let slot;
     if (speed>0 && speed <=4){slot = 'Putter';} else if (speed>4 && speed<7){slot = 'Mid-Range';}else if(speed>6&&speed<9){slot='Fairway Driver';}else if(speed>=9&&speed<11){slot = 'Control Driver';}else if(speed>=11){slot='Distance Driver';}    
  try {
-      const conn = await pool.getConnection();
+      const conn = await connection.getConnection();
       const result = await conn.execute(
             'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [

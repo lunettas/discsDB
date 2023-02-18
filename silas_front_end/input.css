@@ -1,8 +1,0 @@
-#submit-another-response {
-    display: none;
-  }
-  
-  #submit-another-response.show {
-    display: block;
-    margin-top: 20px;
-  }

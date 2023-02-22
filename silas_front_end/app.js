@@ -1,5 +1,5 @@
 const express = require('express');
-const connection = require('./db.js');
+const { localHostConnection, connection } = require('./db.js');
 
 const app = express();
 const port = 3000;
@@ -54,7 +54,7 @@ app.post('/submit', async (req, res) => {
        let slot;
     if (speed>0 && speed <=4){slot = 'Putter';} else if (speed>4 && speed<7){slot = 'Mid-Range';}else if(speed>6&&speed<9){slot='Fairway Driver';}else if(speed>=9&&speed<11){slot = 'Control Driver';}else if(speed>=11){slot='Distance Driver';}    
  try {
-      const conn = await connection.getConnection();
+      const conn = await connection();
       const result = await conn.execute(
             'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
@@ -74,7 +74,7 @@ app.post('/submit', async (req, res) => {
 
         ]
       );
-      conn.release();
+      
       
       //Write formData to file
       const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', ${color}', '${stamp}', ${sleepyscale}),\n`;

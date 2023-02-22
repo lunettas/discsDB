@@ -23,6 +23,7 @@
           <select id="option-select" name="category" class="text-body bg-body"></select>
         </div>
         <div class="mb-3">
+          <!-- TODO: set up autocomplete -->
           <label for="inputMold" class="form-label basicAutoComplete">Disc Mold</label>
           <input type="text" class="form-control" id="inputMold" aria-describedby="moldHelp" name="mold">
           <div id="moldHelp" class="form-text"><!-- add helper text here --></div>
@@ -39,7 +40,7 @@
         </div>
         <div class="mb-3">
             <label for="inputWeight" class="form-label">Disc Weight</label>
-            <input type="number" value="175" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">
+            <input type="number" value="175" min="1" max="200" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">
             <div id="weightHelp" class="form-text"><!-- add helper text here --></div>
           </div>
           <div class="input-group">
@@ -73,6 +74,8 @@
           </div>
         <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
       </form></div>
+
+      <!-- TODO: move to JS file -->
       <script>//implementing table specific collections
         // Get references to the select elements
         const tableSelect = document.getElementById('table-select');
@@ -148,7 +151,7 @@
           }
           });
       </script>
-  <!-- autocomplete -->
+  <!-- TODO: set up autocomplete -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>

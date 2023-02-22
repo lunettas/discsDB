@@ -1,27 +1,34 @@
 const express = require('express');
 const { localHostConnection, connection } = require('./db.js');
+const {engine} = require('express-handlebars');
 
 const app = express();
 const port = 3000;
 const fs = require('fs');
 const path = require('path');
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/home.html');
+//handlebars routing
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
+
+app.get('/', (req, res) => {
+    res.render('home');
+  });
+app.get('/input', (req, res) => {
+    res.render('input');
 });
-app.get('/about', function (req, res) {
-  res.sendFile(__dirname + '/about.html');
-});
-app.get('/input', function (req, res) {
-  res.sendFile(__dirname + '/input.html');
-});
-app.get('/test-input', function (req, res) {
-  res.sendFile(__dirname + '/test-input.html');
-});
-app.get('/form', (req, res) => {
-  res.render('form'); // render the form page
+app.get('/about', (req, res) => {
+    res.render('about');
 });
 
+app.listen(port, function (){
+  console.log(`Server running at http://localhost:${port}/`);
+});
+
+
+
+//  TODO: set up autocomplete
 //route for autocomplete
 app.get('/autocomplete-values', (req, res) => {
   const query = 'SELECT DISTINCT mold FROM silasdiscs';
@@ -38,9 +45,7 @@ app.get('/autocomplete.js', function(req, res) {
 });
 
 
-app.listen(port, function (){
-  console.log(`Server running at http://localhost:${port}/`);
-});
+
 
 // parse incoming form data
 app.use(express.urlencoded({ extended: true }));

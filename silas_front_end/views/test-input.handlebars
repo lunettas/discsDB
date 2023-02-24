@@ -7,7 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body >
-    <h1 class="text-center">Input discs into the database here!</h1>
+    <h1 class="text-center">Test disc input into the database here!</h1>
+  
+</form>
     <div class="p-3">
       <form method="POST" action="/submit" >
 {{!-- select table --}}
@@ -24,30 +26,16 @@
           <label for="category" class="form-label">Disc Category || Disc Collection </label>
           <select id="option-select" name="category" class="text-body bg-body"></select>
         </div>
-{{!-- input mold/plastic/brand --}}
-        <div class="input-group">
-          <span class="input-group-text">Disc Mold</span>
-          <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold" >
-          <input type="text" class="form-control" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
-          <input type="text" class="form-control" id="inputMold" aria-label="brand" name="brand" placeholder="Brand">
-          <div id="moldHelp" class="form-text"></div>
-        </div>
-        <a class="text-success" href="https://www.wrightlife.com/plastic-types-and-descriptions/" target="_blank">Not sure what the plastic type is?</a>
-
-{{!-- flight numbers --}}
-          <div class="input-group">
-            <span class="input-group-text">Flight Numbers</span>
-            <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
-            <input type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
-            <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
-            <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
-          </div>   <div><br></div>
+{{!-- look up the mold with API--}}
+<form action="/autocomplete" method="get">
+  <input type="text" name="q" placeholder="Enter a query...">
+  <button type="submit">Submit</button>
 {{!-- color and stamp --}}
           <div class="input-group">
             <span class="input-group-text">Color, Stamp, and Weight</span>
-            <input type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
-            <input type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
-            <input type="number" value="175" min="1" max="200" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">          
+            <input id="color" type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
+            <input id="stamp" type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
+            <input id="input-weight" type="number" value="175" min="1" max="200" class="form-control"  aria-describedby="weightHelp" name="weight">          
           </div>
           <div><br></div>
 {{!-- sleepyscale --}}
@@ -147,9 +135,20 @@
       </script>
   <!-- TODO: set up autocomplete -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
-  <script src="./autocomplete.js"></script>
+  <script src="autocomplete.js"></script>
+
+  <script>
+  $('form').submit(function(event) {
+    event.preventDefault(); // prevent the default form submit action
+    const query = $('input[name=q]').val(); // get the value of the input field
+    const apiUrl = 'https://discit-api.fly.dev/disc/' + query; // replace with your API endpoint
+    $.get(apiUrl, function(response) {
+      // handle the response from the server
+      console.log(response);
+    });
+  });
+</script>
+
   </body>
 </html>
 

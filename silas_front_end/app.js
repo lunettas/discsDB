@@ -1,11 +1,16 @@
 const express = require('express');
 const { localHostConnection, connection } = require('./db.js');
 const {engine} = require('express-handlebars');
+const https = require('https');
+const querystring = require('querystring');
 
 const app = express();
 const port = 3000;
 const fs = require('fs');
 const path = require('path');
+
+
+
 
 //handlebars routing
 app.engine('handlebars', engine());
@@ -18,6 +23,9 @@ app.get('/', (req, res) => {
 app.get('/input', (req, res) => {
     res.render('input');
 });
+app.get('/test-input', (req, res) => {
+    res.render('test-input');
+});
 app.get('/about', (req, res) => {
     res.render('about');
 });
@@ -26,31 +34,12 @@ app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);
 });
 
-
-
-//  TODO: set up autocomplete
-//route for autocomplete
-app.get('/autocomplete-values', (req, res) => {
-  const query = 'SELECT DISTINCT mold FROM silasdiscs';
-  connection.query(query, (error, results, fields) => {
-    if (error) throw error;
-    const values = results.map(result => result.name);
-    res.json(values);
-  });
-});
-
-app.get('/autocomplete.js', function(req, res) {
-  res.set('Content-Type', 'text/javascript');
-  res.sendFile(path.join(__dirname, 'autocomplete.js'));
-});
-
-
-
-
 // parse incoming form data
 app.use(express.urlencoded({ extended: true }));
 // Define the file path for storing form submissions
 const filePath = path.join(__dirname, 'form-submissions.txt');
+
+
 
 // handle form submission
 app.post('/submit', async (req, res) => {
@@ -62,21 +51,7 @@ app.post('/submit', async (req, res) => {
       const conn = await connection();
       const result = await conn.execute(
             'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [
-        mold ?? null,
-        plastic ?? null,
-        brand ?? null,
-        weight ?? null,
-        speed ?? null,
-        glide ?? null,
-        turn ?? null,
-        fade ?? null,
-        slot ?? null,
-        category ?? null,
-        color ?? null,
-        stamp ?? null,
-        sleepyscale ?? null
-
+      [ mold ?? null, plastic ?? null,        brand ?? null,        weight ?? null,        speed ?? null,        glide ?? null,        turn ?? null,        fade ?? null,        slot ?? null,        category ?? null,        color ?? null,        stamp ?? null,        sleepyscale ?? null
         ]
       );
       

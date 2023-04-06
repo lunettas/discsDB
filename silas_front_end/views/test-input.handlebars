@@ -9,9 +9,11 @@
   <body >
     <h1 class="text-center">Test disc input into the database here!</h1>
   
-</form>
+<form>
     <div class="p-3">
       <form method="POST" action="/submit" >
+      {{!-- hidden  --}}
+      <input type="hidden" name="disc_info" value="{{mold}},{{brand}},{{speed}},{{glide}},{{turn}},{{fade}}">
 {{!-- select table --}}
         <div class="mb-3">
           <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="table" id="table-select" class="bg-dark"> 
@@ -29,9 +31,9 @@
 {{!-- look up the mold with API--}}
 <form action="/autocomplete" method="get">
   <input type="text" name="q" placeholder="Enter a query...">
-  <button type="submit">Submit</button>
+  <button id="api-autocomplete-btn" type="button">Lookup Mold</button>
 {{!-- color and stamp --}}
-          <div class="input-group">
+          <div class="input-group"> 
             <span class="input-group-text">Color, Stamp, and Weight</span>
             <input id="color" type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
             <input id="stamp" type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
@@ -54,7 +56,7 @@
               <option value="10">10 - Never thrown, no ink, brand new condition</option>
             </select>
           </div>
-        <button type="submit" id="submit-btn" class="btn btn-success">Submit</button>
+        <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
       </form></div>
 
       <!-- TODO: move to JS file -->
@@ -138,14 +140,32 @@
   <script src="autocomplete.js"></script>
 
   <script>
-  $('form').submit(function(event) {
-    event.preventDefault(); // prevent the default form submit action
-    const query = $('input[name=q]').val(); // get the value of the input field
-    const apiUrl = 'https://discit-api.fly.dev/disc/' + query; // replace with your API endpoint
+const apiCallBtn = document.getElementById('api-autocomplete-btn');
+  const form = $('form');
+  const input = $('input[name=q]');
+  
+  function apiCall() {
+    const query = input.val(); // get the value of the input field
+    const apiUrl = 'https://discit-api.fly.dev/disc/' + query; // connect to API endpoint
     $.get(apiUrl, function(response) {
       // handle the response from the server
+      $('input[name=disc_info]').val(`${response.mold},${response.brand},${response.speed},${response.glide},${response.turn},${response.fade}`);
       console.log(response);
     });
+  }
+
+  apiCallBtn.addEventListener('click', apiCall);
+
+  form.submit(function(event) {
+    event.preventDefault(); // prevent the default form submit action
+    apiCall();
+  });
+
+  input.keypress(function(event) {
+    if (event.which === 13) { // check if enter key was pressed
+      event.preventDefault(); // prevent default submit action
+      apiCall();
+    }
   });
 </script>
 

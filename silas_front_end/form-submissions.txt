@@ -36,3 +36,4 @@ added category
 ('t', 't', 't', 175, 1, 1, 0.5, 0.5, 'Putter', 'Main Bag', t', 't', 1),
 ('test', 'test', 'test', 176, 1, 1, 0.5, 0.5, 'Putter', 'Main Bag', blue', 'stock', 1),
 ('test', 'test', 'test', 175, 1, 1, -0.5, -0.5, 'Putter', 'Side Bag', blue', 'stock', 1),
+('Rive', 'sad', 'Axiom', 175, 1, 1, 0.5, 0.5, 'Putter', 'Main Bag', ', 'TT tour series', 1),

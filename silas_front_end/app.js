@@ -26,6 +26,9 @@ app.get('/input', (req, res) => {
 app.get('/test-input', (req, res) => {
     res.render('test-input');
 });
+app.get('/test-input-2', (req, res) => {
+    res.render('test-input-2');
+});
 app.get('/about', (req, res) => {
     res.render('about');
 });
@@ -64,7 +67,7 @@ app.post('/submit', async (req, res) => {
         res.status(500).send('Error storing form submission');
       } else {
         console.log('Disc added to the database and form submission stored!');
-        res.redirect('/input');
+        res.redirect('/test-input-2');
       }
     });
   } catch (err) {

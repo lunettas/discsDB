@@ -1,4 +1,4 @@
-//  TODO: set up autocomplete
+//  TODO: probably delete this? or extract the script code from the input form and put it here?
 
 // The code looks good. It uses the user input from the query parameter to construct an API URL, and then makes a GET request to the API using the https module. When the response is received, it extracts the necessary data from the response and renders a form with some pre-filled input fields using the extracted data.
 const express = require('express');

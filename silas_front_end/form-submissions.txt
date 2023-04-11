@@ -55,3 +55,7 @@ added category
 ('undefined', 'undefined', 'undefined', 175, undefined, undefined, undefined, undefined, 'undefined', 'Main Bag', blue', 'stock', undefined),
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', 'stock', undefined),
 ('Sol', '', 'Discraft', 168, 4, 5, -3, 0, 'Putter', 'Emily', Blue', 'stock', 10),
+('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', '', 1),
+('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', '', 1),
+('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', '', 1),
+('Bolt', 'Orbit', 'Latitude 64', 175, 13, 6, -2, 3, 'Distance Driver', 'Main Bag', blue', 'stock', 10),

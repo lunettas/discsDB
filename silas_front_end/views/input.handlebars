@@ -1,18 +1,22 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
-  <body >
-    <h1 class="text-center">Input discs into the database here!</h1>
-    <div class="p-3">
-      <form method="POST" action="/submit" >
-{{!-- select table --}}
-        <div class="mb-3">
-          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="table" id="table-select" class="bg-dark"> 
+  <body>
+    <h1>Hello World, welcome to discsDB, use this form to add discs to your database!</h1>
+{{!-- look up the mold with API--}}
+<form >
+  <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here" style="display: inline-block;">
+  <button class="btn btn-success" id="api-autocomplete-btn" type="button" style="display: inline-block;">Lookup Mold</button>
+</form>
+{{!-- input additional information and add to db --}}
+<form id="submit-to-db" action="/submit" method="POST">
+     <div class="mb-3">
+          <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select"> 
             <option selected>Choose a table to input the discs into</option>
             <option value="silasdiscs">Silas</option>
             <option value="jcdiscs">JC</option>
@@ -24,6 +28,30 @@
           <label for="category" class="form-label">Disc Category || Disc Collection </label>
           <select id="option-select" name="category" class="text-body bg-body"></select>
         </div>
+{{!-- color and stamp --}}
+          <div class="input-group"> 
+            <span class="input-group-text">Color, Stamp, and Weight</span>
+            <input id="color" type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
+            <input id="stamp" type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
+            <input id="input-weight" type="number" value="175" min="1" max="200" class="form-control"  aria-describedby="weightHelp" name="weight">          
+          </div>
+          <div><br></div>
+{{!-- sleepyscale --}}
+          <div class="mb-3">
+            <select type="number" class="form-select form-select-sm form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyscale">
+              <option selected>Sleepy Scale</option>
+              <option value="1">1 - Beat to Hades dog chew toy</option>
+              <option value="2">2 - or under Beat to Hades dog chew toy</option>
+              <option value="3">3 - or under Beat to Hades dog chew toy</option>
+              <option value="4">4 - Beat up turnover disc with some evident war story wear</option>
+              <option value="5">5 - Kinda beat, significant wear, has lost a good bit of it's stability</option>
+              <option value="6">6 - Typical used disc with the usual dings, scratches but still worthy</option>
+              <option value="7">7 - Used with some minor dings or scuffs but still in</option>
+              <option value="8">8 - Lightly used with very minimal wear </option>
+              <option value="9">9 - Field tested or used for one or two rounds, no ink. </option>
+              <option value="10">10 - Never thrown, no ink, brand new condition</option>
+            </select>
+          </div>          
 {{!-- input mold/plastic/brand --}}
         <div class="input-group">
           <span class="input-group-text">Disc Mold</span>
@@ -42,35 +70,56 @@
             <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
             <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
           </div>   <div><br></div>
-{{!-- color and stamp --}}
-          <div class="input-group">
-            <span class="input-group-text">Color, Stamp, and Weight</span>
-            <input type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
-            <input type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
-            <input type="number" value="175" min="1" max="200" class="form-control" id="inputWeight" aria-describedby="weightHelp" name="weight">          
-          </div>
-          <div><br></div>
-{{!-- sleepyscale --}}
-          <div class="mb-3">
-            <select type="number" class="form-select form-select-sm form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyscale">
-              <option selected>Sleepy Scale</option>
-              <option value="1">1 - Beat to Hades dog chew toy</option>
-              <option value="2">2 - or under Beat to Hades dog chew toy</option>
-              <option value="3">3 - or under Beat to Hades dog chew toy</option>
-              <option value="4">4 - Beat up turnover disc with some evident war story wear</option>
-              <option value="5">5 - Kinda beat, significant wear, has lost a good bit of it's stability</option>
-              <option value="6">6 - Typical used disc with the usual dings, scratches but still worthy</option>
-              <option value="7">7 - Used with some minor dings or scuffs but still in</option>
-              <option value="8">8 - Lightly used with very minimal wear </option>
-              <option value="9">9 - Field tested or used for one or two rounds, no ink. </option>
-              <option value="10">10 - Never thrown, no ink, brand new condition</option>
-            </select>
-          </div>
-        <button type="submit" id="submit-btn" class="btn btn-success">Submit</button>
-      </form></div>
+        <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
+    </form>
+  {{!--  API call handling  --}}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+const apiCallBtn = document.getElementById('api-autocomplete-btn');
+const inputField = document.getElementById('inputField');
+const form = $('form');
+const input = $('input[name=q]');
 
-      <!-- TODO: move to JS file -->
-      <script>//implementing table specific collections
+
+function apiCall() {
+  const query = input.val();
+  const apiUrl = 'https://discit-api.fly.dev/disc/' + query + '?fields=name,brand,speed,glide,turn,fade';
+  $.get(apiUrl, function(response) {
+    const mold = response.name || 'Unknown';
+    const brand = response.brand || 'Unknown';
+    const speed = response.speed || 'Unknown';
+    const glide = response.glide || 'Unknown';
+    const turn = response.turn || 'Unknown';
+    const fade = response.fade || 'Unknown';
+  
+
+// set default values of input fields in the second form
+  $('#submit-to-db input[name="name"]').val(name);
+  $('#submit-to-db input[name="brand"]').val(brand);
+  $('#submit-to-db input[name="speed"]').val(speed);
+  $('#submit-to-db input[name="glide"]').val(glide);
+  $('#submit-to-db input[name="turn"]').val(turn);
+  $('#submit-to-db input[name="fade"]').val(fade);
+  $('#submit-to-db input[name="mold"]').val(mold);
+
+    console.log(response);
+    console.log(formData);
+  });
+}
+
+inputField.addEventListener('keypress', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    apiCallBtn.click();
+  }
+});
+
+apiCallBtn.addEventListener('click', apiCall);
+
+</script>
+
+
+<script>//implementing table specific collections
         // Get references to the select elements
         const tableSelect = document.getElementById('table-select');
         const optionSelect = document.getElementById('option-select');
@@ -145,11 +194,4 @@
           }
           });
       </script>
-  <!-- TODO: set up autocomplete -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
-  <script src="./autocomplete.js"></script>
-  </body>
-</html>
-
+</body>

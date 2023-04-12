@@ -1,6 +1,35 @@
 #flight-chart {
     width: 500px;
     height: 400px;
-    border: 1px solid black;
+    border: 1px solid whitesmoke;
+  }
+  path.domain {
+    stroke: whitesmoke;
+    stroke-width: 1px;
   }
   
+  /* Style for tick lines */
+  line.tick {
+    stroke: whitesmoke;
+    stroke-width: 1px;
+  }
+  
+  /* Style for tick labels */
+  text {
+    font-size: 12px;
+    font-family: sans-serif;
+    fill: whitesmoke;
+  }
+  
+  /* Style for grid lines */
+  .horizontal-line {
+    stroke: gray;
+    stroke-width: 1;
+    stroke-dasharray: 4;
+  }
+  
+  .vertical-line {
+    stroke: gray;
+    stroke-width: 1;
+    stroke-dasharray: 4;
+  }

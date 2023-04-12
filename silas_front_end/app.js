@@ -4,12 +4,14 @@ const {engine} = require('express-handlebars');
 const https = require('https');
 const querystring = require('querystring');
 const mime = require('mime');
+const chart = require('./flightchart');
 
 const app = express();
 const port = 3000;
 const fs = require('fs');
 const path = require('path');
 
+//handle CSS/MIME
 app.use('/styles.css', (req, res, next) => {
   res.setHeader('Content-Type', 'text/css');
   const filePath = path.join(__dirname, 'styles.css');
@@ -82,5 +84,40 @@ app.post('/submit', async (req, res) => {
     console.error(err);
     res.status(500).send('Error adding disc to the database');
   }
+});
+
+
+// Handle the /query route
+// Handle the /query route
+app.post('/query', async (req, res) => {
+  // Get the table and category from the request body
+  const { table, category } = req.body;
+
+  try {
+    // Query the database to retrieve the data based on the submitted form data
+    const conn = await connection();
+    const [results] = await conn.execute(`SELECT * FROM ${table} WHERE category = ?`, [category]);
+    conn.end();
+  
+    // Convert the queried data from JSON format to an array of objects with properties matching the expected format
+    const discData = results.map(result => ({
+      name: result.name,
+      speed: result.speed,
+      glide: result.glide,
+      turn: result.turn,
+      fade: result.fade
+    }));
+  
+    // Render the flight chart with the converted data
+    drawChart(discData);
+  
+    // Send the retrieved data as JSON
+    res.json(results);
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+  
 });
 

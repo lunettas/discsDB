@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>discs DB demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello World, welcome to discsDB's flight chart!</h1>
+    <div id="flight-chart"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // Data array
+var discData = [
+  {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
+  {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
+  {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
+];
+
+// Function to draw chart
+function drawChart(data) {
+  // Select SVG element
+  var svg = d3.select("#flight-chart").append("svg")
+    .attr("width", 500)
+    .attr("height", 400);
+
+  // Draw axes
+  var xAxis = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.speed; })])
+    .range([0, 400]);
+
+  var yAxis = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.glide; })])
+    .range([400, 0]);
+
+  var xAxisGroup = svg.append("g")
+    .attr("transform", "translate(50, 350)")
+    .call(d3.axisBottom(xAxis));
+
+  var yAxisGroup = svg.append("g")
+    .attr("transform", "translate(50, 50)")
+    .call(d3.axisLeft(yAxis));
+
+  // Draw data points
+  var points = svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", function(d) { return xAxis(d.speed) + 50; })
+    .attr("cy", function(d) { return yAxis(d.glide) + 50; })
+    .attr("r", 5)
+    .attr("fill", "white");
+
+  // Add labels
+  svg.append("text")
+    .attr("x", 250)
+    .attr("y", 20)
+    .attr("text-anchor", "middle")
+    .text("Disc Flight Chart");
+
+  svg.append("text")
+    .attr("x", 250)
+    .attr("y", 380)
+    .attr("text-anchor", "middle")
+    .text("Speed");
+
+  svg.append("text")
+    .attr("x", -200)
+    .attr("y", 25)
+    .attr("text-anchor", "middle")
+    .attr("transform", "rotate(-90)")
+    .text("Glide");
+
+  // Add legend
+  var legend = svg.append("g")
+    .attr("transform", "translate(350, 50)");
+
+  legend.append("circle")
+    .attr("cx", 10)
+    .attr("cy", 10)
+    .attr("r", 500)
+    .attr("fill", "blue");
+
+  legend.append("text")
+    .attr("x", 20)
+    .attr("y", 14)
+    .text("Discs");
+
+}
+
+    </script>
+  </body>
+</html>

@@ -3,14 +3,24 @@ const { localHostConnection, connection } = require('./db.js');
 const {engine} = require('express-handlebars');
 const https = require('https');
 const querystring = require('querystring');
+const mime = require('mime');
 
 const app = express();
 const port = 3000;
 const fs = require('fs');
 const path = require('path');
 
-
-
+app.use('/styles.css', (req, res, next) => {
+  res.setHeader('Content-Type', 'text/css');
+  const filePath = path.join(__dirname, 'styles.css');
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      next(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
 
 //handlebars routing
 app.engine('handlebars', engine());
@@ -26,6 +36,9 @@ app.get('/input', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about');
+});
+app.get('/flightchart', (req, res) => {
+    res.render('flightchart');
 });
 
 app.listen(port, function (){

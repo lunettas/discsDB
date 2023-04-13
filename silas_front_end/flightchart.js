@@ -1,14 +1,4 @@
-// create flight chart
-        // Data array
-        var discData = [
-            {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
-            {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
-            {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
-          ];
-          
-          // Function to draw chart
-          
-          function drawChart(data) {
+export default function drawChart(data) {
             // Select SVG element
             var svg = d3.select("#flight-chart").append("svg")
               .attr("width", 500)
@@ -97,5 +87,3 @@
               .text("Discs");
           
           }
-          module.exports = {
-            drawChart,};

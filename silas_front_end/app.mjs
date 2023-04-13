@@ -1,32 +1,14 @@
-import express from 'express';
-import { engine } from 'express-handlebars';
-import https from 'https';
-import querystring from 'querystring';
-import mime from 'mime-types';
-import fs from 'fs';
-import path from 'path';
-
-import localHostConnection, { connection } from './db.js';
-import chart from './flightchart.js';
-import drawChart from './flightchart.js';
-
-
+const express = require('express');
+const { localHostConnection, connection } = require('./db.js');
+const {engine} = require('express-handlebars');
+const https = require('https');
+const querystring = require('querystring');
 
 const app = express();
 const port = 3000;
 
-//handle CSS/MIME
-app.use('/styles.css', (req, res, next) => {
-  res.setHeader('Content-Type', 'text/css');
-  const filePath = path.join(__dirname, 'styles.css');
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      next(err);
-    } else {
-      res.send(data);
-    }
-  });
-});
+
+
 
 //handlebars routing
 app.engine('handlebars', engine());
@@ -42,9 +24,6 @@ app.get('/input', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about');
-});
-app.get('/flightchart', (req, res) => {
-    res.render('flightchart');
 });
 
 

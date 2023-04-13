@@ -1,5 +1,5 @@
-const mysql = require('mysql2/promise');
-const fs = require('fs');
+import mysql from 'mysql2/promise';
+import fs from 'fs';
 
 // connect to mySQL
 const localHostConnection = mysql.createPool({
@@ -21,7 +21,8 @@ const localHostConnection = mysql.createPool({
   }
   
 
-module.exports = {localHostConnection, connection};
+  export default localHostConnection;
+  export { connection };
 
 //gcloud sql users set-password root --instance=[discs] --password=[NEW_PASSWORD]
 //GRANT ALL PRIVILEGES ON discs TO 'root'@'75.70.54.119' IDENTIFIED BY 'iamhackerman';

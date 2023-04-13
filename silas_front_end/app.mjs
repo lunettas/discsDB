@@ -1,15 +1,19 @@
-const express = require('express');
-const { localHostConnection, connection } = require('./db.js');
-const {engine} = require('express-handlebars');
-const https = require('https');
-const querystring = require('querystring');
-const mime = require('mime');
-const chart = require('./flightchart');
+import express from 'express';
+import { engine } from 'express-handlebars';
+import https from 'https';
+import querystring from 'querystring';
+import mime from 'mime-types';
+import fs from 'fs';
+import path from 'path';
+
+import localHostConnection, { connection } from './db.js';
+import chart from './flightchart.js';
+import drawChart from './flightchart.js';
+
+
 
 const app = express();
 const port = 3000;
-const fs = require('fs');
-const path = require('path');
 
 //handle CSS/MIME
 app.use('/styles.css', (req, res, next) => {
@@ -43,13 +47,17 @@ app.get('/flightchart', (req, res) => {
     res.render('flightchart');
 });
 
+
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);
 });
 
 // parse incoming form data
+
 app.use(express.urlencoded({ extended: true }));
+
 // Define the file path for storing form submissions
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const filePath = path.join(__dirname, 'form-submissions.txt');
 
 

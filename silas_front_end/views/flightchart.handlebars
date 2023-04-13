@@ -5,155 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-   <script src="../flightchart.js" type="module"></script>
   </head>
   <body>
     <h1>Hello World, welcome to discsDB's flight chart!</h1>
-    <form id="query-form" action="/query" method="POST">
-     <div class="mb-3">
-          <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select"> 
-            <option selected>Choose a table to display discs from</option>
-            <option value="silasdiscs">Silas</option>
-            <option value="jcdiscs">JC</option>
-            <option value="testdiscs">Test</option>
-          </select>
-        </div>
-{{!-- select category --}}
-        <div>
-          <label for="category" class="form-label">Disc Category || Disc Collection </label>
-          <select id="option-select" name="category" class="text-body bg-body"></select>
-        </div>
-         <button class="btn btn-success" type="submit">Display collection</button>
-    </form>
-    <br>
     <div id="flight-chart"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script type="module">
-        import { drawChart } from '../flightchart';
-        
-        window.addEventListener('load', function() {
-        var discData = [
-          {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
-          {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
-          {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
-        ];
-      
-        drawChart(discData);
-      });
+    <script>
+        // Data array
+var discData = [
+  {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
+  {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
+  {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
+];
+
+// Function to draw chart
+function drawChart(data) {
+  // Select SVG element
+  var svg = d3.select("#flight-chart").append("svg")
+    .attr("width", 500)
+    .attr("height", 400);
+
+  // Draw axes
+  var xAxis = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.speed; })])
+    .range([0, 400]);
+
+  var yAxis = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.glide; })])
+    .range([400, 0]);
+
+  var xAxisGroup = svg.append("g")
+    .attr("transform", "translate(50, 350)")
+    .call(d3.axisBottom(xAxis));
+
+  var yAxisGroup = svg.append("g")
+    .attr("transform", "translate(50, 50)")
+    .call(d3.axisLeft(yAxis));
+
+  // Draw data points
+  var points = svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", function(d) { return xAxis(d.speed) + 50; })
+    .attr("cy", function(d) { return yAxis(d.glide) + 50; })
+    .attr("r", 5)
+    .attr("fill", "white");
+
+  // Add labels
+  svg.append("text")
+    .attr("x", 250)
+    .attr("y", 20)
+    .attr("text-anchor", "middle")
+    .text("Disc Flight Chart");
+
+  svg.append("text")
+    .attr("x", 250)
+    .attr("y", 380)
+    .attr("text-anchor", "middle")
+    .text("Speed");
+
+  svg.append("text")
+    .attr("x", -200)
+    .attr("y", 25)
+    .attr("text-anchor", "middle")
+    .attr("transform", "rotate(-90)")
+    .text("Glide");
+
+  // Add legend
+  var legend = svg.append("g")
+    .attr("transform", "translate(350, 50)");
+
+  legend.append("circle")
+    .attr("cx", 10)
+    .attr("cy", 10)
+    .attr("r", 500)
+    .attr("fill", "blue");
+
+  legend.append("text")
+    .attr("x", 20)
+    .attr("y", 14)
+    .text("Discs");
+
+}
+
     </script>
-    <script> // query discs from DB
-              // Get a reference to the form and the flight chart
-        var form = document.getElementById("query-form");
-        var flightChart = document.getElementById("flight-chart");
-
-        // Add an event listener to the form's submit event
-        form.addEventListener("submit", function(event) {
-          // Prevent the default form submission behavior
-          event.preventDefault();
-
-          // Get the selected table and category from the form
-          var table = document.getElementById("table-select").value;
-          var category = document.getElementById("option-select").value;
-
-          // Send an HTTP request to the server to retrieve the data from the database
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", "/query");
-          xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-          xhr.onload = function() {
-            if (xhr.status === 200) {
-              // Parse the response data
-              var data = JSON.parse(xhr.responseText);
-
-              // Update the flight chart with the retrieved data
-              drawChart(data);
-            } else {
-              // Handle errors
-              console.error(xhr.statusText);
-            }
-          };
-          xhr.onerror = function() {
-            console.error(xhr.statusText);
-          };
-          xhr.send(JSON.stringify({ table: table, category: category }));
-        });
-
-    </script>
-    <script>//implementing table specific collections
-        // Get references to the select elements
-        const tableSelect = document.getElementById('table-select');
-        const optionSelect = document.getElementById('option-select');
-      
-        // Add an event listener to the table select element
-        tableSelect.addEventListener('change', function() {
-          // Clear the options of the option select element
-          optionSelect.innerHTML = '';
-      
-          // Get the selected value of the table select element
-          const selectedTable = tableSelect.value;
-      
-          // Populate the options of the option select element based on the selected table
-          if (selectedTable === 'silasdiscs') {
-            const options = [
-                //'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade'
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          } else if (selectedTable === 'jcdiscs') {
-            const options = [
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' },
-              { value: 'Loan', label: 'Loan' },
-              { value: 'Dalton', label: 'Dalton' },
-              { value:'Max', label: 'Max' },
-              { value: 'Silas', label: 'Silas' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          } else if (selectedTable === 'testdiscs') {
-            const options = [
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' },
-              { value: 'Loan', label: 'Loan' },
-              { value: 'Dalton', label: 'Dalton' },
-              { value:'Max', label: 'Max' },
-              { value: 'Silas', label: 'Silas' },
-              { value: 'Simon', label: 'Simon' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          }
-          });
-      </script>
   </body>
 </html>

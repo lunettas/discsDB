@@ -35,6 +35,9 @@ app.get('/input', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about');
 });
+app.get('/flightchart', (req, res) => {
+    res.render('flightchart');
+});
 
 
 app.listen(port, function (){

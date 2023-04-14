@@ -81,3 +81,14 @@ app.post('/submit', async (req, res) => {
   }
 });
 
+// api route for flightchart
+app.get('/discs', async (req, res) => {
+  try {
+    const conn = await connection();
+    const [rows] = await conn.query('SELECT * FROM discs');
+    res.json(rows);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});

@@ -59,3 +59,4 @@ added category
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', '', 1),
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', '', 1),
 ('Bolt', 'Orbit', 'Latitude 64', 175, 13, 6, -2, 3, 'Distance Driver', 'Main Bag', blue', 'stock', 10),
+('Fuse', 'sad', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', blue', 'stock', 1),

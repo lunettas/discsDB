@@ -9,20 +9,20 @@ import fs from 'fs/promises';
 const app = express();
 const port = 3000;
 
-app.use(express.static('silas_front_end'));
+// app.use(express.static('silas_front_end'));
 
 
-app.use('/styles.css', (req, res, next) => {
-  res.setHeader('Content-Type', 'text/css');
-  const filePath = path.join(__dirname, 'styles.css');
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      next(err);
-    } else {
-      res.send(data);
-    }
-  });
-});
+// app.use('/styles.css', (req, res, next) => {
+//   res.setHeader('Content-Type', 'text/css');
+//   const filePath = path.join(__dirname, 'styles.css');
+//   fs.readFile(filePath, (err, data) => {
+//     if (err) {
+//       next(err);
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// });
 
 //handlebars routing
 app.engine('handlebars', engine());

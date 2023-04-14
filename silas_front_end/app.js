@@ -1,12 +1,16 @@
-const express = require('express');
-const { localHostConnection, connection } = require('./db.js');
-const {engine} = require('express-handlebars');
-const https = require('https');
-const querystring = require('querystring');
-const mime = require('mime');
-
+import express from 'express';
+import { localHostConnection, connection } from './db.js';
+import { engine } from 'express-handlebars';
+import https from 'https';
+import querystring from 'querystring';
+import mime from 'mime';
+import path from 'path';
+import fs from 'fs/promises';
 const app = express();
 const port = 3000;
+
+app.use(express.static('silas_front_end'));
+
 
 app.use('/styles.css', (req, res, next) => {
   res.setHeader('Content-Type', 'text/css');
@@ -35,7 +39,21 @@ app.get('/input', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about');
 });
-
+app.get('/flightchart', (req, res) => {
+    res.render('flightchart');
+});
+app.use('/styles.css', (req, res, next) => {
+  res.setHeader('Content-Type', 'text/css');
+  const filePath = path.join(__dirname, 'styles.css');
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      next(err);
+    } else {
+      console.log(filePath);
+      res.send(data);
+    }
+  });
+});
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);

@@ -1,5 +1,5 @@
 import express from 'express';
-import { localHostConnection, connection } from './db.js';
+import { localHostConnection, connection } from '../Silas_front_end/public/db.js';
 import { engine } from 'express-handlebars';
 import https from 'https';
 import querystring from 'querystring';
@@ -81,14 +81,14 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-// api route for flightchart
-app.get('/discs', async (req, res) => {
-  try {
-    const conn = await connection();
-    const [rows] = await conn.query('SELECT * FROM discs');
-    res.json(rows);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+// // api route for flightchart
+// app.get('/discs', async (req, res) => {
+//   try {
+//     const conn = await connection();
+//     const [rows] = await conn.query('SELECT * FROM discs');
+//     res.json(rows);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });

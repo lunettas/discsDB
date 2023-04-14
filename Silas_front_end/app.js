@@ -12,7 +12,8 @@ const app = express();
 const port = 3000;
 
 // Serve static files from the 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.resolve('public')));
+console.log('Static files served from:', path.join(__dirname, 'public'));
 
 //handlebars routing
 app.engine('handlebars', engine());

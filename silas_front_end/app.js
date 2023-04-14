@@ -42,18 +42,18 @@ app.get('/about', (req, res) => {
 app.get('/flightchart', (req, res) => {
     res.render('flightchart');
 });
-app.use('/styles.css', (req, res, next) => {
-  res.setHeader('Content-Type', 'text/css');
-  const filePath = path.join(__dirname, 'styles.css');
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      next(err);
-    } else {
-      console.log(filePath);
-      res.send(data);
-    }
-  });
-});
+// app.use('/styles.css', (req, res, next) => {
+//   res.setHeader('Content-Type', 'text/css');
+//   const filePath = path.join(__dirname, 'styles.css');
+//   fs.readFile(filePath, (err, data) => {
+//     if (err) {
+//       next(err);
+//     } else {
+//       console.log(filePath);
+//       res.send(data);
+//     }
+//   });
+// });
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);

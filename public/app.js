@@ -6,23 +6,13 @@ import querystring from 'querystring';
 import mime from 'mime';
 import path from 'path';
 import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
-// app.use(express.static('silas_front_end'));
-
-
-// app.use('/styles.css', (req, res, next) => {
-//   res.setHeader('Content-Type', 'text/css');
-//   const filePath = path.join(__dirname, 'styles.css');
-//   fs.readFile(filePath, (err, data) => {
-//     if (err) {
-//       next(err);
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// });
+// Serve static files from the 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 //handlebars routing
 app.engine('handlebars', engine());
@@ -42,18 +32,7 @@ app.get('/about', (req, res) => {
 app.get('/flightchart', (req, res) => {
     res.render('flightchart');
 });
-// app.use('/styles.css', (req, res, next) => {
-//   res.setHeader('Content-Type', 'text/css');
-//   const filePath = path.join(__dirname, 'styles.css');
-//   fs.readFile(filePath, (err, data) => {
-//     if (err) {
-//       next(err);
-//     } else {
-//       console.log(filePath);
-//       res.send(data);
-//     }
-//   });
-// });
+
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);
@@ -64,7 +43,7 @@ app.listen(port, function (){
 app.use(express.urlencoded({ extended: true }));
 
 // Define the file path for storing form submissions
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
 const filePath = path.join(__dirname, 'form-submissions.txt');
 
 

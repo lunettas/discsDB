@@ -1,5 +1,5 @@
 import express from 'express';
-import { localHostConnection, connection } from '../Silas_front_end/public/db.js';
+import { connection } from '../Silas_front_end/public/db.mjs';
 import { engine } from 'express-handlebars';
 import https from 'https';
 import querystring from 'querystring';

@@ -1,4 +1,4 @@
-import { connection } from '/db.js';
+import { connection } from 'db.mjs';
 
 // Function to draw chart
 export function drawChart(data) {
@@ -90,41 +90,37 @@ export function drawChart(data) {
     .text("Discs");
 
 }
+var discData = [
+  {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
+  {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
+  {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
+];
 
-const selectedTable = document.getElementById('table-select').value;
-const selectedCategory = document.getElementById('option-select').value;
+drawChart(discData);
+// const selectedTable = document.getElementById('table-select').value;
+// const selectedCategory = document.getElementById('option-select').value;
 
-// construct the query based on the selected table and category
-const query = `SELECT * FROM ${selectedTable} WHERE category = '${selectedCategory}';`;
+// // construct the query based on the selected table and category
+// const query = `SELECT * FROM ${selectedTable} WHERE category = '${selectedCategory}';`;
 
-// execute the query and handle the results
-connection.query(query, function (error, results, fields) {
-  if (error) throw error;
+// // execute the query and handle the results
+// connection.query(query, function (error, results, fields) {
+//   if (error) throw error;
   
-  // Map the results to an array of objects with the required properties
-  const discData = results.map((result) => ({
-    name: result.name,
-    speed: result.speed,
-    glide: result.glide,
-    turn: result.turn,
-    fade: result.fade,
-  }));
+//   // Map the results to an array of objects with the required properties
+//   const discData = results.map((result) => ({
+//     name: result.name,
+//     speed: result.speed,
+//     glide: result.glide,
+//     turn: result.turn,
+//     fade: result.fade,
+//   }));
 
-  // Call the drawChart function with the discData array
-  drawChart(discData);
-});
+//   // Call the drawChart function with the discData array
+//   drawChart(discData);
+// });
 
 // close the connection when done
-connection.end();
-
-
-// Data array
-var discData = [
-    {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
-    {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
-    {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
-  ];
-  
-  
-            // var chartDiv = d3.select("#flight-chart");
-            // chartDiv.datum(discData).call(drawChart);
+// connection.end();
+// var chartDiv = d3.select("#flight-chart");
+// chartDiv.datum(discData).call(drawChart);

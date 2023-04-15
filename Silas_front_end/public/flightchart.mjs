@@ -1,5 +1,3 @@
-import { connection } from 'db.mjs';
-
 // Function to draw chart
 export function drawChart(data) {
   // Select SVG element
@@ -97,30 +95,3 @@ var discData = [
 ];
 
 drawChart(discData);
-// const selectedTable = document.getElementById('table-select').value;
-// const selectedCategory = document.getElementById('option-select').value;
-
-// // construct the query based on the selected table and category
-// const query = `SELECT * FROM ${selectedTable} WHERE category = '${selectedCategory}';`;
-
-// // execute the query and handle the results
-// connection.query(query, function (error, results, fields) {
-//   if (error) throw error;
-  
-//   // Map the results to an array of objects with the required properties
-//   const discData = results.map((result) => ({
-//     name: result.name,
-//     speed: result.speed,
-//     glide: result.glide,
-//     turn: result.turn,
-//     fade: result.fade,
-//   }));
-
-//   // Call the drawChart function with the discData array
-//   drawChart(discData);
-// });
-
-// close the connection when done
-// connection.end();
-// var chartDiv = d3.select("#flight-chart");
-// chartDiv.datum(discData).call(drawChart);

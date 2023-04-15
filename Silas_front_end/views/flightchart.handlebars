@@ -6,7 +6,8 @@
     <title>discs DB demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script type="module" src="flightchart.mjs"></script>
+    <script type="module" src="flightChart.mjs"></script>
+    <script type="module" src="tableSelect.mjs"></script>
   </head>
   <body>
     <h1>Hello World, welcome to discsDB's flight chart!</h1>
@@ -24,96 +25,8 @@
           <label for="category" class="form-label">Disc Category || Disc Collection </label>
           <select id="option-select" name="category" class="text-body bg-body"></select>
         </div>
-        <button onclick="updateChart()">Update Chart</button>
+        <button id="update-chart-btn" class="btn btn-success" >Update Chart</button>
     </form>
     <div id="flight-chart"></div>
-    {{!-- <script>
-  drawChart(discData);
-</script> --}}
-
-    <script>//implementing table specific collections
-        // Get references to the select elements
-        const tableSelect = document.getElementById('table-select');
-        const optionSelect = document.getElementById('option-select');
-
-        function updateChart() {
-          const selectedOption = optionSelect.value;
-          // code to update chart based on selected option
-        }
-
-        // Add an event listener to the option select element
-        optionSelect.addEventListener('change', function() {
-          updateChart();
-        });
-        // Add an event listener to the table select element
-        tableSelect.addEventListener('change', function() {
-          // Clear the options of the option select element
-          optionSelect.innerHTML = '';
-      
-          // Get the selected value of the table select element
-          const selectedTable = tableSelect.value;
-      
-          // Populate the options of the option select element based on the selected table
-          if (selectedTable === 'silasdiscs') {
-            const options = [
-                //'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade'
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          } else if (selectedTable === 'jcdiscs') {
-            const options = [
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' },
-              { value: 'Loan', label: 'Loan' },
-              { value: 'Dalton', label: 'Dalton' },
-              { value:'Max', label: 'Max' },
-              { value: 'Silas', label: 'Silas' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          } else if (selectedTable === 'testdiscs') {
-            const options = [
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' },
-              { value: 'Loan', label: 'Loan' },
-              { value: 'Dalton', label: 'Dalton' },
-              { value:'Max', label: 'Max' },
-              { value: 'Silas', label: 'Silas' },
-              { value: 'Simon', label: 'Simon' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          }
-          });
-      </script>
   </body>
 </html>

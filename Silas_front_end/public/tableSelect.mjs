@@ -3,10 +3,12 @@ const tableSelect = document.getElementById('table-select');
 const optionSelect = document.getElementById('option-select');
 const updateChartBtn = document.getElementById('update-chart-btn');
 let selectedOption = optionSelect.value;
+let selectedTable = tableSelect.value;
 
 
 export function updateChart() {
     selectedOption = optionSelect.value;
+    console.log(selectedTable, selectedOption);
     // code to update chart based on selected option
     
 }
@@ -24,7 +26,7 @@ tableSelect.addEventListener('change', function() {
     optionSelect.innerHTML = '';
 
     // Get the selected value of the table select element
-    const selectedTable = tableSelect.value;
+    selectedTable = tableSelect.value;
 
     // Populate the options of the option select element based on the selected table
     if (selectedTable === 'silasdiscs') {

@@ -33,7 +33,16 @@ app.get('/about', (req, res) => {
 app.get('/flightchart', (req, res) => {
     res.render('flightchart');
 });
-
+app.get('/api/discs', async (req, res) => {
+  try {
+    const conn = await connection();
+    const [rows] = await conn.query('SELECT * FROM silasdiscs');
+    res.json(rows);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);

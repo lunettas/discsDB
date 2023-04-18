@@ -93,5 +93,22 @@ var discData = [
   {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
   {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
 ];
+fetch('/api/discs')
+  .then(response => response.json())
+  .then(data => {
+    // Format data into discs
+    const discs = data.map(d => {
+      return {
+        name: d.Mold,
+        speed: d.Speed,
+        glide: d.Glide,
+        turn: parseFloat(d.Turn),
+        fade: parseFloat(d.Fade)
+      };
+    });
 
+    // Generate chart using discs
+    drawChart(discs);
+  })
+  .catch(error => console.error(error));
 drawChart(discData);

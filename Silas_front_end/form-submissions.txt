@@ -66,3 +66,5 @@ added category
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Silas', Pink', 'Lizottle', 1),
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Silas', Pink', 'Lizottle', 1),
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Silas', Pink', 'Lizottle', 1),
+('Fuse', 'Orbit', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', 'blue', 'stock', 1),
+('Fuse', 'Orbit', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', 'blue', 'stock', 1),

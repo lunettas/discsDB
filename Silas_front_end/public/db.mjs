@@ -1,13 +1,5 @@
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 import fs from 'fs';
-
-// connect to mySQL
-export const localHostConnection = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'iamhackerman',
-    database: 'discs',
-  });
 
   export async function connection() {
     const conn = await mysql.createConnection({
@@ -25,3 +17,11 @@ export const localHostConnection = mysql.createPool({
 //GRANT ALL PRIVILEGES ON discs TO 'root'@'75.70.54.119' IDENTIFIED BY 'iamhackerman';
 
 //GRANT ALL PRIVILEGES ON discs.* TO 'root'@'75.70.54.119' IDENTIFIED BY 'iamhackerman';
+
+//old local connection
+// export const localHostConnection = mysql.createPool({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'iamhackerman',
+//   database: 'discs',
+// });

@@ -46,14 +46,20 @@ app.get('/api/discs', async (req, res) => {
 app.get('/api/silasdiscs', async (req, res) => {
   try {
     const conn = await connection();
-    const [rows] = await conn.query(`SELECT * FROM silasdiscs WHERE Category='${req.query.option}'`);
-    console.log(`SELECT * where Category is ${req.query.option} FROM silasdiscs`);
+    let sql = 'SELECT * FROM silasdiscs';
+    if (req.query.option) {
+      sql += ` WHERE Category='${req.query.option}'`;
+      console.log('SELECT * where Category is ' + req.query.option + ' FROM silasdiscs');
+    }
+    const [rows] = await conn.query(sql);
     res.json(rows);
+    console.log('req.query.option not working :(');
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);

@@ -12,7 +12,7 @@
   </head>
   <body>
     <h1>Hello World, welcome to discsDB's flight chart!</h1>
-    <form>
+    <form id="query-helper" >
      <div class="mb-3">
           <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select"> 
             <option selected>Choose a table to input the discs into</option>
@@ -24,10 +24,44 @@
 {{!-- select category --}}
         <div>
           <label for="category" class="form-label">Disc Category || Disc Collection </label>
-          <select id="option-select" name="category" class="text-body bg-body"></select>
+          <select id="option-select" name="category" class="form-select text-body bg-body"></select>
         </div>
         <button id="update-chart-btn" class="btn btn-success" >Update Chart</button>
     </form>
     <div id="flight-chart"></div>
+    <script>
+  // Attach the fetch call to the update chart button
+  const updateChartBtn = document.getElementById('update-chart-btn');
+  updateChartBtn.addEventListener('click', () => {
+    fetch('/api/discs')
+      .then(response => response.json())
+      .then(data => {
+        // Update the chart with the new data
+        const chart = new Chart(document.getElementById('chart-container'), {
+          type: 'line',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Flights',
+              data: data.flights,
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
+      })
+      .catch(error => console.error(error));
+  });
+</script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+import mysqlPromise from '../node_modules/mysql2/promise.js';
 import fs from 'fs';
 
   export async function connection() {
@@ -12,16 +12,3 @@ import fs from 'fs';
     return conn;
   }
   
-
-//gcloud sql users set-password root --instance=[discs] --password=[NEW_PASSWORD]
-//GRANT ALL PRIVILEGES ON discs TO 'root'@'75.70.54.119' IDENTIFIED BY 'iamhackerman';
-
-//GRANT ALL PRIVILEGES ON discs.* TO 'root'@'75.70.54.119' IDENTIFIED BY 'iamhackerman';
-
-//old local connection
-// export const localHostConnection = mysql.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'iamhackerman',
-//   database: 'discs',
-// });

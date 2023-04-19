@@ -1,13 +1,20 @@
+// import { connection } from '/db.mjs';
+import mysqlPromise from '../node_modules/mysql2/promise.js';
+import {connection} from './db.mjs';
+
 //implementing table specific collections// Get references to the select elements
 const tableSelect = document.getElementById('table-select');
 const optionSelect = document.getElementById('option-select');
 const updateChartBtn = document.getElementById('update-chart-btn');
-let selectedOption = optionSelect.value;
-let selectedTable = tableSelect.value;
+let selectedOption = "no selection made";
+let selectedTable = "no selection made";
+
+
 
 
 export function updateChart() {
-    selectedOption = optionSelect.value;
+     selectedOption = optionSelect.value;
+     selectedTable = tableSelect.value;
     console.log(selectedTable, selectedOption);
     // Make an AJAX request to get the data for the selected table and option
     fetch(`/api/${selectedTable}?${selectedOption}=1`)
@@ -34,64 +41,21 @@ tableSelect.addEventListener('change', function() {
     // Get the selected value of the table select element
     selectedTable = tableSelect.value;
 
-    // Populate the options of the option select element based on the selected table
-    if (selectedTable === 'silasdiscs') {
-    const options = [
-        //'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade'
-        { value: 'Main Bag', label: 'Main Bag' },
-        { value: 'Side Bag', label:'Side Bag' },
-        { value: 'Collection', label: 'Collection' },
-        { value: 'Backup', label: 'Backup' },
-        { value: 'Emily', label: 'Emily' },
-        { value: 'Sale / Trade', label: 'Sale / Trade' }
-    ];
-
-    options.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.textContent = option.label;
-        optionSelect.appendChild(optionElement);
-    });
-    } else if (selectedTable === 'jcdiscs') {
-    const options = [
-        { value: 'Main Bag', label: 'Main Bag' },
-        { value: 'Side Bag', label:'Side Bag' },
-        { value: 'Collection', label: 'Collection' },
-        { value: 'Backup', label: 'Backup' },
-        { value: 'Emily', label: 'Emily' },
-        { value: 'Sale / Trade', label: 'Sale / Trade' },
-        { value: 'Loan', label: 'Loan' },
-        { value: 'Dalton', label: 'Dalton' },
-        { value:'Max', label: 'Max' },
-        { value: 'Silas', label: 'Silas' }
-    ];
-
-    options.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.textContent = option.label;
-        optionSelect.appendChild(optionElement);
-    });
-    } else if (selectedTable === 'testdiscs') {
-    const options = [
-        { value: 'Main Bag', label: 'Main Bag' },
-        { value: 'Side Bag', label:'Side Bag' },
-        { value: 'Collection', label: 'Collection' },
-        { value: 'Backup', label: 'Backup' },
-        { value: 'Emily', label: 'Emily' },
-        { value: 'Sale / Trade', label: 'Sale / Trade' },
-        { value: 'Loan', label: 'Loan' },
-        { value: 'Dalton', label: 'Dalton' },
-        { value:'Max', label: 'Max' },
-        { value: 'Silas', label: 'Silas' },
-        { value: 'Simon', label: 'Simon' }
-    ];
-
-    options.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.textContent = option.label;
-        optionSelect.appendChild(optionElement);
-    });
+    // Retrieve the options from the MySQL database based on the selected table
+  connection.query(`SELECT option_value, option_label FROM ${selectedTable}_options`, (error, results, fields) => {
+    if (error) {
+      console.error('Error retrieving options from MySQL database: ' + error.stack);
+      return;
     }
+
+    // Populate the options of the option select element with the retrieved options
+    results.forEach(option => {
+      const optionElement = document.createElement('option');
+      optionElement.value = option.option_value;
+      optionElement.textContent = option.option_label;
+      optionSelect.appendChild(optionElement);
     });
+  });
+});
+
+    updateChartBtn.addEventListener('click', updateChart);

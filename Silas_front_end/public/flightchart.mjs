@@ -93,22 +93,65 @@ var discData = [
   {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
   {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
 ];
-fetch('/api/discs')
-  .then(response => response.json())
-  .then(data => {
-    // Format data into discs
-    const discs = data.map(d => {
-      return {
-        name: d.Mold,
-        speed: d.Speed,
-        glide: d.Glide,
-        turn: parseFloat(d.Turn),
-        fade: parseFloat(d.Fade)
-      };
-    });
+// Get references to the form elements
+const form = document.querySelector('#flightchart-form');
+const tableSelect = document.querySelector('#table-select');
+const optionSelect = document.querySelector('#option-select');
+const updateChartBtn = document.querySelector('#update-chart-btn');
 
-    // Generate chart using discs
-    drawChart(discs);
-  })
-  .catch(error => console.error(error));
+// Add an event listener to the updateChartBtn
+updateChartBtn.addEventListener('click', () => {
+  // Get the selected options
+  const selectedTable = tableSelect.value;
+  const selectedOption = optionSelect.value;
+
+  // Build the query string
+  let queryString = `/api/${selectedTable}?`;
+  if (selectedOption !== 'no selection made') {
+    queryString += `option=${selectedOption}`;
+  }
+
+  // Fetch the data from the server
+  fetch(queryString)
+    .then(response => response.json())
+    .then(data => {
+      // Format data into discs
+      const discs = data.map(d => {
+        return {
+          name: d.Mold,
+          speed: d.Speed,
+          glide: d.Glide,
+          turn: parseFloat(d.Turn),
+          fade: parseFloat(d.Fade)
+        };
+      });
+
+      drawChart(discs);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+});
 drawChart(discData);
+
+
+
+
+// fetch('/api/discs')
+//   .then(response => response.json())
+//   .then(data => {
+//     // Format data into discs
+//     const discs = data.map(d => {
+//       return {
+//         name: d.Mold,
+//         speed: d.Speed,
+//         glide: d.Glide,
+//         turn: parseFloat(d.Turn),
+//         fade: parseFloat(d.Fade)
+//       };
+//     });
+
+//     // Generate chart using discs
+//     drawChart(discs);
+//   })
+//   .catch(error => console.error(error));

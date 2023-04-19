@@ -9,9 +9,15 @@ let selectedTable = tableSelect.value;
 export function updateChart() {
     selectedOption = optionSelect.value;
     console.log(selectedTable, selectedOption);
-    // code to update chart based on selected option
-    
-}
+    // Make an AJAX request to get the data for the selected table and option
+    fetch(`/api/${selectedTable}?${selectedOption}=1`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Update the chart using the data
+      })
+      .catch(error => console.error(error));
+  }
 updateChartBtn.addEventListener('click', function() {
     updateChart();
     });

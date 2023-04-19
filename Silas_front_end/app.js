@@ -43,6 +43,17 @@ app.get('/api/discs', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+app.get('/api/silasdiscs', async (req, res) => {
+  try {
+    const conn = await connection();
+    const [rows] = await conn.query(`SELECT * FROM silasdiscs WHERE Category='${req.query.option}'`);
+    console.log(`SELECT * where Category is ${req.query.option} FROM silasdiscs`);
+    res.json(rows);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);

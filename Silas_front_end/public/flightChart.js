@@ -1,7 +1,14 @@
 // Function to draw chart
 function drawChart(data) {
   console.log('data recieved is'+ data);
-
+  const transformedData = data.map(d => ({
+    name: d.mold,
+    speed: d.speed,
+    glide: 4, // set a default value for glide
+    turn: parseFloat(d.turn),
+    fade: parseFloat(d.fade),
+  }));
+  console.log(transformedData);
   var container = d3.select("#flight-chart");
 
   // Remove any existing chart

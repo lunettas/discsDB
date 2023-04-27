@@ -52,19 +52,27 @@
         });
       });
 
-     optionDropdown.addEventListener('change', async (event) => {
-    const selectedTable = tableDropdown.value;
-    const selectedOption = event.target.value;
-    const response = await fetch(`/discs?table=${selectedTable}&category=${selectedOption}`);
-    const data = await response.json();
+        optionDropdown.addEventListener('change', async (event) => {
+        const selectedTable = tableDropdown.value;
+        const selectedOption = event.target.value;
+        const response = await fetch(`/discs?table=${selectedTable}&category=${selectedOption}`);
+        const data = await response.json();
+        console.log(JSON.stringify(data));
 
-    formattedData = data.map(({ turn, fade }) => ({ x: turn, y: fade })); // Assign formatted data to formattedData variable
-    console.log(formattedData); // Optional: console.log to verify formattedData is updated
-  });
+       const transformedData = data.map((disc) => ({
+          name: disc.Mold,
+          speed: disc.Speed,
+          glide: disc.Glide,
+          turn: parseFloat(disc.Turn), // parseFloat() converts the string to a number
+          fade: parseFloat(disc.Fade), // parseFloat() converts the string to a number
+        }));
+        drawChart(transformedData);
+      });
+     
 
   // Add event listener to update-chart button
   document.querySelector('#update-chart').addEventListener('click', () => {
-    drawChart(formattedData); // Call drawChart with formattedData
+    drawChart(data); // Call drawChart with formattedData
   });
     </script>
     <script>

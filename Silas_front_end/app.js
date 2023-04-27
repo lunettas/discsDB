@@ -12,7 +12,7 @@ const app = express();
 const port = 3000;
 
 // Serve static files from the 'public' folder
-app.use(express.static(path.resolve('public')));
+app.use(express.static(path.resolve('public'), { extensions: ['html', 'htm', 'mjs'] }));
 console.log('Static files served from:', path.join(__dirname, 'public'));
 
 //handlebars routing
@@ -33,32 +33,69 @@ app.get('/about', (req, res) => {
 app.get('/flightchart', (req, res) => {
     res.render('flightchart');
 });
-app.get('/api/discs', async (req, res) => {
+// app.get('/api/discs', async (req, res) => {
+//   try {
+//     const conn = await connection();
+//     const [rows] = await conn.query('SELECT * FROM silasdiscs');
+//     res.json(rows);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+// app.get('/api/silasdiscs', async (req, res) => {
+//   try {
+//     const conn = await connection();
+//     let sql = 'SELECT * FROM silasdiscs';
+//     if (req.query.option) {
+//       sql += ` WHERE Category='${req.query.option}'`;
+//       console.log('SELECT * where Category is ' + req.query.option + ' FROM silasdiscs');
+//     }
+//     const [rows] = await conn.query(sql);
+//     res.json(rows);
+//     console.log('req.query.option not working :(');
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
+app.get('/table-names', async (req, res) => {
   try {
     const conn = await connection();
-    const [rows] = await conn.query('SELECT * FROM silasdiscs');
+    const [rows] = await conn.query('SHOW TABLES');
+    const tableNames = rows.map(row => row.Tables_in_discs);
+    res.json(tableNames);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.get('/table-options', async (req, res) => {
+  try {
+    const selectedTable = req.query.table;
+    const conn = await connection();
+    const [rows] = await conn.query(`SELECT DISTINCT category FROM ${selectedTable}`);
+    const options = rows.map((row) => row.category);
+    res.json(options);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.get('/discs', async (req, res) => {
+  try {
+    const { table, category } = req.query;
+    const conn = await connection();
+    console.log(`SELECT * FROM ${table} WHERE category = "${category}"`);
+    const [rows] = await conn.query(`SELECT * FROM ${table} WHERE category = "${category}"`);
     res.json(rows);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-app.get('/api/silasdiscs', async (req, res) => {
-  try {
-    const conn = await connection();
-    let sql = 'SELECT * FROM silasdiscs';
-    if (req.query.option) {
-      sql += ` WHERE Category='${req.query.option}'`;
-      console.log('SELECT * where Category is ' + req.query.option + ' FROM silasdiscs');
-    }
-    const [rows] = await conn.query(sql);
-    res.json(rows);
-    console.log('req.query.option not working :(');
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+
 
 
 app.listen(port, function (){

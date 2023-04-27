@@ -4,64 +4,76 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script type="module" src="flightChart.mjs" async defer></script>
-    <script type="module" src="tableSelect.mjs"></script>
-    <script type="module" src="flightChart.mjs"></script>
+    <script src="/flightChart.js"></script>
   </head>
   <body>
     <h1>Hello World, welcome to discsDB's flight chart!</h1>
-    <form id="query-helper" >
-     <div class="mb-3">
-          <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select"> 
-            <option selected>Choose a table to input the discs into</option>
-            <option value="silasdiscs">Silas</option>
-            <option value="jcdiscs">JC</option>
-            <option value="testdiscs">Test</option>
-          </select>
-        </div>
-{{!-- select category --}}
-        <div>
-          <label for="category" class="form-label">Disc Category || Disc Collection </label>
-          <select id="option-select" name="category" class="form-select text-body bg-body"></select>
-        </div>
-        <button id="update-chart-btn" class="btn btn-success" >Update Chart</button>
+    <form id="select-table-and-option">  
+      <select id="table-names-dropdown"></select>
+      <select id="option-names-dropdown"></select>
+      <button id="update-chart">update chart</button>
     </form>
     <div id="flight-chart"></div>
     <script>
-  // Attach the fetch call to the update chart button
-  const updateChartBtn = document.getElementById('update-chart-btn');
-  updateChartBtn.addEventListener('click', () => {
-    fetch('/api/discs')
-      .then(response => response.json())
-      .then(data => {
-        // Update the chart with the new data
-        const chart = new Chart(document.getElementById('chart-container'), {
-          type: 'line',
-          data: {
-            labels: data.labels,
-            datasets: [{
-              label: 'Flights',
-              data: data.flights,
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            }
-          }
+      let formattedData = [];
+      fetch('/table-names')
+        .then(response => response.json())
+        .then(tableNames => {
+          const dropdown = document.querySelector('#table-names-dropdown');
+
+          tableNames.forEach(tableName => {
+            const option = document.createElement('option');
+            option.value = tableName;
+            option.text = tableName;
+            dropdown.appendChild(option);
+          });
         });
-      })
-      .catch(error => console.error(error));
+
+      const tableDropdown = document.querySelector('#table-names-dropdown');
+      const optionDropdown = document.querySelector('#option-names-dropdown');
+
+      tableDropdown.addEventListener('change', async (event) => {
+        const selectedTable = event.target.value;
+        const optionsResponse = await fetch(`/table-options?table=${selectedTable}`);
+        const options = await optionsResponse.json();
+
+        // Remove previous options
+        optionDropdown.innerHTML = '';
+
+        // Add new options
+        options.forEach((option) => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option;
+          optionDropdown.appendChild(optionElement);
+        });
+      });
+
+     optionDropdown.addEventListener('change', async (event) => {
+    const selectedTable = tableDropdown.value;
+    const selectedOption = event.target.value;
+    const response = await fetch(`/discs?table=${selectedTable}&category=${selectedOption}`);
+    const data = await response.json();
+
+    formattedData = data.map(({ turn, fade }) => ({ x: turn, y: fade })); // Assign formatted data to formattedData variable
+    console.log(formattedData); // Optional: console.log to verify formattedData is updated
   });
+
+  // Add event listener to update-chart button
+  document.querySelector('#update-chart').addEventListener('click', () => {
+    drawChart(formattedData); // Call drawChart with formattedData
+  });
+    </script>
+    <script>
+  var discData = [
+    {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
+    {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
+    {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
+  ];
+  
 </script>
   </body>
 </html>

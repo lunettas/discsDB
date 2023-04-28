@@ -1,14 +1,5 @@
 // Function to draw chart
 function drawChart(data) {
-  console.log('data recieved is'+ data);
-  const transformedData = data.map(d => ({
-    name: d.mold,
-    speed: d.speed,
-    glide: 4, // set a default value for glide
-    turn: parseFloat(d.turn),
-    fade: parseFloat(d.fade),
-  }));
-  console.log(transformedData);
   var container = d3.select("#flight-chart");
 
   // Remove any existing chart
@@ -56,15 +47,35 @@ function drawChart(data) {
     .attr("y1", 50)
     .attr("x2", function(d){ return xAxis(d) + 50; })
     .attr("y2", 350);
+
   // Draw data points
-  var points = svg.selectAll("circle")
+  var discs = svg.selectAll(".disc")
     .data(data)
     .enter()
-    .append("circle")
-    .attr("cx", function(d) { return xAxis(d.turn + d.fade) + 50; })
-    .attr("cy", function(d) { return yAxis(d.speed); }) // Update y-coordinate calculation
-    .attr("r", 5)
-    .attr("fill", "white");
+    .append("g")
+    .attr("class", "disc");
+
+    discs.append("circle")
+        .attr("cx", function(d) { return xAxis(d.turn + d.fade) + 50; })
+        .attr("cy", function(d) { return yAxis(d.speed); })
+        .attr("r", 5)
+        .attr("fill", function(d){return d.color; })
+    .on("mouseover", function(d) {
+      d3.select(this).attr("r", 10); // Increase radius of the circle on hover
+      svg.append("text") // Add a tooltip with information about the data point
+        .attr("id", "tooltip")
+        .attr("x", xAxis(Number(d.turn) + Number(d.fade)) + 60) // buggy line
+        .attr("y", yAxis(d.speed) - 10) // buggy line
+        .text(d.name + " - Speed: " + parseInt(d.speed) + ", Glide: " + parseInt(d.glide) + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade))
+        .style("font-size", "12px");
+        console.log("x value: ", xAxis(Number(d.turn) + Number(d.fade)) + 60);
+        console.log("y value: ", yAxis(d.speed) - 10);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr("r", 5); // Reset radius of the circle on mouseout
+      d3.select("#tooltip").remove(); // Remove the tooltip on mouseout
+    });
+    
 
   // Add labels
   svg.append("text")
@@ -86,22 +97,7 @@ function drawChart(data) {
     .attr("transform", "rotate(-90)")
     .text("Speed");
 
-  // Add legend
-  var legend = svg.append("g")
-    .attr("transform", "translate(350, 50)");
-
-  legend.append("circle")
-    .attr("cx", 10)
-    .attr("cy", 10)
-    .attr("r", 5)
-    .attr("fill", "blue");
-
-  legend.append("text")
-    .attr("x", 20)
-    .attr("y", 14)
-    .text("Discs");
-
-}
+ }
 var discData = [
   {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
   {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},

@@ -57,7 +57,7 @@
         const selectedOption = event.target.value;
         const response = await fetch(`/discs?table=${selectedTable}&category=${selectedOption}`);
         const data = await response.json();
-        console.log(JSON.stringify(data));
+        {{!-- console.log(JSON.stringify(data)); --}}
 
        const transformedData = data.map((disc) => ({
           name: disc.Mold,
@@ -65,7 +65,10 @@
           glide: disc.Glide,
           turn: parseFloat(disc.Turn), // parseFloat() converts the string to a number
           fade: parseFloat(disc.Fade), // parseFloat() converts the string to a number
+          color: disc.Color,
         }));
+        
+        console.log('in this fc.html', transformedData[0]);
         drawChart(transformedData);
       });
      

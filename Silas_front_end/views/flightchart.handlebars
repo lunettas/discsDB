@@ -63,8 +63,9 @@
           name: disc.Mold,
           speed: disc.Speed,
           glide: disc.Glide,
-          turn: parseFloat(disc.Turn), // parseFloat() converts the string to a number
-          fade: parseFloat(disc.Fade), // parseFloat() converts the string to a number
+          turn: Number(disc.Turn), 
+          fade: Number(disc.Fade),
+          stability: (Number(disc.turn) + Number(disc.fade)),
           color: disc.Color,
         }));
         

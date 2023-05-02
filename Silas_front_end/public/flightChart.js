@@ -59,6 +59,10 @@ function drawChart(data) {
         .style("font-size", "12px");
       console.log(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade));
     }
+    const handleMouseout = (event, d) => {
+      d3.select(event.currentTarget).attr("r", 5);
+      svg.select("#tooltip-" + d.name.replace(/\s+/g, '')).remove();
+    }
     
     var discs = svg.selectAll(".disc")
       .data(data)
@@ -72,36 +76,8 @@ function drawChart(data) {
       .attr("r", 5)
       .attr("fill", function(d){return d.color; })
       .on("mouseover", handleMouseover)
-      .on("mouseout", function(d) {
-        d3.select(this).attr("r", 5);
-        d3.select("#tooltip-" + d.name.replace(/\s+/g, '')).remove();
-      });
+      .on("mouseout", handleMouseout);
       
-  
-    // function handleMouseover(d) {
-    //   d3.select(this).attr("r", 10);
-    //   svg.append("text")
-    //     .attr("id", "tooltip")
-    //     .attr("x", d3.select(this).attr("cx") + 10)
-    //     .attr("y", d3.select(this).attr("cy") - 10)
-    //     .text(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade))
-    //     .style("font-size", "12px");
-    //   console.log(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade));
-    // }
-    
-    
-
-    // discs.append("circle")
-    //     .attr("cx", function(d) { return xAxis(d.turn + d.fade) + 50; })
-    //     .attr("cy", function(d) { return yAxis(d.speed); })
-    //     .attr("r", 5)
-    //     .attr("fill", function(d){return d.color; })
-    //     .on("mouseover", handleMouseover)
-    //     .on("mouseout", function(d) {
-    //       d3.select(this).attr("r", 5);
-    //       d3.select("#tooltip-" + d.name.replace(/\s+/g, '')).remove();
-    //     });   
-         
 
   // Add labels
   svg.append("text")

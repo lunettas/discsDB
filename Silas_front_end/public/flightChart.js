@@ -11,26 +11,25 @@ function drawChart(data) {
     .attr("width", 500)
     .attr("height", 400);
 
-  // Draw axes
-  var xAxis = d3.scaleLinear()
+    var xAxis = d3.scaleLinear()
     .domain([-4, 6]) // Update x-axis domain
     .range([400, 0]);
-
+  
   var yAxis = d3.scaleLinear()
-    .domain([0, 14]) // Update y-axis domain
+    .domain([0, 15]) // Update y-axis domain
     .range([350, 50]);
-
+  
   var xAxisGroup = svg.append("g")
     .attr("transform", "translate(50, 350)")
     .call(d3.axisBottom(xAxis));
-
+  
   var yAxisGroup = svg.append("g")
     .attr("transform", "translate(50, 0)") // Change y-axis transform
-    .call(d3.axisLeft(yAxis));
+    .call(d3.axisLeft(yAxis).tickValues(d3.range(0, 16, 1))); // Use tickValues method to specify gridline values
 
   // Draw grid lines
   svg.selectAll(".horizontal-line")
-    .data(yAxis.ticks())
+    .data(yAxisGroup.selectAll(".tick").data())
     .enter()
     .append("line")
     .attr("class", "horizontal-line")

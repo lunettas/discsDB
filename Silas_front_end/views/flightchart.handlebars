@@ -12,9 +12,8 @@
   <body>
     <h1>Hello World, welcome to discsDB's flight chart!</h1>
     <form id="select-table-and-option">  
-      <select id="table-names-dropdown"></select>
-      <select id="option-names-dropdown"></select>
-      <button id="update-chart">update chart</button>
+      <select id="table-names-dropdown"><option value="" selected>Please select a table to display</option></select>
+      <select id="option-names-dropdown"><option value="" selected>Please select a collection</option></select>
     </form>
     <div id="flight-chart"></div>
     <script>
@@ -72,12 +71,6 @@
         console.log('in this fc.html', transformedData[0]);
         drawChart(transformedData);
       });
-     
-
-  // Add event listener to update-chart button
-  document.querySelector('#update-chart').addEventListener('click', () => {
-    drawChart(data); // Call drawChart with formattedData
-  });
     </script>
     <script>
   var discData = [

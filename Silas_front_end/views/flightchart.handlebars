@@ -11,11 +11,15 @@
   </head>
   <body>
     <h1>Hello World, welcome to discsDB's flight chart!</h1>
-    <form id="select-table-and-option">  
-      <select id="table-names-dropdown"><option value="" selected>Please select a table to display</option></select>
-      <select id="option-names-dropdown"><option value="" selected>Please select a collection</option></select>
-    </form>
-    <div id="flight-chart"></div>
+    <form id="select-table-and-option" style="display: flex; flex-direction: row;">
+      <select class="form-select form-select-lg mb-3 bg-dark" id="table-names-dropdown" style="margin-right: 10px;">
+        <option value="" selected>Please select a table to display</option>
+      </select>
+      <select class="form-select form-select-lg mb-3 bg-dark" id="option-names-dropdown">
+      </select>
+</form>
+    <div id="flight-chart" style="display: flex; flex: 1; justify-content: center; align-items: center; margin: 20px;"></div>
+
     <script>
       let formattedData = [];
       fetch('/table-names')

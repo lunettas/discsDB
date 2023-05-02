@@ -6,13 +6,14 @@ function drawChart(data) {
   // Remove any existing chart
   container.selectAll("*").remove();
 
-  // Select SVG element
-  var svg = d3.select("#flight-chart").append("svg")
-    .attr("width", 500)
-    .attr("height", 400);
+  var svg = container.append("svg")
+  .attr("viewBox", "0 0 " + container.node().getBoundingClientRect().width + " " + container.node().getBoundingClientRect().height)
+  .attr("preserveAspectRatio", "xMidYMid meet")
+  .attr("width", "100%")
+  .attr("height", "100%");
 
-    var xAxis = d3.scaleLinear()
-    .domain([-4, 6]) // Update x-axis domain
+  var xAxis = d3.scaleLinear()
+    .domain([-4, 7]) // Update x-axis domain
     .range([400, 0]);
   
   var yAxis = d3.scaleLinear()

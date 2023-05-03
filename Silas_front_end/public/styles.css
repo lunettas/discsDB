@@ -1,9 +1,18 @@
-#flight-chart {
-    width: 500px;
-    height: 400px;
+  #flight-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
     border: 1px solid whitesmoke;
+    position: relative;
+    padding-bottom: 75%; /* adjust this value to set the aspect ratio */
   }
-
+  #flight-chart-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   path.domain {
     stroke: whitesmoke;
     stroke-width: 1px;
@@ -34,4 +43,6 @@
     stroke-width: 1;
     stroke-dasharray: 4;
   }
+  
+  
   

@@ -18,9 +18,17 @@
       <select class="form-select form-select-lg mb-3 bg-dark" id="option-names-dropdown">
       </select>
 </form>
-    <div id="flight-chart" style="display: flex; flex: 1; justify-content: center; align-items: center; margin: 20px;"></div>
+    <div id="flight-chart" >
+      <div id="flight-chart-inner"></div>
+    </div>
 
     <script>
+      var discData = [
+                      {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3, stability: 2, color: "blue"},
+                      {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2, stability: 2, color: "green"},
+                      {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1, stability: 1, color: "red"}
+                    ];
+      drawChart(discData);
       let formattedData = [];
       fetch('/table-names')
         .then(response => response.json())
@@ -68,21 +76,13 @@
           glide: disc.Glide,
           turn: Number(disc.Turn), 
           fade: Number(disc.Fade),
-          stability: (Number(disc.turn) + Number(disc.fade)),
+          stability: (Number(disc.Turn) + Number(disc.Fade)),
           color: disc.Color,
         }));
         
-        console.log('in this fc.html', transformedData[0]);
+        
         drawChart(transformedData);
       });
     </script>
-    <script>
-  var discData = [
-    {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3},
-    {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2},
-    {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1}
-  ];
-  
-</script>
   </body>
 </html>

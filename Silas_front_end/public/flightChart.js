@@ -40,9 +40,10 @@ svg.selectAll(".horizontal-line")
  .append("line")
  .attr("class", "horizontal-line")
  .attr("x1", svgWidth * 0.1)
- .attr("y1", function(d){ return yAxis(d); })
+ .attr("y1", function(d){ return yAxis(d) + svgHeight * 0.1; }) // add svgHeight * 0.1 to account for y-axis position
  .attr("x2", svgWidth * 0.9)
- .attr("y2", function(d){ return yAxis(d); });
+ .attr("y2", function(d){ return yAxis(d) + svgHeight * 0.1; }); // add svgHeight * 0.1 to account for y-axis position
+
 
 svg.selectAll(".vertical-line")
  .data(xAxis.ticks())
@@ -96,7 +97,7 @@ var discs = svg.selectAll(".disc")
 
   svg.append("text")
     .attr("x", svgWidth/2) // center horizontally
-    .attr("y", svgHeight * 0.99) // position below x-axis
+    .attr("y", svgHeight * 0.9) // position below x-axis
     .attr("text-anchor", "middle")
     .text("Stability");
 

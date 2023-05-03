@@ -80,8 +80,11 @@ var discs = svg.selectAll(".disc")
   .attr("cy", function(d) { return yAxis(d.speed) + svgHeight * 0.1; })
   .attr("r", 5)
   .attr("fill", function(d){return d.color; })
+  .attr("stroke", "whitesmoke") // Add a black border around the circle
+  .attr("stroke-width", "1px") // Set the width of the border to 1 pixel
   .on("mouseover", handleMouseover)
   .on("mouseout", handleMouseout);
+
       
 
   // Add labels
@@ -91,21 +94,22 @@ var discs = svg.selectAll(".disc")
     .attr("text-anchor", "middle")
     .text("Disc Flight Chart");
 
-    svg.append("text")
+  svg.append("text")
     .attr("x", svgWidth/2) // center horizontally
-    .attr("y", svgHeight - 10) // position at bottom
+    .attr("y", svgHeight * 0.99) // position below x-axis
     .attr("text-anchor", "middle")
     .text("Stability");
-  
+
     svg.append("text")
-      .attr("x", -svgHeight/2) // Move 5 pixels to the left of the y-axis
-      .attr("y", svgHeight/2 -200)
-      .attr("text-anchor", "middle")
-      .attr("transform", "rotate(-90)")
-      .text("Speed");
+    .attr("x", -svgHeight/2) // center vertically
+    .attr("y", svgWidth * 0.1) // position left of y-axis
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(-50, 0) rotate(-90)") // move text left by 50 pixels and rotate
+    .text("Speed");
   
 
 
+  
  }
 
 

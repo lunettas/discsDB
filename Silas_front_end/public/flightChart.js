@@ -97,7 +97,7 @@ var discs = svg.selectAll(".disc")
 
   svg.append("text")
     .attr("x", svgWidth/2) // center horizontally
-    .attr("y", svgHeight * 0.9) // position below x-axis
+    .attr("y", svgHeight * .99) // position below x-axis
     .attr("text-anchor", "middle")
     .text("Stability");
 

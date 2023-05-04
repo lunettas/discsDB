@@ -23,13 +23,9 @@
     </div>
 
     <script>
-      var discData = [
-                      {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3, stability: 2, color: "blue"},
-                      {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2, stability: 2, color: "green"},
-                      {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1, stability: 1, color: "red"}
-                    ];
+      
       drawChart(discData);
-      let formattedData = [];
+      
       fetch('/table-names')
         .then(response => response.json())
         .then(tableNames => {
@@ -68,7 +64,7 @@
         const selectedOption = event.target.value;
         const response = await fetch(`/discs?table=${selectedTable}&category=${selectedOption}`);
         const data = await response.json();
-        {{!-- console.log(JSON.stringify(data)); --}}
+        
 
        const transformedData = data.map((disc) => ({
           name: disc.Mold,

@@ -1,3 +1,9 @@
+var discData = [
+  {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3, stability: 2, color: "blue"},
+  {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2, stability: 2, color: "green"},
+  {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1, stability: 1, color: "red"}
+];
+
 // Function to draw chart
 function drawChart(data) {
   console.log(data);
@@ -55,15 +61,36 @@ svg.selectAll(".vertical-line")
  .attr("x2", function(d){ return xAxis(d) + svgWidth * 0.1; })
  .attr("y2", svgHeight * 0.9);
 
-const handleMouseover = (event, d) => {
- d3.select(event.currentTarget).attr("r", 10);
- svg.append("text")
-   .attr("id", "tooltip-" + d.name.replace(/\s+/g, ''))
-   .attr("x", (xAxis(d.stability) + 50).toString())
-   .attr("y", (yAxis(d.speed) - 10).toString())
-   .text(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade))
-   .style("font-size", "12px");
+ const handleMouseover = (event, d) => {
+  d3.select(event.currentTarget).attr("r", 10);
+  var tooltip = svg.append("g")
+    .attr("id", "tooltip-" + d.name.replace(/\s+/g, ''));
+    
+  // Get the width of the text
+  const textWidth = tooltip.append("text")
+    .style("font-size", "12px")
+    .style("fill", "white")
+    .text(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade))
+    .node().getComputedTextLength();
+    
+  tooltip.append("rect")
+    .attr("x", (xAxis(d.stability) + 55).toString())
+    .attr("y", (yAxis(d.speed) + 45 -15).toString())
+    .attr("width", textWidth + 10) // Set the width of the rect to be the width of the text plus 10
+    .attr("height", "20")
+    .attr("fill", "black")
+    .attr("opacity", "0.8")
+    .insert("text", ":first-child");
+    
+  tooltip.append("text")
+    .attr("x", (xAxis(d.stability) + 60).toString())
+    .attr("y", (yAxis(d.speed) + 45).toString())
+    .text(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade))
+    .style("font-size", "12px")
+    .style("fill", "white");
 }
+
+
 
 const handleMouseout = (event, d) => {
  d3.select(event.currentTarget).attr("r", 5);

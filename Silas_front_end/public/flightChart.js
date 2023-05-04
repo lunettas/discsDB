@@ -110,7 +110,10 @@ var discs = svg.selectAll(".disc")
   
 
 
-  
+  // Add event listener to re-render chart on window resize
+  window.addEventListener('resize', function() {
+    drawChart(data);
+  });
  }
 
 

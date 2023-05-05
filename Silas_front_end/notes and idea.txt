@@ -2,3 +2,5 @@
 - manage overlapping discs
 - create user accounts
 - implement an all disc/API flightchart (similar to Marshall st)
+- add error validation to lookup mold
+- address "formData is not defined" err @ input 136.17

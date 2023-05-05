@@ -2,6 +2,7 @@ h1 {
   padding: 10px;
   display: flex;
   justify-content: center;
+  color: rgb(187, 183, 183);
 }
 p {
   padding: 20px;
@@ -9,7 +10,14 @@ p {
   text-align: justify;
   align-items: center;
 }
-
+img {
+  padding: 50px;
+  max-width: 90%;
+  max-height: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 
 
@@ -18,11 +26,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 #flight-chart-inner {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 60%;
+  max-height: 60%;
+  padding: 50px;
 }
 
   path.domain {

@@ -19,6 +19,12 @@ img {
   margin: 0 auto;
 }
 
+.input-form {
+ padding: 10px;
+}
+.form-control:focus {
+  background-color: black !important;
+}
 
 
 /* Styling for flightchart */

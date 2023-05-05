@@ -4,3 +4,7 @@
 - implement an all disc/API flightchart (similar to Marshall st)
 - add error validation to lookup mold
 - address "formData is not defined" err @ input 136.17
+- make flightchart hover text resposive to size of page
+- make color in input a picker
+- validate plastic type based on brand
+- update input form for sequelize connection

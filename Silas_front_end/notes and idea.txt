@@ -8,3 +8,25 @@
 - make color in input a picker
 - validate plastic type based on brand
 - update input form for sequelize connection
+- https://blog.logrocket.com/using-helmet-node-js-secure-application/
+
+
+
+File structure 05/11
+
+- discsDB
+    - Silas Front End
+        - Node Modules
+        - Public
+            -IMG
+            - js files and CSS
+        - Views
+            -all my html except the main.handlebars
+            -Layouts
+                - main.handlebars
+        - app.js
+        - package.json
+        - package-lock.son
+    - SQL
+        - all my sql files
+    -read me

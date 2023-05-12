@@ -1,5 +1,5 @@
 import express from 'express';
-import { connection } from './public/db.mjs';
+import { sequelize, Disc } from './public/db.mjs';
 import { engine } from 'express-handlebars';
 import https from 'https';
 import querystring from 'querystring';
@@ -21,7 +21,7 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('index');
   });
 app.get('/input', (req, res) => {
     res.render('input');
@@ -33,62 +33,49 @@ app.get('/about', (req, res) => {
 app.get('/flightchart', (req, res) => {
     res.render('flightchart');
 });
-// app.get('/api/discs', async (req, res) => {
-//   try {
-//     const conn = await connection();
-//     const [rows] = await conn.query('SELECT * FROM silasdiscs');
-//     res.json(rows);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
-// app.get('/api/silasdiscs', async (req, res) => {
-//   try {
-//     const conn = await connection();
-//     let sql = 'SELECT * FROM silasdiscs';
-//     if (req.query.option) {
-//       sql += ` WHERE Category='${req.query.option}'`;
-//       console.log('SELECT * where Category is ' + req.query.option + ' FROM silasdiscs');
-//     }
-//     const [rows] = await conn.query(sql);
-//     res.json(rows);
-//     console.log('req.query.option not working :(');
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
-
 app.get('/table-names', async (req, res) => {
   try {
-    const conn = await connection();
-    const [rows] = await conn.query('SHOW TABLES');
-    const tableNames = rows.map(row => row.Tables_in_discs);
-    res.json(tableNames);
+    const tableNames = await sequelize.query('SHOW TABLES');
+    const tableNamesRows = tableNames[0];
+    const tableNamesArray = tableNamesRows.map(row => row.Tables_in_discs);
+    res.json(tableNamesArray);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 app.get('/table-options', async (req, res) => {
   try {
     const selectedTable = req.query.table;
-    const conn = await connection();
-    const [rows] = await conn.query(`SELECT DISTINCT category FROM ${selectedTable}`);
-    const options = rows.map((row) => row.category);
-    res.json(options);
+    const options = await sequelize.query(`SELECT DISTINCT category FROM ${selectedTable}`);
+    const optionsRows = options[0];
+    const optionsArray = optionsRows.map((row) => row.category);
+    res.json(optionsArray);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 app.get('/discs', async (req, res) => {
   try {
     const { table, category } = req.query;
-    const conn = await connection();
-    console.log(`SELECT * FROM ${table} WHERE category = "${category}"`);
-    const [rows] = await conn.query(`SELECT * FROM ${table} WHERE category = "${category}"`);
+
+    // Find the model based on the table name
+    const model = sequelize.models[table];
+
+    if (!model) {
+      return res.status(400).json({ error: 'Invalid table name' });
+    }
+
+    // Use the model to fetch the discs
+    const rows = await model.findAll({
+      where: {
+        category: category
+      }
+    });
+
     res.json(rows);
   } catch (error) {
     console.log(error);
@@ -97,13 +84,11 @@ app.get('/discs', async (req, res) => {
 });
 
 
-
 app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);
 });
 
 // parse incoming form data
-
 app.use(express.urlencoded({ extended: true }));
 
 // Define the file path for storing form submissions
@@ -114,21 +99,43 @@ const filePath = path.join(__dirname, 'form-submissions.txt');
 
 // handle form submission
 app.post('/submit', async (req, res) => {
-    const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
-    console.log('Received form input:', req.body);
-       let slot;
-    if (speed>0 && speed <=4){slot = 'Putter';} else if (speed>4 && speed<7){slot = 'Mid-Range';}else if(speed>6&&speed<9){slot='Fairway Driver';}else if(speed>=9&&speed<11){slot = 'Control Driver';}else if(speed>=11){slot='Distance Driver';}    
- try {
-      const conn = await connection();
-      const result = await conn.execute(
-            'INSERT INTO '+table+'(Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, `Sleepy Scale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [ mold ?? null, plastic ?? null,        brand ?? null,        weight ?? null,        speed ?? null,        glide ?? null,        turn ?? null,        fade ?? null,        slot ?? null,        category ?? null,        color ?? null,        stamp ?? null,        sleepyscale ?? null
-        ]
-      );
-      
-      
-      //Write formData to file
-      const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', '${color}', '${stamp}', ${sleepyscale}),\n`;
+  const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
+  console.log('Received form input:', req.body);
+  let slot;
+  if (speed > 0 && speed <= 4) {
+    slot = 'Putter';
+  } else if (speed > 4 && speed < 7) {
+    slot = 'Mid-Range';
+  } else if (speed > 6 && speed < 9) {
+    slot = 'Fairway Driver';
+  } else if (speed >= 9 && speed < 11) {
+    slot = 'Control Driver';
+  } else if (speed >= 11) {
+    slot = 'Distance Driver';
+  }
+  try {
+    // Find the model based on the table name
+    const model = sequelize.models[table];
+
+    // Insert a new row into the table
+    const result = await model.create({
+      Mold: mold ?? null,
+      Plastic: plastic ?? null,
+      Brand: brand ?? null,
+      Weight: weight ?? null,
+      Speed: speed ?? null,
+      Glide: glide ?? null,
+      Turn: turn ?? null,
+      Fade: fade ?? null,
+      Slot: slot ?? null,
+      Category: category ?? null,
+      Color: color ?? null,
+      Stamp: stamp ?? null,
+      'Sleepy Scale': sleepyscale ?? null
+    });
+
+    // Write formData to file
+    const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', '${color}', '${stamp}', ${sleepyscale}),\n`;
     fs.appendFile(filePath, formData, (err) => {
       if (err) {
         console.error(err);

@@ -42,43 +42,51 @@
       const tableDropdown = document.querySelector('#table-names-dropdown');
       const optionDropdown = document.querySelector('#option-names-dropdown');
 
-      tableDropdown.addEventListener('change', async (event) => {
-        const selectedTable = event.target.value;
-        const optionsResponse = await fetch(`/table-options?table=${selectedTable}`);
-        const options = await optionsResponse.json();
+  tableDropdown.addEventListener('change', async (event) => {
+    const selectedTable = event.target.value;
+    const optionsResponse = await fetch(`/table-options?table=${selectedTable}`);
+    const options = await optionsResponse.json();
 
-        // Remove previous options
-        optionDropdown.innerHTML = '';
+    // Remove previous options
+    optionDropdown.innerHTML = '';
 
-        // Add new options
-        options.forEach((option) => {
-          const optionElement = document.createElement('option');
-          optionElement.value = option;
-          optionElement.textContent = option;
-          optionDropdown.appendChild(optionElement);
-        });
-      });
+    // Add new options
+    options.forEach((option) => {
+      const optionElement = document.createElement('option');
+      optionElement.value = option;
+      optionElement.textContent = option;
+      optionDropdown.appendChild(optionElement);
+    });
+});
 
-        optionDropdown.addEventListener('change', async (event) => {
-        const selectedTable = tableDropdown.value;
-        const selectedOption = event.target.value;
-        const response = await fetch(`/discs?table=${selectedTable}&category=${selectedOption}`);
-        const data = await response.json();
-        
 
-       const transformedData = data.map((disc) => ({
-          name: disc.Mold,
-          speed: disc.Speed,
-          glide: disc.Glide,
-          turn: Number(disc.Turn), 
-          fade: Number(disc.Fade),
-          stability: (Number(disc.Turn) + Number(disc.Fade)),
-          color: disc.Color,
-        }));
-        
-        
-        drawChart(transformedData);
-      });
+optionDropdown.addEventListener('change', async (event) => {
+  const selectedTable = tableDropdown.value;
+  const selectedOption = event.target.value;
+
+  let query = `SELECT DISTINCT category FROM ${selectedTable}`;
+
+  if (selectedOption !== '') {
+    query += ` WHERE category = '${selectedOption}'`;
+  }
+
+  const response = await fetch(`/discs?table=${selectedTable}&query=${encodeURIComponent(query)}`);
+  const data = await response.json();
+
+  const transformedData = data.map((disc) => ({
+    name: disc.Mold,
+    speed: disc.Speed,
+    glide: disc.Glide,
+    turn: Number(disc.Turn),
+    fade: Number(disc.Fade),
+    stability: (Number(disc.Turn) + Number(disc.Fade)),
+    color: disc.Color,
+  }));
+
+  drawChart(transformedData);
+});
+
+
     </script>
   </body>
 </html>

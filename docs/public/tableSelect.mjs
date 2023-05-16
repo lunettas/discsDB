@@ -1,18 +1,19 @@
-import {connection} from './db.mjs';
+import { sequelize, Disc } from './db.mjs';
 
-const tableNames = await connection.query('SHOW TABLES');
+
+const [tableNames] = await sequelize.query('SHOW TABLES');
 
 const tableSelect = document.createElement('select');
 
 for (let i = 0; i < tableNames.length; i++) {
   const option = document.createElement('option');
-  option.text = tableNames[i].Tables_in_my_database;
+  option.text = tableNames[i][`Tables_in_${process.env.DATABASE}`];
   tableSelect.add(option);
 }
 
 tableSelect.addEventListener('change', async (event) => {
   const tableName = event.target.value;
-  const [rows, fields] = await connection.execute(`SELECT * FROM ${tableName}`);
+  const rows = await sequelize.query(`SELECT * FROM ${tableName}`, { type: sequelize.QueryTypes.SELECT });
   const uniqueRow = rows[0]; // Replace with code to identify the unique row
 
   const uniqueSelect = document.createElement('select');

@@ -39,38 +39,42 @@
           });
         });
 
-      const tableDropdown = document.querySelector('#table-names-dropdown');
-      const optionDropdown = document.querySelector('#option-names-dropdown');
+  const tableDropdown = document.querySelector('#table-names-dropdown');
+  const optionDropdown = document.querySelector('#option-names-dropdown');
 
-  tableDropdown.addEventListener('change', async (event) => {
-    const selectedTable = event.target.value;
-    const optionsResponse = await fetch(`/table-options?table=${selectedTable}`);
-    const options = await optionsResponse.json();
+tableDropdown.addEventListener('change', async (event) => {
+  const selectedTable = event.target.value;
+  const optionsResponse = await fetch(`/table-options?table=${selectedTable}`);
+  const options = await optionsResponse.json();
 
-    // Remove previous options
-    optionDropdown.innerHTML = '';
+  // Clear previous options
+  optionDropdown.innerHTML = '';
 
-    // Add new options
-    options.forEach((option) => {
-      const optionElement = document.createElement('option');
-      optionElement.value = option;
-      optionElement.textContent = option;
-      optionDropdown.appendChild(optionElement);
-    });
+  // Add new options based on the selected table
+  options.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.text = option;
+    optionDropdown.appendChild(optionElement);
+  });
 });
 
 
-optionDropdown.addEventListener('change', async (event) => {
-  const selectedTable = tableDropdown.value;
-  const selectedOption = event.target.value;
 
-  let query = `SELECT DISTINCT category FROM ${selectedTable}`;
+optionDropdown.addEventListener('change', async () => {
+  const selectedTable = tableDropdown.value;
+  const selectedOption = optionDropdown.value;
+  console.log('Selected Option', selectedOption);
+
+  let query = `SELECT DISTINCT * FROM ${selectedTable}`;
+  let url = `/discs?table=${selectedTable}`;
 
   if (selectedOption !== '') {
     query += ` WHERE category = '${selectedOption}'`;
+    url += `&category=${encodeURIComponent(selectedOption)}`;
   }
 
-  const response = await fetch(`/discs?table=${selectedTable}&query=${encodeURIComponent(query)}`);
+  const response = await fetch(url);
   const data = await response.json();
 
   const transformedData = data.map((disc) => ({
@@ -79,12 +83,14 @@ optionDropdown.addEventListener('change', async (event) => {
     glide: disc.Glide,
     turn: Number(disc.Turn),
     fade: Number(disc.Fade),
-    stability: (Number(disc.Turn) + Number(disc.Fade)),
+    stability: Number(disc.Turn) + Number(disc.Fade),
     color: disc.Color,
   }));
 
   drawChart(transformedData);
 });
+
+
 
 
     </script>

@@ -1,4 +1,4 @@
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import { Sequelize} from 'sequelize';
 import dotenv from 'dotenv';
 
 // Load environment variables from .env file
@@ -17,25 +17,5 @@ const sequelize = new Sequelize(database, username, password, {
   // ...
 });
 
-// Define models
-class Disc extends Model {}
 
-Disc.init({
-  // Define the table's columns
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  category: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  
-}, {
-  sequelize,
-  modelName: 'Disc',
-  tableName: 'discs'
-});
-
-
-export { sequelize, Disc };
+export { sequelize};

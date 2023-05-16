@@ -1,5 +1,5 @@
 import express from 'express';
-import { sequelize, Disc } from './public/db.mjs';
+import { sequelize } from './public/db.mjs';
 import { engine } from 'express-handlebars';
 import https from 'https';
 import querystring from 'querystring';
@@ -48,6 +48,8 @@ app.get('/table-names', async (req, res) => {
 app.get('/table-options', async (req, res) => {
   try {
     const selectedTable = req.query.table;
+    console.log('Selected Table:', selectedTable);
+
     const options = await sequelize.query(`SELECT DISTINCT category FROM ${selectedTable}`);
     const optionsRows = options[0];
     const optionsArray = optionsRows.map((row) => row.category);
@@ -58,13 +60,17 @@ app.get('/table-options', async (req, res) => {
   }
 });
 
-app.get('/discs', async (req, res) => {
+
+ app.get('/discs', async (req, res) => {
+
+
   try {
     const { table, category } = req.query;
 
     // Find the model based on the table name
     const model = sequelize.models[table];
-
+    console.log('Table:', table);
+    console.log('Available Models:', Object.keys(sequelize.models));
     if (!model) {
       return res.status(400).json({ error: 'Invalid table name' });
     }
@@ -81,7 +87,7 @@ app.get('/discs', async (req, res) => {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+}); 
 
 
 app.listen(port, function (){

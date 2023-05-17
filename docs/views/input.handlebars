@@ -16,9 +16,6 @@
      <div class="mb-3">
           <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select"> 
             <option selected>Choose a table to input the discs into</option>
-            <option value="silasdiscs">Silas</option>
-            <option value="jcdiscs">JC</option>
-            <option value="testdiscs">Test</option>
           </select>
         </div>
 {{!-- select category --}}
@@ -114,81 +111,5 @@ inputField.addEventListener('keypress', function(event) {
 apiCallBtn.addEventListener('click', apiCall);
 
 </script>
-
-
-<script>//implementing table specific collections
-        // Get references to the select elements
-        const tableSelect = document.getElementById('table-select');
-        const optionSelect = document.getElementById('option-select');
-      
-        // Add an event listener to the table select element
-        tableSelect.addEventListener('change', function() {
-          // Clear the options of the option select element
-          optionSelect.innerHTML = '';
-      
-          // Get the selected value of the table select element
-          const selectedTable = tableSelect.value;
-      
-          // Populate the options of the option select element based on the selected table
-          if (selectedTable === 'silasdiscs') {
-            const options = [
-                //'Main Bag', 'Side Bag', 'Collection', 'Backup', 'Emily', 'Sale / Trade'
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          } else if (selectedTable === 'jcdiscs') {
-            const options = [
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' },
-              { value: 'Loan', label: 'Loan' },
-              { value: 'Dalton', label: 'Dalton' },
-              { value:'Max', label: 'Max' },
-              { value: 'Silas', label: 'Silas' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          } else if (selectedTable === 'testdiscs') {
-            const options = [
-              { value: 'Main Bag', label: 'Main Bag' },
-              { value: 'Side Bag', label:'Side Bag' },
-              { value: 'Collection', label: 'Collection' },
-              { value: 'Backup', label: 'Backup' },
-              { value: 'Emily', label: 'Emily' },
-              { value: 'Sale / Trade', label: 'Sale / Trade' },
-              { value: 'Loan', label: 'Loan' },
-              { value: 'Dalton', label: 'Dalton' },
-              { value:'Max', label: 'Max' },
-              { value: 'Silas', label: 'Silas' },
-              { value: 'Simon', label: 'Simon' }
-            ];
-      
-            options.forEach(option => {
-              const optionElement = document.createElement('option');
-              optionElement.value = option.value;
-              optionElement.textContent = option.label;
-              optionSelect.appendChild(optionElement);
-            });
-          }
-          });
-      </script>
+<script src="/tableSelect"></script>
 </body>

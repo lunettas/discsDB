@@ -2,14 +2,14 @@
 - manage overlapping discs
 - create user accounts
 - implement an all disc/API flightchart (similar to Marshall st)
-- add error validation to lookup mold
+- add error validation to lookup mold//- make lookup mold toLowerCase for API call
 - address "formData is not defined" err @ input 136.17
 - make flightchart hover text resposive to size of page
 - make color in input a picker
 - validate plastic type based on brand
 - update input form for sequelize connection
 - https://blog.logrocket.com/using-helmet-node-js-secure-application/
-- make lookup mold toLoweCase for API call
+- add create new category button on input page
 
 
 

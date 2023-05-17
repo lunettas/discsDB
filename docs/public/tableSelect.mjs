@@ -1,32 +1,31 @@
-import { sequelize, Disc } from './db.mjs';
+$(document).ready(function() {
+  // Populate the table-select dropdown
+  $.get('/table-names', function(tableNames) {
+    const tableSelect = document.getElementById('table-select');
+    tableNames.forEach(tableName => {
+      const optionElement = document.createElement('option');
+      optionElement.value = tableName;
+      optionElement.textContent = tableName;
+      tableSelect.appendChild(optionElement);
+    });
+  });
 
+  // Add an event listener to the table-select dropdown
+  $('#table-select').change(function() {
+    const selectedTable = $(this).val();
+    const optionSelect = document.getElementById('option-select');
 
-const [tableNames] = await sequelize.query('SHOW TABLES');
+    // Clear the existing options
+    optionSelect.innerHTML = '';
 
-const tableSelect = document.createElement('select');
-
-for (let i = 0; i < tableNames.length; i++) {
-  const option = document.createElement('option');
-  option.text = tableNames[i][`Tables_in_${process.env.DATABASE}`];
-  tableSelect.add(option);
-}
-
-tableSelect.addEventListener('change', async (event) => {
-  const tableName = event.target.value;
-  const rows = await sequelize.query(`SELECT * FROM ${tableName}`, { type: sequelize.QueryTypes.SELECT });
-  const uniqueRow = rows[0]; // Replace with code to identify the unique row
-
-  const uniqueSelect = document.createElement('select');
-
-  for (const columnName in uniqueRow) {
-    const option = document.createElement('option');
-    option.text = uniqueRow[columnName];
-    uniqueSelect.add(option);
-  }
-
-  // Replace the existing table select with the unique select
-  event.target.parentNode.replaceChild(uniqueSelect, event.target);
+    // Populate the option-select dropdown based on the selected table
+    $.get('/table-options?table=' + selectedTable, function(options) {
+      options.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option;
+        optionElement.textContent = option;
+        optionSelect.appendChild(optionElement);
+      });
+    });
+  });
 });
-
-// Add the table select to the page
-document.body.appendChild(tableSelect);

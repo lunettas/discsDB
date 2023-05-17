@@ -77,7 +77,7 @@ const input = $('input[name=q]');
 
 
 function apiCall() {
-  const query = input.val();
+  const query = input.val().toLowerCase();;
   const apiUrl = 'https://discit-api.fly.dev/disc/' + query + '?fields=name,brand,speed,glide,turn,fade';
   $.get(apiUrl, function(response) {
     const mold = response.name || 'Unknown';
@@ -98,7 +98,11 @@ function apiCall() {
   $('#submit-to-db input[name="mold"]').val(mold);
 
     console.log(response);
-  });
+  })
+   .fail(function() {
+      // Display an error message to the user
+      alert('Failed to lookup the mold. Please try again or enter it manually.');
+    });
 }
 
 inputField.addEventListener('keypress', function(event) {

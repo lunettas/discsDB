@@ -2,7 +2,6 @@
 - manage overlapping discs
 - create user accounts
 - implement an all disc/API flightchart (similar to Marshall st)
-- add error validation to lookup mold//- make lookup mold toLowerCase for API call
 - address "formData is not defined" err @ input 136.17
 - make flightchart hover text resposive to size of page
 - make color in input a picker

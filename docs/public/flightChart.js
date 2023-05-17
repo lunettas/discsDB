@@ -1,6 +1,7 @@
 var discData = [
   {name: "Driver", speed: 12, glide: 5, turn: -1, fade: 3, stability: 2, color: "blue"},
   {name: "Midrange", speed: 5, glide: 4, turn: 0, fade: 2, stability: 2, color: "green"},
+  {name: "Beefy", speed: 7, glide: 4, turn: .5, fade: 4, stability: 4.5, color: "green"},
   {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1, stability: 1, color: "red"}
 ];
 
@@ -85,7 +86,7 @@ svg.selectAll(".vertical-line")
   tooltip.append("text")
     .attr("x", (xAxis(d.stability) + 60).toString())
     .attr("y", (yAxis(d.speed) + 45).toString())
-    .text(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + parseInt(d.turn) + ", Fade: " + parseInt(d.fade))
+    .text(d.name + " - Speed: " + d.speed + ", Glide: " + d.glide + ", Turn: " + Number(d.turn) + ", Fade: " + Number(d.fade))
     .style("font-size", "12px")
     .style("fill", "white");
 }

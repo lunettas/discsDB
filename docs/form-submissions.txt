@@ -68,3 +68,5 @@ added category
 ('Fuse', '', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Silas', Pink', 'Lizottle', 1),
 ('Fuse', 'Orbit', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', 'blue', 'stock', 1),
 ('Fuse', 'Orbit', 'Latitude 64', 175, 5, 6, -1, 0, 'Mid-Range', 'Main Bag', 'blue', 'stock', 1),
+('Tilt', 'test', 'Discmania', 175, 9, 1, 1, 6, 'Control Driver', 'Side Bag', '', 'Sock', 10),
+('Tilt', 'test', 'Discmania', 175, 9, 1, 1, 6, 'Control Driver', 'Collection', '', 'Sock', 10),

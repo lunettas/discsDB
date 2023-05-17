@@ -97,40 +97,33 @@ app.post('/submit', async (req, res) => {
   const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
   console.log('Received form input:', req.body);
   let slot;
-  if (speed > 0 && speed <= 4) {
-    slot = 'Putter';
-  } else if (speed > 4 && speed < 7) {
-    slot = 'Mid-Range';
-  } else if (speed > 6 && speed < 9) {
-    slot = 'Fairway Driver';
-  } else if (speed >= 9 && speed < 11) {
-    slot = 'Control Driver';
-  } else if (speed >= 11) {
-    slot = 'Distance Driver';
-  }
-  try {
-    // Find the model based on the table name
-    const model = sequelize.models[table];
+    if (speed > 0 && speed <= 4) {
+      slot = 'Putter';
+    } else if (speed > 4 && speed < 7) {
+      slot = 'Mid-Range';
+    } else if (speed > 6 && speed < 9) {
+      slot = 'Fairway Driver';
+    } else if (speed >= 9 && speed < 11) {
+      slot = 'Control Driver';
+    } else if (speed >= 11) {
+      slot = 'Distance Driver';
+    }
 
-    // Insert a new row into the table
-    const result = await model.create({
-      Mold: mold ?? null,
-      Plastic: plastic ?? null,
-      Brand: brand ?? null,
-      Weight: weight ?? null,
-      Speed: speed ?? null,
-      Glide: glide ?? null,
-      Turn: turn ?? null,
-      Fade: fade ?? null,
-      Slot: slot ?? null,
-      Category: category ?? null,
-      Color: color ?? null,
-      Stamp: stamp ?? null,
-      'Sleepy Scale': sleepyscale ?? null
-    });
+    try {
+      // Insert a new row into the table
+      const query = `
+        INSERT INTO ${table} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
+      const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, category, color, stamp, sleepyscale];
+      const [result] = await sequelize.query(query, { replacements: values });
 
-    // Write formData to file
+
+    console.log('New row inserted:', result);
+
     const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', '${color}', '${stamp}', ${sleepyscale}),\n`;
+    const filePath = 'form-submissions.txt';
+
     fs.appendFile(filePath, formData, (err) => {
       if (err) {
         console.error(err);
@@ -140,8 +133,8 @@ app.post('/submit', async (req, res) => {
         res.redirect('/input');
       }
     });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error adding disc to the database');
+  } catch (error) {
+    console.error('Error inserting data:', error);
+    res.status(500).send('An error occurred while submitting the data.');
   }
 });

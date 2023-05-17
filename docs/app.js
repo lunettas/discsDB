@@ -61,25 +61,13 @@ app.get('/table-options', async (req, res) => {
 });
 
 
- app.get('/discs', async (req, res) => {
-
-
+app.get('/discs', async (req, res) => {
   try {
     const { table, category } = req.query;
 
-    // Find the model based on the table name
-    const model = sequelize.models[table];
-    console.log('Table:', table);
-    console.log('Available Models:', Object.keys(sequelize.models));
-    if (!model) {
-      return res.status(400).json({ error: 'Invalid table name' });
-    }
-
-    // Use the model to fetch the discs
-    const rows = await model.findAll({
-      where: {
-        category: category
-      }
+    const rows = await sequelize.query(`SELECT * FROM ${table} WHERE category = :category`, {
+      replacements: { category },
+      type: sequelize.QueryTypes.SELECT
     });
 
     res.json(rows);
@@ -87,7 +75,8 @@ app.get('/table-options', async (req, res) => {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-}); 
+});
+
 
 
 app.listen(port, function (){

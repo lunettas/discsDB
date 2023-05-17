@@ -67,11 +67,14 @@ optionDropdown.addEventListener('change', async () => {
   console.log('Selected Option', selectedOption);
 
   let query = `SELECT DISTINCT * FROM ${selectedTable}`;
-  let url = `/discs?table=${selectedTable}`;
+  let url = `/discs?table=${encodeURIComponent(selectedTable)}`;
+
 
   if (selectedOption !== '') {
     query += ` WHERE category = '${selectedOption}'`;
-    url += `&category=${encodeURIComponent(selectedOption)}`;
+    url += `&category=${selectedOption}`;
+
+
   }
 
   const response = await fetch(url);

@@ -1,4 +1,5 @@
 - update chart to switch x axis for LHBH/RHFH
+<button id="switch-axis" >Switch to LHBH/RHFH</button>
 - manage overlapping discs
 - create user accounts
 - implement an all disc/API flightchart (similar to Marshall st)

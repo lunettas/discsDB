@@ -5,6 +5,9 @@ var discData = [
   {name: "Putter", speed: 2, glide: 3, turn: 0, fade: 1, stability: 1, color: "red"}
 ];
 
+var xAxis, yAxis;
+var svgWidth, svgHeight;
+
 // Function to draw chart
 function drawChart(data) {
   console.log(data);
@@ -14,8 +17,8 @@ function drawChart(data) {
   container.selectAll("*").remove();
 
   // Calculate SVG dimensions based on viewport size
-  var svgWidth = window.innerWidth;
-  var svgHeight = window.innerHeight;
+  svgWidth = window.innerWidth;
+  svgHeight = window.innerHeight;
 
   var svg = container.append("svg")
     .attr("width", svgWidth)
@@ -24,19 +27,21 @@ function drawChart(data) {
 
   // Update scales to use relative values based on SVG dimensions
  // Update scales to use stability and speed properties
- var xAxis = d3.scaleLinear()
+ xAxis = d3.scaleLinear()
  .domain([7, -4])
  .range([0, svgWidth * 0.8]);
 
-var yAxis = d3.scaleLinear()
+yAxis = d3.scaleLinear()
  .domain([0, 15])
  .range([svgHeight * 0.8, 0]);
 
 var xAxisGroup = svg.append("g")
+ .attr("class", "x-axis")
  .attr("transform", "translate(" + svgWidth * 0.1 + "," + (svgHeight * 0.9) + ")")
  .call(d3.axisBottom(xAxis).tickFormat(d => d.toFixed(1))); // add tick formatting
 
 var yAxisGroup = svg.append("g")
+ .attr("class", "y-axis")
  .attr("transform", "translate(" + svgWidth * 0.1 + "," + svgHeight * 0.1 + ")")
  .call(d3.axisLeft(yAxis).tickValues(d3.range(0, 16, 1)));
 

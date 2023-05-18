@@ -1,5 +1,5 @@
 - update chart to switch x axis for LHBH/RHFH
-<button id="switch-axis" >Switch to LHBH/RHFH</button>
+
 - manage overlapping discs
 - create user accounts
 - implement an all disc/API flightchart (similar to Marshall st)
@@ -10,7 +10,7 @@
 - update input form for sequelize connection
 - https://blog.logrocket.com/using-helmet-node-js-secure-application/
 - add create new category button on input page
-
+- create api backup from the discitAPI
 
 
 File structure 05/11

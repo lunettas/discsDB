@@ -71,10 +71,13 @@ img {
     stroke-width: 1;
     stroke-dasharray: 4;
   }
-  .switch-axis{
-    display: flex;
-    
-  }
+  
+
+/*registration page*/
+.registration{
+   padding: 20px;
+}
+
   /* Media queries for larger screens */
 @media only screen and (min-width: 768px) {
   text {

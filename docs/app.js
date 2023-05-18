@@ -1,5 +1,5 @@
 import express from 'express';
-import { sequelize } from './public/db.mjs';
+import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
 import https from 'https';
 import querystring from 'querystring';
@@ -32,6 +32,9 @@ app.get('/about', (req, res) => {
 });
 app.get('/flightchart', (req, res) => {
     res.render('flightchart');
+});
+app.get('/registration', (req, res) => {
+    res.render('registration');
 });
 app.get('/table-names', async (req, res) => {
   try {
@@ -136,5 +139,21 @@ app.post('/submit', async (req, res) => {
   } catch (error) {
     console.error('Error inserting data:', error);
     res.status(500).send('An error occurred while submitting the data.');
+  }
+});
+
+
+app.post('/register', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.create({ email, password });
+    console.log('User created:', user.email);
+
+    // Render the registration page with the registrationSuccess flag set to true
+    res.render('registration.hbs', { registrationSuccess: true });
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).send('An error occurred while registering the user.');
   }
 });

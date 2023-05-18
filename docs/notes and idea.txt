@@ -9,7 +9,7 @@
 - https://blog.logrocket.com/using-helmet-node-js-secure-application/
 - add create new category button on input page
 - create api backup from the discitAPI
-
+-- await sequelize.sync({ force: true });//remove this force: true for deployment
 
 File structure 05/11
 

@@ -16,8 +16,8 @@ app.use(express.static(path.resolve('public'), { extensions: ['html', 'htm', 'mj
 console.log('Static files served from:', path.join(__dirname, 'public'));
 
 //handlebars routing
-app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
+app.engine('hbs', engine({extname: 'hbs'}));
+app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.get('/', (req, res) => {

@@ -15,7 +15,7 @@
 File structure 05/11
 
 - discsDB
-    - Silas Front End
+    - docs
         - Node Modules
         - Public
             -IMG

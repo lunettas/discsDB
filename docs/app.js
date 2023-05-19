@@ -161,3 +161,41 @@ app.post('/register', async (req, res) => {
     res.status(500).send('An error occurred while registering the user.');
   }
 });
+
+app.post('/login', async (req, res) => {
+  const { email, plaintextPassword } = req.body;
+
+  try {
+    // Find the user by their email
+    const user = await User.findOne({ where: { email } });
+
+    // If the user does not exist, show an alert message
+    if (!user) {
+      const errorMessage = 'Invalid email or password';
+      console.log('Invalid user')
+      res.render('index', { loginFailed: true, errorMessage });
+      return;
+    }
+
+    // Compare the passwords
+    const passwordMatch = await comparePasswords(plaintextPassword, user.password);
+
+    // If passwords don't match, show an alert message
+    if (!passwordMatch) {
+      const errorMessage = 'Invalid email or password';
+      console.log('Invalid password')
+      res.render('index', { loginFailed: true, errorMessage });
+      return;
+    }
+
+    // Set the user as authenticated (you can use session or JWT for authentication)
+    // req.session.user = user;
+
+    // Redirect to the desired page after successful login
+    res.redirect('/');
+    console.log('Valid user')
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).send('An error occurred during login.');
+  }
+});

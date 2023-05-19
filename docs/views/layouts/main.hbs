@@ -44,10 +44,16 @@
           </ul>
         </li> --}}
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+     <form class="login" action="/login" method="POST">
+        <div class="form-group mb-3 bg-dark">
+            <label for="login">Login:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="plaintextPassword" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
     </div>
   </div>
 </nav>

@@ -28,10 +28,10 @@ const User = sequelize.define('User', {
 });
 (async () => {
   try {
-    await sequelize.sync({ force: true });//remove this force true for deployment
-    console.log('User table created successfully.');
+    await sequelize.sync();
+    console.log('User table sync successful.');
   } catch (error) {
-    console.error('Error creating user table:', error);
+    console.error('Error syncing user table:', error);
   }
 })();
 

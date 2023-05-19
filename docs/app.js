@@ -1,6 +1,7 @@
 import express from 'express';
 import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
+import { hashPassword, comparePasswords } from './public/pwHash.mjs';
 import https from 'https';
 import querystring from 'querystring';
 import mime from 'mime';
@@ -142,12 +143,15 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-
+//register user accounts
 app.post('/register', async (req, res) => {
-  const { email, password } = req.body;
-
+  const { email, plaintextPassword } = req.body;
+  console.log('Received form input:', req.body);
   try {
-    const user = await User.create({ email, password });
+    console.log('Plaintext Password:', plaintextPassword);
+    //hash pw
+    const hashedPassword = await hashPassword(plaintextPassword);
+    const user = await User.create({ email, password: hashedPassword });
     console.log('User created:', user.email);
 
     // Render the registration page with the registrationSuccess flag set to true

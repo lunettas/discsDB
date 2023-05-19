@@ -1,5 +1,6 @@
 - manage overlapping discs
 - create user accounts
+- set up password reset 
 - implement an all disc/API flightchart (similar to Marshall st)
 - address "formData is not defined" err @ input 136.17
 - make flightchart hover text resposive to size of page
@@ -74,3 +75,17 @@ To implement user accounts with a logged in/logged out state and the ability to 
 Remember to secure your authentication and session management implementation by using best practices such as password hashing, storing sensitive information securely, and protecting against common security vulnerabilities.
 
 This outline should provide you with a starting point to implement user accounts with unique table creation in your website using HTML, JavaScript, and Node.js.
+
+As a best practice, it is not recommended to store and retrieve passwords in plaintext format, even for administrative purposes. Storing passwords as hashes helps to enhance security by protecting user passwords in case of a data breach. Instead of retrieving and displaying the actual password, you can provide a password reset functionality to allow users to reset their password if they forget it.
+
+Here's a common approach to implementing a password reset functionality:
+
+1. Provide a "Forgot Password" link or option on the login page.
+2. When the user clicks on the "Forgot Password" link, prompt them to enter their email address.
+3. Validate the email address and generate a unique password reset token associated with the user's account. Store this token in the user's record in the database.
+4. Send an email to the user's email address containing a link with the password reset token. The link should point to a password reset page on your application.
+5. When the user clicks on the password reset link, verify the token and allow the user to enter a new password.
+6. Hash the new password and update the user's password in the database.
+7. Notify the user that their password has been successfully reset.
+
+This approach ensures that the actual password remains secure and not exposed, even to administrators.

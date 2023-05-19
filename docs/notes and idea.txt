@@ -29,3 +29,48 @@ File structure 05/11
     - SQL
         - all my sql files
     -read me
+
+
+To implement user accounts with a logged in/logged out state and the ability to build a unique table, you'll need to follow several steps. Here's an outline of the process using HTML, JavaScript, and Node.js:
+
+1. Set up your HTML pages:
+   - Create an HTML page for user registration, login, and the user dashboard.
+   - Include form elements for inputting user credentials (e.g., email, password) in the registration and login pages.
+
+2. Create a database schema:
+   - Define the necessary tables in your database to store user information.
+   - Consider including tables for users and their unique tables, along with any additional fields you require.
+
+3. Implement user registration:
+   - Handle form submission in your Node.js app by creating a route for user registration.
+   - Retrieve the submitted form data, validate it, and store it in the database using Sequelize or your preferred ORM (Object-Relational Mapping) library.
+   - Hash the user's password for security before storing it in the database.
+
+4. Implement user login:
+   - Create a route for handling user login form submission.
+   - Retrieve the submitted form data and verify it against the stored user credentials in the database.
+   - If the credentials match, create a session or token to track the user's logged-in state.
+
+5. Set up session management:
+   - Use a session management library like `express-session` to manage user sessions.
+   - Configure the session middleware in your Node.js app to handle session data storage and retrieval.
+   - Store session information, such as the user ID, in the session object.
+
+6. Create user dashboard:
+   - Once a user is logged in, display their unique dashboard page.
+   - Design the dashboard interface where users can build their unique tables.
+   - Use JavaScript and DOM manipulation to dynamically update the page based on user actions.
+
+7. Implement table creation:
+   - Create routes in your Node.js app to handle table creation requests from the user dashboard.
+   - Retrieve the necessary data from the request, validate it, and store it in the database.
+   - Use Sequelize or your ORM library to create a new entry in the user's table.
+
+8. Implement logout functionality:
+   - Create a route for user logout.
+   - Clear the user's session or token to mark them as logged out.
+   - Redirect them to a designated page, such as the login page or homepage.
+
+Remember to secure your authentication and session management implementation by using best practices such as password hashing, storing sensitive information securely, and protecting against common security vulnerabilities.
+
+This outline should provide you with a starting point to implement user accounts with unique table creation in your website using HTML, JavaScript, and Node.js.

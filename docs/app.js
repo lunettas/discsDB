@@ -1,4 +1,6 @@
 import express from 'express';
+import session from 'express-session';
+import dotenv from 'dotenv';
 import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
 import { hashPassword, comparePasswords } from './public/pwHash.mjs';
@@ -12,9 +14,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
+dotenv.config();
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use((req, res, next) => {
+  console.log('Session:', req.session);
+  next();
+});
+
 // Serve static files from the 'public' folder
 app.use(express.static(path.resolve('public'), { extensions: ['html', 'htm', 'mjs', 'jpg'] }));
 console.log('Static files served from:', path.join(__dirname, 'public'));
+
 
 //handlebars routing
 app.engine('hbs', engine({extname: 'hbs'}));
@@ -22,20 +37,20 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', { user: req.session.user });
   });
 app.get('/input', (req, res) => {
-    res.render('input');
+    res.render('input', { user: req.session.user });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', { user: req.session.user });
 });
 app.get('/flightchart', (req, res) => {
-    res.render('flightchart');
+    res.render('flightchart', { user: req.session.user });
 });
 app.get('/registration', (req, res) => {
-    res.render('registration');
+    res.render('registration', { user: req.session.user });
 });
 app.get('/table-names', async (req, res) => {
   try {
@@ -189,7 +204,7 @@ app.post('/login', async (req, res) => {
     }
 
     // Set the user as authenticated (you can use session or JWT for authentication)
-    // req.session.user = user;
+    req.session.user = user;
 
     // Redirect to the desired page after successful login
     res.redirect('/');
@@ -198,4 +213,17 @@ app.post('/login', async (req, res) => {
     console.error('Error during login:', error);
     res.status(500).send('An error occurred during login.');
   }
+});
+
+app.get('/logout', (req, res) => {
+  // Clear the session data
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error logging out:', err);
+      res.status(500).send('An error occurred while logging out.');
+    } else {
+      // Redirect to the desired page after successful logout
+      res.redirect('/');
+    }
+  });
 });

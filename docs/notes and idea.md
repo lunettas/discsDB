@@ -34,18 +34,18 @@ File structure 05/11
 
 To implement user accounts with a logged in/logged out state and the ability to build a unique table, you'll need to follow several steps. Here's an outline of the process using HTML, JavaScript, and Node.js:
 
-1. Set up your HTML pages:
+<!-- 1. Set up your HTML pages:
    - Create an HTML page for user registration, login, and the user dashboard.
-   - Include form elements for inputting user credentials (e.g., email, password) in the registration and login pages.
+   - Include form elements for inputting user credentials (e.g., email, password) in the registration and login pages. -->
 
-2. Create a database schema:
+<!-- 2. Create a database schema:
    - Define the necessary tables in your database to store user information.
-   - Consider including tables for users and their unique tables, along with any additional fields you require.
+   - Consider including tables for users and their unique tables, along with any additional fields you require. -->
 
-3. Implement user registration:
+<!-- 3. Implement user registration:
    - Handle form submission in your Node.js app by creating a route for user registration.
    - Retrieve the submitted form data, validate it, and store it in the database using Sequelize or your preferred ORM (Object-Relational Mapping) library.
-   - Hash the user's password for security before storing it in the database.
+   - Hash the user's password for security before storing it in the database. -->
 
 4. Implement user login:
    - Create a route for handling user login form submission.

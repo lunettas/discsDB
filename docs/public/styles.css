@@ -96,6 +96,14 @@ img {
     font-size: 24px;
   }
 }
+
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
   
   
   

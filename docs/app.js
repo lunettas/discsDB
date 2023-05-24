@@ -134,6 +134,7 @@ const filePath = path.join(__dirname, 'form-submissions.txt');
 
 
 
+
 // handle form submission
 app.post('/submit', async (req, res) => {
   const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
@@ -163,15 +164,14 @@ app.post('/submit', async (req, res) => {
     console.log('New row inserted:', result);
 
     const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', '${color}', '${stamp}', ${sleepyscale}),\n`;
-    const filePath = 'form-submissions.txt';
 
     fs.appendFile(filePath, formData, (err) => {
       if (err) {
         console.error(err);
-        res.status(500).send('Error storing form submission');
+        res.json({ success: false });
       } else {
         console.log('Disc added to the database and form submission stored!');
-        res.redirect('/input'); // Redirect to the input page
+        res.json({ success: true });
       }
     });
   } catch (error) {
@@ -179,6 +179,7 @@ app.post('/submit', async (req, res) => {
     res.status(500).send('An error occurred while submitting the data.');
   }
 });
+
 
 
 //register user accounts

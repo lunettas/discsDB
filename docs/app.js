@@ -139,27 +139,26 @@ app.post('/submit', async (req, res) => {
   const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
   console.log('Received form input:', req.body);
   let slot;
-    if (speed > 0 && speed <= 4) {
-      slot = 'Putter';
-    } else if (speed > 4 && speed < 7) {
-      slot = 'Mid-Range';
-    } else if (speed > 6 && speed < 9) {
-      slot = 'Fairway Driver';
-    } else if (speed >= 9 && speed < 11) {
-      slot = 'Control Driver';
-    } else if (speed >= 11) {
-      slot = 'Distance Driver';
-    }
+  if (speed > 0 && speed <= 4) {
+    slot = 'Putter';
+  } else if (speed > 4 && speed < 7) {
+    slot = 'Mid-Range';
+  } else if (speed > 6 && speed < 9) {
+    slot = 'Fairway Driver';
+  } else if (speed >= 9 && speed < 11) {
+    slot = 'Control Driver';
+  } else if (speed >= 11) {
+    slot = 'Distance Driver';
+  }
 
-    try {
-      // Insert a new row into the table
-      const query = `
-        INSERT INTO ${table} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `;
-      const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, category, color, stamp, sleepyscale];
-      const [result] = await sequelize.query(query, { replacements: values });
-
+  try {
+    // Insert a new row into the table
+    const query = `
+      INSERT INTO ${table} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, category, color, stamp, sleepyscale];
+    const [result] = await sequelize.query(query, { replacements: values });
 
     console.log('New row inserted:', result);
 
@@ -172,7 +171,7 @@ app.post('/submit', async (req, res) => {
         res.status(500).send('Error storing form submission');
       } else {
         console.log('Disc added to the database and form submission stored!');
-        res.redirect('/input');
+        res.redirect('/input'); // Redirect to the input page
       }
     });
   } catch (error) {
@@ -180,6 +179,7 @@ app.post('/submit', async (req, res) => {
     res.status(500).send('An error occurred while submitting the data.');
   }
 });
+
 
 //register user accounts
 app.post('/register', async (req, res) => {
@@ -199,6 +199,7 @@ app.post('/register', async (req, res) => {
     res.status(500).send('An error occurred while registering the user.');
   }
 });
+
 
 app.post('/login', async (req, res) => {
   const { email, plaintextPassword } = req.body;

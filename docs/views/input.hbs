@@ -120,35 +120,6 @@
       });
 
       apiCallBtn.addEventListener('click', apiCall);
-    </script>
-
-    <script>
-      $(document).ready(function() {
-  $('#submit-to-db').on('submit', function(e) {
-    e.preventDefault(); // Prevent the default form submission
-
-    // Store a reference to the form
-    var form = $(this);
-
-    // Perform an asynchronous form submission using AJAX
-    $.ajax({
-      url: form.attr('action'),
-      type: form.attr('method'),
-      data: form.serialize(),
-      success: function(response) {
-        // Clear the form
-        form[0].reset();
-
-        // Display a success message
-        alert('Disc submitted successfully');
-      },
-      error: function() {
-        // Display an error message
-        alert('Failed to submit the form. Please try again.');
-      }
-    });
-  });
-});
 
     </script> 
 

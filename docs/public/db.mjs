@@ -15,7 +15,7 @@ const sequelize = new Sequelize(database, username, password, {
   host: host,
   dialect: 'mysql',
 });
-const User = sequelize.define('User', {
+const User = sequelize.define('Users', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,

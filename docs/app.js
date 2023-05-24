@@ -53,26 +53,27 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 
-app.get('/', (req, res) => {
-  const userId = req.session.userId;
-  console.log(req.session.userId);
-  console.log(req.session.user);
-  res.render('index', { user: req.session.user });
+app.get('/', async (req, res) => {
+  const user = req.session.user; // Get the user object directly from the session
+
+  // No need to retrieve the userId separately
+
+  res.render('index', { user: user ? user.get({ plain: true }) : null });
 });
 
   
 app.get('/input', (req, res) => {
-    res.render('input', { user: req.session.user });
+    res.render('input', { User: req.session.user });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', { user: req.session.user });
+    res.render('about', { User: req.session.user });
 });
 app.get('/flightchart', (req, res) => {
-    res.render('flightchart', { user: req.session.user });
+    res.render('flightchart', { User: req.session.user });
 });
 app.get('/registration', (req, res) => {
-    res.render('registration', { user: req.session.user });
+    res.render('registration', { User: req.session.user });
 });
 app.get('/table-names', async (req, res) => {
   try {

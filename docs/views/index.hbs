@@ -9,6 +9,11 @@
     <h1>Hello World, Welcome to discsDB</h1>
     <p>This is a website intended to help you explore the many unique disc golf discs that exist. Users can explore all molds, compare discs on the flightchart and even create a database that is unique to thier personal collection. With an overwhelming amount of molds availible, this tool is designed to help you build the perfect bag for any condition!</p>
     <img src="/IMG/discs.jpg" alt="a pile of disc golf discs">  
+    {{#if user}}
+      <p>Welcome, {{user.nickname}}!</p>
+      <!-- Render more elements for signed-in users here -->
+    {{/if}}
+  
   </body>
 </html>
 

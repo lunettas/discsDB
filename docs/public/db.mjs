@@ -24,6 +24,10 @@ const User = sequelize.define('User', {
   password: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  nickname: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 });
 (async () => {

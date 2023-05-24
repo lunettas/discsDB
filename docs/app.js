@@ -22,8 +22,24 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  console.log('Session:', req.session);
-  next();
+  // Check if the user is logged in based on the session
+  if (req.session.userId) {
+    // Fetch the user from the database based on the session userId
+    User.findByPk(req.session.userId)
+      .then((user) => {
+        if (user) {
+          // Set the user object in the session
+          req.session.user = user;
+        }
+        next();
+      })
+      .catch((error) => {
+        console.error('Error retrieving user:', error);
+        next();
+      });
+  } else {
+    next();
+  }
 });
 
 // Serve static files from the 'public' folder
@@ -36,9 +52,15 @@ app.engine('hbs', engine({extname: 'hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+
 app.get('/', (req, res) => {
-    res.render('index', { user: req.session.user });
-  });
+  const userId = req.session.userId;
+  console.log(req.session.userId);
+  console.log(req.session.user);
+  res.render('index', { user: req.session.user });
+});
+
+  
 app.get('/input', (req, res) => {
     res.render('input', { user: req.session.user });
 });
@@ -160,13 +182,13 @@ app.post('/submit', async (req, res) => {
 
 //register user accounts
 app.post('/register', async (req, res) => {
-  const { email, plaintextPassword } = req.body;
+  const { email, plaintextPassword, nickname } = req.body;
   console.log('Received form input:', req.body);
   try {
     console.log('Plaintext Password:', plaintextPassword);
     //hash pw
     const hashedPassword = await hashPassword(plaintextPassword);
-    const user = await User.create({ email, password: hashedPassword });
+    const user = await User.create({ email, password: hashedPassword, nickname });
     console.log('User created:', user.email);
 
     // Render the registration page with the registrationSuccess flag set to true
@@ -204,7 +226,7 @@ app.post('/login', async (req, res) => {
     }
 
     // Set the user as authenticated (you can use session or JWT for authentication)
-    req.session.user = user;
+    req.session.userId = user.id;
 
     // Redirect to the desired page after successful login
     res.redirect('/');

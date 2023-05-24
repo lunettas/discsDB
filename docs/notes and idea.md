@@ -47,10 +47,10 @@ To implement user accounts with a logged in/logged out state and the ability to 
    - Retrieve the submitted form data, validate it, and store it in the database using Sequelize or your preferred ORM (Object-Relational Mapping) library.
    - Hash the user's password for security before storing it in the database. -->
 
-4. Implement user login:
+<!-- 4. Implement user login:
    - Create a route for handling user login form submission.
    - Retrieve the submitted form data and verify it against the stored user credentials in the database.
-   - If the credentials match, create a session or token to track the user's logged-in state.
+   - If the credentials match, create a session or token to track the user's logged-in state. -->
 
 5. Set up session management:
    - Use a session management library like `express-session` to manage user sessions.

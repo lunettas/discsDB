@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script type="module">  import apiCall from "/autocomplete";  apiCall();</script>
+    <script type="module" src="/tableSelect"></script>
   </head>
   <body>
     <h1>Hello World, welcome to discsDB, use this form to add discs to your database!</h1>
@@ -79,12 +80,5 @@
       <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
 
     </form>
-
-    <!-- API call handling -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-
-    <script type="module">  import apiCall from "/autocomplete";  apiCall();</script>
-    <script type="module" src="/tableSelect"></script>
   </body>
 </html>

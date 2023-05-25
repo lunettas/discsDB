@@ -45,7 +45,8 @@ app.use((req, res, next) => {
 // Serve static files from the 'public' folder
 app.use(express.static(path.resolve('public'), { extensions: ['html', 'htm', 'mjs', 'jpg'] }));
 console.log('Static files served from:', path.join(__dirname, 'public'));
-
+// parse incoming form data
+app.use(express.urlencoded({ extended: true }));
 
 //handlebars routing
 app.engine('hbs', engine({extname: 'hbs'}));
@@ -125,8 +126,7 @@ app.listen(port, function (){
   console.log(`Server running at http://localhost:${port}/`);
 });
 
-// parse incoming form data
-app.use(express.urlencoded({ extended: true }));
+
 
 // Define the file path for storing form submissions
 
@@ -171,12 +171,14 @@ app.post('/submit', async (req, res) => {
         res.json({ success: false });
       } else {
         console.log('Disc added to the database and form submission stored!');
-        res.json({ success: true });
+        // Send a success response with a status message
+        res.json({ success: true, message: 'Form submission successful!' });
       }
     });
   } catch (error) {
     console.error('Error inserting data:', error);
-    res.status(500).send('An error occurred while submitting the data.');
+    // Send an error response with a status message
+    res.status(500).json({ success: false, message: 'An error occurred while submitting the data.' });
   }
 });
 

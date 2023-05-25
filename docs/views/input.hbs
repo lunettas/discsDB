@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="module">  import apiCall from "/autocomplete";  apiCall();</script>
+    <script type="module">
+      import apiCall from "/autocomplete";
+      apiCall();
+    </script>
     <script type="module" src="/tableSelect"></script>
   </head>
   <body>
@@ -19,7 +22,6 @@
 
     <!-- Input additional information and add to db -->
    <form class="input-form" id="submit-to-db" action="/submit" method="POST">
-
       <div class="mb-3">
         <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select">
           <option selected>Choose a table to input the discs into</option>
@@ -39,7 +41,7 @@
         <input id="stamp" type="text" value="Stock" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
         <input id="input-weight" type="number" value="175" min="1" max="200" class="form-control"  aria-describedby="weightHelp" name="weight">          
       </div>
-      <div><br></div>
+
 
       <!-- Sleepyscale -->
       <div class="mb-3 input-form">
@@ -75,10 +77,40 @@
         <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
         <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
       </div>
-      <div><br></div>
+   
 
       <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
 
     </form>
+    <script>
+      // Handle form submission
+$('#submit-to-db').submit(function(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  // Send the form data to the server
+  $.ajax({
+    url: '/submit',
+    type: 'POST',
+    data: $(this).serialize(), // Serialize the form data
+    success: function(response) {
+      if (response.success) {
+        // Display success message to the user
+        $('#status-message').html('<div class="alert alert-success">Form submission successful!</div>');
+        // Reset the form
+        $('#submit-to-db')[0].reset();
+      } else {
+        // Display error message to the user
+        $('#status-message').html('<div class="alert alert-danger">An error occurred while submitting the form.</div>');
+      }
+    },
+    error: function() {
+      // Display error message to the user
+      $('#status-message').html('<div class="alert alert-danger">An error occurred while submitting the form.</div>');
+    }
+  });
+});
+
+    </script>
+
   </body>
 </html>

@@ -163,24 +163,17 @@ app.post('/submit', async (req, res) => {
 
     console.log('New row inserted:', result);
 
-    const formData = `('${mold}', '${plastic}', '${brand}', ${weight}, ${speed}, ${glide}, ${turn}, ${fade}, '${slot}', '${category}', '${color}', '${stamp}', ${sleepyscale}),\n`;
-
-    fs.appendFile(filePath, formData, (err) => {
-      if (err) {
-        console.error(err);
-        res.json({ success: false });
-      } else {
-        console.log('Disc added to the database and form submission stored!');
-        // Send a success response with a status message
-        res.json({ success: true, message: 'Form submission successful!' });
-      }
-    });
+    console.log('Disc added to the database and form submission stored!');
+    // Send a success response with a redirect
+    res.redirect('/input?success=true');
   } catch (error) {
     console.error('Error inserting data:', error);
     // Send an error response with a status message
     res.status(500).json({ success: false, message: 'An error occurred while submitting the data.' });
   }
 });
+
+
 
 
 

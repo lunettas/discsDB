@@ -78,39 +78,21 @@
         <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
       </div>
    
-
+    
       <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
 
     </form>
-    <script>
-      // Handle form submission
-$('#submit-to-db').submit(function(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+    
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const success = urlParams.get('success');
 
-  // Send the form data to the server
-  $.ajax({
-    url: '/submit',
-    type: 'POST',
-    data: $(this).serialize(), // Serialize the form data
-    success: function(response) {
-      if (response.success) {
-        // Display success message to the user
-        $('#status-message').html('<div class="alert alert-success">Form submission successful!</div>');
-        // Reset the form
-        $('#submit-to-db')[0].reset();
-      } else {
-        // Display error message to the user
-        $('#status-message').html('<div class="alert alert-danger">An error occurred while submitting the form.</div>');
-      }
-    },
-    error: function() {
-      // Display error message to the user
-      $('#status-message').html('<div class="alert alert-danger">An error occurred while submitting the form.</div>');
-    }
-  });
-});
-
-    </script>
-
+  if (success === 'true') {
+    const statusMessage = document.getElementById('status-message');
+    statusMessage.textContent = 'Form submission successful!';
+    // You can customize the styling of the status message here
+    statusMessage.style.color = 'green';
+  }
+</script>
   </body>
 </html>

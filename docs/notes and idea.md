@@ -6,11 +6,13 @@
 - make flightchart hover text resposive to size of page
 - make color in input a picker
 - validate plastic type based on brand
-- update input form for sequelize connection
+
 - https://blog.logrocket.com/using-helmet-node-js-secure-application/
 - add create new category button on input page
 - create api backup from the discitAPI
 -- await sequelize.sync({ force: true });//remove this force: true for deployment
+
+- hitting enter on the lookup mold form is submitting the form
 
 File structure 05/11
 

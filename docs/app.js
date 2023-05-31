@@ -93,15 +93,21 @@ app.get('/registration', (req, res) => {
 
 app.get('/table-names', async (req, res) => {
   try {
-    const tableNames = await sequelize.query('SHOW TABLES');
-    const tableNamesRows = tableNames[0];
-    const tableNamesArray = tableNamesRows.map((row) => row.Tables_in_discs);
-    res.json(tableNamesArray);
+    if (req.session.user && req.session.user.permission === 'admin') {
+      const tableNames = await sequelize.query('SHOW TABLES');
+      const tableNamesRows = tableNames[0];
+      const tableNamesArray = tableNamesRows.map((row) => row.Tables_in_discs);
+      res.json(tableNamesArray);
+    } else {
+      const visibleTables = ['silasdiscs', 'jcdiscs', req.session.user.nickname];
+      res.json(visibleTables);
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 app.get('/table-options', async (req, res) => {
   try {

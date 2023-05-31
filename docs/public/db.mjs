@@ -28,8 +28,14 @@ const User = sequelize.define('Users', {
   nickname: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  permission: {
+    type: Sequelize.ENUM('regular', 'admin'),
+    allowNull: false,
+    defaultValue: 'regular'
   }
 });
+
 (async () => {
   try {
     await sequelize.sync();

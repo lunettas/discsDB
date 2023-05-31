@@ -58,6 +58,14 @@ app.engine('hbs', engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+Handlebars.registerHelper('hasPermission', function (user, permission, options) {
+  if (user.permission === permission) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
 app.get('/', async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -102,7 +110,7 @@ app.get('/table-names', async (req, res) => {
       const visibleTables = ['silasdiscs', 'jcdiscs', req.session.user.nickname];
       res.json(visibleTables);
     }
-  } catch (error) {
+    } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }

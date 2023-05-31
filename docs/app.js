@@ -1,86 +1,101 @@
 import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import SequelizeStoreInit from 'connect-session-sequelize';
 import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
 import { hashPassword, comparePasswords } from './public/pwHash.mjs';
-import https from 'https';
-import querystring from 'querystring';
-import mime from 'mime';
 import path from 'path';
-import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
+import fs from 'fs/promises';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
-dotenv.config();
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}));
+const SequelizeStore = SequelizeStoreInit(session.Store);
 
-app.use((req, res, next) => {
-  // Check if the user is logged in based on the session
+dotenv.config();
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: false,
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
+    resave: false,
+    proxy: true,
+  })
+);
+
+app.use(async (req, res, next) => {
   if (req.session.userId) {
-    // Fetch the user from the database based on the session userId
-    User.findByPk(req.session.userId)
-      .then((user) => {
-        if (user) {
-          // Set the user object in the session
-          req.session.user = user;
-        }
-        next();
-      })
-      .catch((error) => {
-        console.error('Error retrieving user:', error);
-        next();
-      });
+    try {
+      const user = await User.findByPk(req.session.userId);
+      if (user) {
+        req.session.user = user.get({ plain: true }); // Store the plain user object in the session
+        console.log('User stored in session:', req.session.user);
+
+      }
+      req.session.save();
+      next();
+    } catch (error) {
+      console.error('Error retrieving user:', error);
+      next();
+    }
   } else {
     next();
   }
 });
 
-// Serve static files from the 'public' folder
+
 app.use(express.static(path.resolve('public'), { extensions: ['html', 'htm', 'mjs', 'jpg'] }));
 console.log('Static files served from:', path.join(__dirname, 'public'));
-// parse incoming form data
+
 app.use(express.urlencoded({ extended: true }));
 
-//handlebars routing
-app.engine('hbs', engine({extname: 'hbs'}));
+app.engine('hbs', engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-
 app.get('/', async (req, res) => {
-  const user = req.session.user; // Get the user object directly from the session
-
-  // No need to retrieve the userId separately
-
-  res.render('index', { user: user ? user.get({ plain: true }) : null });
+  try {
+    const userId = req.session.userId;
+    if (userId) {
+      const user = await User.findByPk(userId);
+      res.render('index', { user: user ? user.get({ plain: true }) : null });
+    } else {
+      res.render('index', { user: null });
+    }
+  } catch (error) {
+    console.error('Error retrieving user:', error);
+    res.render('index', { user: null });
+  }
 });
 
-  
+
 app.get('/input', (req, res) => {
-    res.render('input', { User: req.session.user });
+  res.render('input', { user: req.session.user });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', { User: req.session.user });
+  res.render('about', { user: req.session.user });
 });
+
 app.get('/flightchart', (req, res) => {
-    res.render('flightchart', { User: req.session.user });
+  res.render('flightchart', { user: req.session.user });
 });
+
 app.get('/registration', (req, res) => {
-    res.render('registration', { User: req.session.user });
+  res.render('registration', { user: req.session.user });
 });
+
+
 app.get('/table-names', async (req, res) => {
   try {
     const tableNames = await sequelize.query('SHOW TABLES');
     const tableNamesRows = tableNames[0];
-    const tableNamesArray = tableNamesRows.map(row => row.Tables_in_discs);
+    const tableNamesArray = tableNamesRows.map((row) => row.Tables_in_discs);
     res.json(tableNamesArray);
   } catch (error) {
     console.log(error);
@@ -103,14 +118,13 @@ app.get('/table-options', async (req, res) => {
   }
 });
 
-
 app.get('/discs', async (req, res) => {
   try {
     const { table, category } = req.query;
 
     const rows = await sequelize.query(`SELECT * FROM ${table} WHERE category = :category`, {
       replacements: { category },
-      type: sequelize.QueryTypes.SELECT
+      type: sequelize.QueryTypes.SELECT,
     });
 
     res.json(rows);
@@ -120,22 +134,12 @@ app.get('/discs', async (req, res) => {
   }
 });
 
-
-
-app.listen(port, function (){
+app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
 
-
-
-// Define the file path for storing form submissions
-
 const filePath = path.join(__dirname, 'form-submissions.txt');
 
-
-
-
-// handle form submission
 app.post('/submit', async (req, res) => {
   const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
   console.log('Received form input:', req.body);
@@ -153,7 +157,6 @@ app.post('/submit', async (req, res) => {
   }
 
   try {
-    // Insert a new row into the table
     const query = `
       INSERT INTO ${table} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -164,31 +167,21 @@ app.post('/submit', async (req, res) => {
     console.log('New row inserted:', result);
 
     console.log('Disc added to the database and form submission stored!');
-    // Send a success response with a redirect
     res.redirect('/input?success=true');
   } catch (error) {
     console.error('Error inserting data:', error);
-    // Send an error response with a status message
     res.status(500).json({ success: false, message: 'An error occurred while submitting the data.' });
   }
 });
 
-
-
-
-
-//register user accounts
 app.post('/register', async (req, res) => {
   const { email, plaintextPassword, nickname } = req.body;
   console.log('Received form input:', req.body);
   try {
     console.log('Plaintext Password:', plaintextPassword);
-    //hash pw
     const hashedPassword = await hashPassword(plaintextPassword);
     const user = await User.create({ email, password: hashedPassword, nickname });
     console.log('User created:', user.email);
-
-    // Render the registration page with the registrationSuccess flag set to true
     res.render('registration.hbs', { registrationSuccess: true });
   } catch (error) {
     console.error('Error registering user:', error);
@@ -196,39 +189,33 @@ app.post('/register', async (req, res) => {
   }
 });
 
-
 app.post('/login', async (req, res) => {
   const { email, plaintextPassword } = req.body;
 
   try {
-    // Find the user by their email
     const user = await User.findOne({ where: { email } });
 
-    // If the user does not exist, show an alert message
     if (!user) {
       const errorMessage = 'Invalid email or password';
-      console.log('Invalid user')
+      console.log('Invalid user');
       res.render('index', { loginFailed: true, errorMessage });
       return;
     }
 
-    // Compare the passwords
     const passwordMatch = await comparePasswords(plaintextPassword, user.password);
 
-    // If passwords don't match, show an alert message
     if (!passwordMatch) {
       const errorMessage = 'Invalid email or password';
-      console.log('Invalid password')
+      console.log('Invalid password');
       res.render('index', { loginFailed: true, errorMessage });
       return;
     }
 
-    // Set the user as authenticated (you can use session or JWT for authentication)
     req.session.userId = user.id;
-
-    // Redirect to the desired page after successful login
     res.redirect('/');
-    console.log('Valid user')
+    console.log('Valid user');
+    console.log('Found user:', user);
+
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).send('An error occurred during login.');
@@ -236,13 +223,11 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-  // Clear the session data
   req.session.destroy((err) => {
     if (err) {
       console.error('Error logging out:', err);
       res.status(500).send('An error occurred while logging out.');
     } else {
-      // Redirect to the desired page after successful logout
       res.redirect('/');
     }
   });

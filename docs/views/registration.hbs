@@ -8,46 +8,42 @@
   <body>
     <h1>Welcome to discsDB</h1>
     <p></p>
-    <form class="registration" action="/register" method="POST">
-        <div class="form-group mb-3 bg-dark">
+    {{#if registrationSuccess}}
+      <div class="confirmation-message">
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div style="display: block; text-align: center; margin: 0 auto;">
+            <h2>Registration Successful!</h2>
+            <div>You are the best!</div>
+            <img src="/IMG/champs.jpg" alt="two random disc golfers with trophies" style="padding: 50px; max-width: 90%; max-height: 90%; height: auto; display: block; margin: 0 auto; margin-bottom: 10px;">
+            <p style="font-size: 12px; margin: 0;">
+              Photo by <a href="https://www.flickr.com/photos/pdga/52360198176/in/album-72177720302119915/">Justin Anderson / PDGA</a> under a <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0 license</a>. 
+              <span style="font-size: 12px;">&copy; [2022] [Justin Anderson]</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      {{#if user}}
+        <p>Welcome, {{user.nickname}}!</p>
+        <!-- Render more elements for signed-in users here -->
+      {{else}}
+        <form class="registration" action="/register" method="POST">
+          <div class="form-group mb-3 bg-dark">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" autocomplete="username" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We won't share your email with anyone!</small>
-        </div>
-        <div class="form-group  mb-3 bg-dark">
-          <input class="form-control" name="nickname" placeholder="Nickname" autocomplete="off">
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group  mb-3 bg-dark">
+            <input class="form-control" name="nickname" placeholder="Nickname" autocomplete="off">
+          </div>
+          <div class="form-group">
             <label>Password</label>
             <input type="password" autocomplete="new-password" class="form-control" name="plaintextPassword" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-
-  <script>
-  {{#if registrationSuccess}}
-    // Hide the form when registrationSuccess is true
-    const registrationForm = document.querySelector('.registration');
-    registrationForm.style.display = 'none';
-
-    const confirmationMessage = document.createElement('div');
-    confirmationMessage.classList.add('confirmation-message');
-    confirmationMessage.innerHTML = `
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div style="display: block; text-align: center; margin: 0 auto;">
-        <h2>Registration Successful!</h2>
-        <div>You are the best!</div>
-        <img src="/IMG/champs.jpg" alt="two random disc golfers with trophies" style="padding: 50px; max-width: 90%; max-height: 90%; height: auto; display: block; margin: 0 auto; margin-bottom: 10px;">
-        <p style="font-size: 12px; margin: 0;">
-            Photo by <a href="https://www.flickr.com/photos/pdga/52360198176/in/album-72177720302119915/">Justin Anderson / PDGA</a> under a <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0 license</a>. 
-            <span style="font-size: 12px;">&copy; [2022] [Justin Anderson]</span>.
-        </p>
-    </div>
-</div>
-`;
-    document.body.appendChild(confirmationMessage);
-  {{/if}}
-</script>           
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      {{/if}}
+    {{/if}}
+        
   </body>
 </html>
-

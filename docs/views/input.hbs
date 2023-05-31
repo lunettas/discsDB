@@ -13,6 +13,10 @@
   </head>
   <body>
     <h1>Hello World, welcome to discsDB, use this form to add discs to your database!</h1>
+       {{#if user}}
+      <p>Welcome, {{user.nickname}}!</p>
+      <!-- Render more elements for signed-in users here -->
+    {{/if}}
     <div id="status-message"></div>
     <!-- Look up the mold with API -->
     <form class="API-lookup-form" id="API-lookup-form" >

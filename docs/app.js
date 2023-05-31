@@ -177,17 +177,47 @@ app.post('/submit', async (req, res) => {
 app.post('/register', async (req, res) => {
   const { email, plaintextPassword, nickname } = req.body;
   console.log('Received form input:', req.body);
+  
   try {
     console.log('Plaintext Password:', plaintextPassword);
     const hashedPassword = await hashPassword(plaintextPassword);
     const user = await User.create({ email, password: hashedPassword, nickname });
     console.log('User created:', user.email);
+
+    // Retrieve the user's nickname from the database
+    const userFromDB = await User.findOne({ where: { email } });
+    const userNickname = userFromDB.nickname;
+
+    // Create a table for the user using the retrieved nickname
+    const tableName = `${userNickname}`;
+    const createUserTableQuery = `
+      CREATE TABLE ${tableName} (
+        ID INT PRIMARY KEY AUTO_INCREMENT,
+        Mold VARCHAR(100),
+        Plastic VARCHAR(100),
+        Brand VARCHAR(100),
+        Weight INT,
+        Speed INT,
+        Glide INT,
+        Turn DECIMAL(2,1),
+        Fade DECIMAL(2,1),
+        Slot ENUM('Putter', 'Mid-Range', 'Fairway Driver', 'Control Driver', 'Distance Driver'),
+        Category ENUM('Main Bag', 'Side Bag', 'Collection', 'Backup', 'Sale / Trade'),
+        Color VARCHAR(100),
+        Stamp VARCHAR(100),
+        \`Sleepy Scale\` INT
+      );
+    `;
+
+    await sequelize.query(createUserTableQuery); // Execute the create table query
+
     res.render('registration.hbs', { registrationSuccess: true });
   } catch (error) {
     console.error('Error registering user:', error);
     res.status(500).send('An error occurred while registering the user.');
   }
 });
+
 
 app.post('/login', async (req, res) => {
   const { email, plaintextPassword } = req.body;

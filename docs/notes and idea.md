@@ -1,17 +1,12 @@
 - manage overlapping discs
-- create user accounts
 - set up password reset 
 - implement an all disc/API flightchart (similar to Marshall st)
-- address "formData is not defined" err @ input 136.17
 - make flightchart hover text resposive to size of page
-- make color in input a picker
+- make color (in input) a picker
 - validate plastic type based on brand
-
 - https://blog.logrocket.com/using-helmet-node-js-secure-application/
 - add create new category button on input page
 - create api backup from the discitAPI
--- await sequelize.sync({ force: true });//remove this force: true for deployment
-
 - hitting enter on the lookup mold form is submitting the form
 
 File structure 05/11
@@ -54,25 +49,25 @@ To implement user accounts with a logged in/logged out state and the ability to 
    - Retrieve the submitted form data and verify it against the stored user credentials in the database.
    - If the credentials match, create a session or token to track the user's logged-in state. -->
 
-5. Set up session management:
+<!-- 5. Set up session management:
    - Use a session management library like `express-session` to manage user sessions.
    - Configure the session middleware in your Node.js app to handle session data storage and retrieval.
-   - Store session information, such as the user ID, in the session object.
+   - Store session information, such as the user ID, in the session object. -->
 
 6. Create user dashboard:
    - Once a user is logged in, display their unique dashboard page.
    - Design the dashboard interface where users can build their unique tables.
    - Use JavaScript and DOM manipulation to dynamically update the page based on user actions.
 
-7. Implement table creation:
+<!-- 7. Implement table creation:
    - Create routes in your Node.js app to handle table creation requests from the user dashboard.
    - Retrieve the necessary data from the request, validate it, and store it in the database.
-   - Use Sequelize or your ORM library to create a new entry in the user's table.
+   - Use Sequelize or your ORM library to create a new entry in the user's table. -->
 
-8. Implement logout functionality:
+<!-- 8. Implement logout functionality:
    - Create a route for user logout.
    - Clear the user's session or token to mark them as logged out.
-   - Redirect them to a designated page, such as the login page or homepage.
+   - Redirect them to a designated page, such as the login page or homepage. -->
 
 Remember to secure your authentication and session management implementation by using best practices such as password hashing, storing sensitive information securely, and protecting against common security vulnerabilities.
 

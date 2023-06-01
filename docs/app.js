@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import Handlebars from 'handlebars';
 import dotenv from 'dotenv';
 import SequelizeStoreInit from 'connect-session-sequelize';
 import { sequelize, User } from './public/db.mjs';
@@ -99,15 +100,37 @@ app.get('/registration', (req, res) => {
 });
 
 
-app.get('/table-names', async (req, res) => {
+app.get('/flightchart/table-names', async (req, res) => {
   try {
     if (req.session.user && req.session.user.permission === 'admin') {
       const tableNames = await sequelize.query('SHOW TABLES');
       const tableNamesRows = tableNames[0];
       const tableNamesArray = tableNamesRows.map((row) => row.Tables_in_discs);
       res.json(tableNamesArray);
-    } else {
+    } else if (req.session.user) {
       const visibleTables = ['silasdiscs', 'jcdiscs', req.session.user.nickname];
+      res.json(visibleTables);
+    } else {
+      const visibleTables = ['silasdiscs', 'jcdiscs'];
+      res.json(visibleTables);
+    }
+    } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.get('/input/table-names', async (req, res) => {
+  try {
+    if (req.session.user && req.session.user.permission === 'admin') {
+      const tableNames = await sequelize.query('SHOW TABLES');
+      const tableNamesRows = tableNames[0];
+      const tableNamesArray = tableNamesRows.map((row) => row.Tables_in_discs);
+      res.json(tableNamesArray);
+    } else if (req.session.user) {
+      const visibleTables = [req.session.user.nickname];
+      res.json(visibleTables);
+    } else {
+      const visibleTables = ['please create an account to add discs to your personal database'];
       res.json(visibleTables);
     }
     } catch (error) {

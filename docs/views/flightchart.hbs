@@ -31,7 +31,7 @@
       
       drawChart(discData);
       
-      fetch('/table-names')
+      fetch('/flightchart/table-names')
         .then(response => response.json())
         .then(tableNames => {
           const dropdown = document.querySelector('#table-names-dropdown');

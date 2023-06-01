@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Populate the table-select dropdown
-  $.get('/table-names', function(tableNames) {
+  $.get('/input/table-names', function(tableNames) {
     const tableSelect = document.getElementById('table-select');
     tableNames.forEach(tableName => {
       const optionElement = document.createElement('option');

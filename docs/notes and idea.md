@@ -1,3 +1,5 @@
+To do:
+- reroute input page to registration for guests
 - manage overlapping discs
 - set up password reset 
 - implement an all disc/API flightchart (similar to Marshall st)

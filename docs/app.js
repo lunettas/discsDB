@@ -1,7 +1,8 @@
 import express from 'express';
 import session from 'express-session';
-import Handlebars from 'handlebars';
+import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import crypto from 'crypto';
 import SequelizeStoreInit from 'connect-session-sequelize';
 import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
@@ -59,13 +60,6 @@ app.engine('hbs', engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-Handlebars.registerHelper('hasPermission', function (user, permission, options) {
-  if (user.permission === permission) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
-});
 
 app.get('/', async (req, res) => {
   try {
@@ -99,8 +93,12 @@ app.get('/registration', (req, res) => {
   res.render('registration', { user: req.session.user });
 });
 
+app.get('/forgot-password', (req, res) => {
+  res.render('forgot-password', { user: req.session.user });
+});
 
-app.get('/flightchart/table-names', async (req, res) => {
+
+app.get('/flightchart-table-names', async (req, res) => {
   try {
     if (req.session.user && req.session.user.permission === 'admin') {
       const tableNames = await sequelize.query('SHOW TABLES');
@@ -119,7 +117,7 @@ app.get('/flightchart/table-names', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-app.get('/input/table-names', async (req, res) => {
+app.get('/input-table-names', async (req, res) => {
   try {
     if (req.session.user && req.session.user.permission === 'admin') {
       const tableNames = await sequelize.query('SHOW TABLES');
@@ -175,7 +173,6 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
 
-const filePath = path.join(__dirname, 'form-submissions.txt');
 
 app.post('/submit', async (req, res) => {
   const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
@@ -298,4 +295,103 @@ app.get('/logout', (req, res) => {
       res.redirect('/');
     }
   });
+});
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ionos.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: 'admin@www.discsdb.cloud',
+    pass: 'qfJnk_$6-iEr7VF',
+  },
+});
+
+async function sendResetCodeEmail(email, resetToken) {
+  const mailOptions = {
+    from: 'admin@www.discsdb.cloud',
+    to: email,
+    subject: 'Password Reset',
+    text: `Please click the following link to reset your password: ${resetToken}`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Password reset email sent successfully');
+  } catch (error) {
+    console.error('Error sending password reset email:', error);
+  }
+}
+
+function generateResetToken() {
+  const token = crypto.randomBytes(32).toString('hex');
+  return token;
+}
+
+app.get('/send-test-email', async (req, res) => {
+  try {
+    const mailOptions = {
+      from: 'admin@www.discsdb.cloud',
+      to: 'silaslunetta@gmail.com',
+      subject: 'Test Email',
+      text: 'This is a test email from your application.',
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Test email sent successfully');
+    res.send('Test email sent successfully');
+  } catch (error) {
+    console.error('Error sending test email:', error);
+    res.status(500).send('Error sending test email');
+  }
+});
+
+app.get('/forgot-password', (req, res) => {
+  res.render('forgot-password', { success: false, error: false });
+});
+
+app.post('/forgot-password', async (req, res) => {
+  const { email, resetCode } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      // User with the provided email does not exist
+      return res.render('forgot-password', { error: 'User not found', success: false });
+    }
+
+    if (resetCode) {
+      // Handle password reset confirmation
+      if (user.resetCode !== resetCode) {
+        return res.render('forgot-password', { error: 'Invalid reset code', success: false });
+      }
+
+      // Reset the user's password here
+      // ...
+
+      // Clear the reset code and its expiration in the user's record in the database
+      user.resetCode = null;
+      user.resetCodeExpiration = null;
+      await user.save();
+
+      return res.render('forgot-password', { success: true, error: false });
+    } else {
+      // Generate a unique reset code
+      const resetCode = generateResetToken();
+
+      // Store the reset code and its expiration in the user's record in the database
+      user.resetCode = resetCode;
+      user.resetCodeExpiration = Date.now() + 3600000; // Code expires in 1 hour
+      await user.save();
+
+      // Send an email to the user with the reset code
+      sendResetCodeEmail(user.email, resetCode);
+
+      return res.render('forgot-password', { success: false, error: false });
+    }
+  } catch (error) {
+    console.error('Error during password reset:', error);
+    res.status(500).send('An error occurred during password reset.');
+  }
 });

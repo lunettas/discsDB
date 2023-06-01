@@ -33,6 +33,14 @@ const User = sequelize.define('Users', {
     type: Sequelize.ENUM('regular', 'admin'),
     allowNull: false,
     defaultValue: 'regular'
+  },
+  resetCode: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  resetCodeExpiration: {
+    type: Sequelize.DATE,
+    allowNull: true
   }
 });
 
@@ -48,3 +56,6 @@ const User = sequelize.define('Users', {
 
 
 export { sequelize, User};
+
+
+// dev tool for making new Users table await sequelize.sync({force:true});

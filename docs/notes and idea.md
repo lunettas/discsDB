@@ -7,7 +7,7 @@ To do:
 - make color (in input) a picker
 - validate plastic type based on brand
 - https://blog.logrocket.com/using-helmet-node-js-secure-application/
-- add create new category button on input page
+- add create new category button on input page??
 - create api backup from the discitAPI
 - hitting enter on the lookup mold form is submitting the form
 

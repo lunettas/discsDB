@@ -303,7 +303,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: 'admin@www.discsdb.cloud',
-    pass: 'qfJnk_$6-iEr7VF',
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -322,6 +322,25 @@ async function sendResetCodeEmail(email, resetToken) {
     console.error('Error sending password reset email:', error);
   }
 }
+async function sendResetCodeEmailTest(resetToken) {
+  const mailOptions = {
+    from: 'admin@www.discsdb.cloud',
+    to: 'silaslunetta@gmail.com',
+    subject: 'Password Reset',
+    text: `Please click the following link to reset your password: ${resetToken}`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Password reset email sent successfully');
+  } catch (error) {
+    console.error('Error sending password reset email:', error);
+  }
+}
+
+
+await sendResetCodeEmail('silaslunetta@gmail.com', 'testing 123469');
+await sendResetCodeEmailTest('testing 69');
 
 function generateResetToken() {
   const token = crypto.randomBytes(32).toString('hex');

@@ -88,3 +88,5 @@ Here's a common approach to implementing a password reset functionality:
 7. Notify the user that their password has been successfully reset.
 
 This approach ensures that the actual password remains secure and not exposed, even to administrators.
+
+v=spf1 include:_spf.perfora.net include:_spf.kundenserver.de -all include:_spf.google.com ~all

@@ -10,6 +10,7 @@ import { hashPassword, comparePasswords } from './public/pwHash.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
+import { timeStamp } from 'console';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -94,7 +95,7 @@ app.get('/registration', (req, res) => {
 });
 
 app.get('/forgot-password', (req, res) => {
-  res.render('forgot-password', { user: req.session.user });
+  res.render('forgot-password', { user: req.session.user, success: false, error: false });
 });
 
 
@@ -302,32 +303,17 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: 'admin@www.discsdb.cloud',
+    user: 'admin@discsdb.cloud',
     pass: process.env.EMAIL_PASSWORD,
   },
 });
 
-async function sendResetCodeEmail(email, resetToken) {
+async function sendResetCodeEmail(email, resetCode) {
   const mailOptions = {
-    from: 'admin@www.discsdb.cloud',
+    from: 'admin@discsdb.cloud',
     to: email,
-    subject: 'Password Reset',
-    text: `Please click the following link to reset your password: ${resetToken}`,
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log('Password reset email sent successfully');
-  } catch (error) {
-    console.error('Error sending password reset email:', error);
-  }
-}
-async function sendResetCodeEmailTest(resetToken) {
-  const mailOptions = {
-    from: 'admin@www.discsdb.cloud',
-    to: 'silaslunetta@gmail.com',
-    subject: 'Password Reset',
-    text: `Please click the following link to reset your password: ${resetToken}`,
+    subject: `Password Reset TEST Timestamp: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
+    text: `Please click the following link http://localhost:3000/forgot-password and use this code: ${resetCode} to reset your password`,
   };
 
   try {
@@ -338,39 +324,13 @@ async function sendResetCodeEmailTest(resetToken) {
   }
 }
 
-
-await sendResetCodeEmail('silaslunetta@gmail.com', 'testing 123469');
-await sendResetCodeEmailTest('testing 69');
-
-function generateResetToken() {
-  const token = crypto.randomBytes(32).toString('hex');
-  return token;
+function generateResetCode() {
+  const code = crypto.randomBytes(5).toString('hex');
+  return code;
 }
 
-app.get('/send-test-email', async (req, res) => {
-  try {
-    const mailOptions = {
-      from: 'admin@www.discsdb.cloud',
-      to: 'silaslunetta@gmail.com',
-      subject: 'Test Email',
-      text: 'This is a test email from your application.',
-    };
-
-    await transporter.sendMail(mailOptions);
-    console.log('Test email sent successfully');
-    res.send('Test email sent successfully');
-  } catch (error) {
-    console.error('Error sending test email:', error);
-    res.status(500).send('Error sending test email');
-  }
-});
-
-app.get('/forgot-password', (req, res) => {
-  res.render('forgot-password', { success: false, error: false });
-});
-
-app.post('/forgot-password', async (req, res) => {
-  const { email, resetCode } = req.body;
+app.post('/generate-reset-code', async (req, res) => {
+  const { email } = req.body;
 
   try {
     const user = await User.findOne({ where: { email } });
@@ -380,37 +340,68 @@ app.post('/forgot-password', async (req, res) => {
       return res.render('forgot-password', { error: 'User not found', success: false });
     }
 
-    if (resetCode) {
-      // Handle password reset confirmation
-      if (user.resetCode !== resetCode) {
-        return res.render('forgot-password', { error: 'Invalid reset code', success: false });
-      }
+    // Generate a reset code and set its expiration
+    const resetCode = generateResetCode();
+    const resetCodeExpiration = new Date();
+    resetCodeExpiration.setMinutes(resetCodeExpiration.getMinutes() + 30); // Set expiration to 30 minutes from now
 
-      // Reset the user's password here
-      // ...
+    // Store the reset code and its expiration in the user's record in the database
+    user.resetCode = resetCode;
+    user.resetCodeExpiration = resetCodeExpiration;
+    await user.save();
 
-      // Clear the reset code and its expiration in the user's record in the database
-      user.resetCode = null;
-      user.resetCodeExpiration = null;
-      await user.save();
+    // Send the reset code to the user's email
+    await sendResetCodeEmail(email, resetCode);
 
-      return res.render('forgot-password', { success: true, error: false });
-    } else {
-      // Generate a unique reset code
-      const resetCode = generateResetToken();
-
-      // Store the reset code and its expiration in the user's record in the database
-      user.resetCode = resetCode;
-      user.resetCodeExpiration = Date.now() + 3600000; // Code expires in 1 hour
-      await user.save();
-
-      // Send an email to the user with the reset code
-      sendResetCodeEmail(user.email, resetCode);
-
-      return res.render('forgot-password', { success: false, error: false });
-    }
+    return res.render('forgot-password', { success: false, error: false });
   } catch (error) {
-    console.error('Error during password reset:', error);
-    res.status(500).send('An error occurred during password reset.');
+    console.error('Error during reset code generation:', error);
+    res.status(500).send('An error occurred during the reset code generation process.');
+  }
+});
+
+app.post('/change-password', async (req, res) => {
+  const { resetCode, plaintextPassword } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { resetCode } });
+
+    if (!user) {
+      // User with the provided reset code does not exist
+      return res.render('forgot-password', { error: 'User not found', success: false });
+    }
+
+    // Reset the user's password here
+    const hashedPassword = await hashPassword(plaintextPassword);
+    user.password = hashedPassword;
+    await user.save();
+
+    // Clear the reset code and its expiration in the user's record in the database
+    user.resetCode = null;
+    user.resetCodeExpiration = null;
+    await user.save();
+
+    return res.render('forgot-password', { success: true, error: false });
+  } catch (error) {
+    console.error('Error during password change:', error);
+    res.status(500).send('An error occurred during the password change process.');
+  }
+});
+
+app.get('/send-test-email', async (req, res) => {
+  try {
+    const mailOptions = {
+      from: 'admin@discsdb.cloud',
+      to: 'silaslunetta@gmail.com',
+      subject: `This is a TEST Timestamp: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
+      text: 'This is a test email from your application.',
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Test email sent successfully');
+    res.send('Test email sent successfully');
+  } catch (error) {
+    console.error('Error sending test email:', error);
+    res.status(500).send('Error sending test email');
   }
 });

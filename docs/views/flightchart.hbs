@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>discs DB demo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/flightChart.js"></script>
+  </head>
+  <body>
+    <h1>Hello World, welcome to discsDB's flight chart!</h1>
+     {{#if user}}
+      <p>Welcome, {{user.nickname}}!</p>
+      <!-- Render more elements for signed-in users here -->
+    {{/if}}
+    <form id="select-table-and-option" style="display: flex; flex-direction: row;">
+      <select class="form-select form-select-lg mb-3 bg-dark" id="table-names-dropdown" style="margin-right: 10px;">
+        <option value="" selected>Please select a table to display</option>
+      </select>
+      <select class="form-select form-select-lg mb-3 bg-dark" id="option-names-dropdown">
+      </select>
+</form>
+<button class="btn btn-success" id="switch-axis" >Switch to LHBH/RHFH</button>
+    <div id="flight-chart" >
+      <div id="flight-chart-inner"></div>
+    </div>
+
+    <script>
+      
+      drawChart(discData);
+      
+      fetch('/flightchart-table-names')
+        .then(response => response.json())
+        .then(tableNames => {
+          const dropdown = document.querySelector('#table-names-dropdown');
+
+          tableNames.forEach(tableName => {
+            const option = document.createElement('option');
+            option.value = tableName;
+            option.text = tableName;
+            dropdown.appendChild(option);
+          });
+        });
+
+  const tableDropdown = document.querySelector('#table-names-dropdown');
+  const optionDropdown = document.querySelector('#option-names-dropdown');
+
+tableDropdown.addEventListener('change', async (event) => {
+  const selectedTable = event.target.value;
+  const optionsResponse = await fetch(`/table-options?table=${selectedTable}`);
+  const options = await optionsResponse.json();
+
+  // Clear previous options
+  optionDropdown.innerHTML = '';
+
+  // Add new options based on the selected table
+  options.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.text = option;
+    optionDropdown.appendChild(optionElement);
+  });
+});
+
+
+
+optionDropdown.addEventListener('change', async () => {
+  const selectedTable = tableDropdown.value;
+  const selectedOption = optionDropdown.value;
+  console.log('Selected Option', selectedOption);
+
+  let query = `SELECT DISTINCT * FROM ${selectedTable}`;
+  let url = `/discs?table=${encodeURIComponent(selectedTable)}`;
+
+
+  if (selectedOption !== '') {
+    query += ` WHERE category = '${selectedOption}'`;
+    url += `&category=${selectedOption}`;
+
+
+  }
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  const transformedData = data.map((disc) => ({
+    name: disc.Mold,
+    speed: disc.Speed,
+    glide: disc.Glide,
+    turn: Number(disc.Turn),
+    fade: Number(disc.Fade),
+    stability: Number(disc.Turn) + Number(disc.Fade),
+    color: disc.Color,
+  }));
+   
+
+
+
+  drawChart(transformedData);
+});
+
+// Event listener for the switch-axis button
+const switchAxisButton = document.querySelector('#switch-axis');
+let isAxisReversed = false;
+
+switchAxisButton.addEventListener('click', () => {
+  isAxisReversed = !isAxisReversed;
+
+  const buttonText = isAxisReversed ? 'Switch to RHBH/LHFH' : 'Switch to RHFH/LHBH';
+  switchAxisButton.textContent = buttonText;
+
+  const svg = d3.select('#flight-chart svg');
+
+  // Reverse the x-axis domain
+  const xAxisDomain = isAxisReversed ? [-4, 7] : [7, -4];
+  xAxis.domain(xAxisDomain);
+  svg.select('.x-axis').call(d3.axisBottom(xAxis));
+
+  // Redraw the circles
+  svg.selectAll('.disc circle')
+    .attr('cx', function(d) { return xAxis(d.stability) + svgWidth * 0.1; })
+    .attr('cy', function(d) { return yAxis(d.speed) + svgHeight * 0.1; });
+});
+
+
+
+    </script>
+  </body>
+</html>

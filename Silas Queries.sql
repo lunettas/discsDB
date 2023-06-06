@@ -1,3 +1,14 @@
+use discs;
+select * from testdiscs;
+select * from silasdiscs;
+select * from jcdiscs;
+select * from diego;
+select * from users;
+drop table users;
+Select count(ID) from silasdiscs;
+UPDATE Users SET permission = "admin" WHERE id = 1;
+
+select * from silasdiscs where mold = 'Sergeant';
 -- Color in rotation 
 SELECT *
 FROM(SELECT * FROM silasdiscs WHERE Color = 'White') AS whitediscs
@@ -42,14 +53,13 @@ SELECT Mold, COUNT(*) AS Count FROM
 (SELECT * FROM silasdiscs UNION ALL Select * FROM jcdiscs) AS totalDiscs
 GROUP BY Mold ORDER BY Count DESC;
 
--- query for discs I lent josh 
+-- query for discs I lent to josh 
 SELECT Mold, Speed, Glide, Turn, Fade,(Turn + Fade) AS Stability, `Sleepy Scale`, Category, color, stamp
 FROM silasDiscs 
 WHERE ID IN(223, 232, 233, 231, 238, 159, 222, 171, 155, 154, 204, 203, 33, 200, 230, 111, 218, 120, 221)
 ORDER BY Speed, Stability;
--- 238 wrong color? idk if the BD beast or roc3 are logged...
+-- 238 wrong color? idk if the BS beast or roc3 are logged...
 
-select * from silasdiscs;
 
 -- disrupting in silas' branch xD
 select count(*) as 'Total Discs' from silasdiscs WHERE ID IN(223, 232, 233, 231, 238, 159, 222, 171, 155, 154, 204, 203, 33, 200, 230, 111, 218, 120, 221)

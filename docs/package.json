@@ -5,8 +5,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -25,8 +24,5 @@
     "node": "^19.3.0",
     "nodemailer": "^6.9.3",
     "sequelize": "^6.31.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
   }
 }

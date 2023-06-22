@@ -1,4 +1,5 @@
 To do:
+- remove nodemon
 - reroute input page to registration for guests
 - manage overlapping discs
 - set up password reset 
@@ -10,6 +11,8 @@ To do:
 - add create new category button on input page??
 - create api backup from the discitAPI
 - hitting enter on the lookup mold form is submitting the form
+- npm WARN deprecated crypto@1.0.1: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
+- server IP 74.208.107.9
 
 File structure 05/11
 

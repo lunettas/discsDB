@@ -14,7 +14,8 @@ import { timeStamp } from 'console';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
-const port = 3000;
+const port = 80;
+const ipAddress = process.env.SERVER_IP_ADDRESS || 'localhost';
 
 const SequelizeStore = SequelizeStoreInit(session.Store);
 
@@ -170,8 +171,8 @@ app.get('/discs', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+app.listen(port, ipAddress, () => {
+  console.log(`Server running at http://${ipAddress}:${port}/`);
 });
 
 

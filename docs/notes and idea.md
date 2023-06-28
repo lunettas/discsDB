@@ -14,6 +14,9 @@ To do:
 - npm WARN deprecated crypto@1.0.1: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
 - server IP 74.208.107.9
 
+
+
+
 File structure 05/11
 
 - discsDB

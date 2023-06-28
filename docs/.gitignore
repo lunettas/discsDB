@@ -1,3 +1,5 @@
 node_modules/
 .DS_Store
 .env
+*.key
+discsdb.cloud_ssl_certificate.cer

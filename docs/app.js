@@ -11,8 +11,15 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
 import { timeStamp } from 'console';
+import https from 'https';
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const options = {
+  key: fs.readFileSync('/discsDB/ssl/_.discsdb.cloud_private_key.key'),
+  cert: fs.readFileSync('discsDB/ssl/discsdb.cloud_ssl_certificate.cer'),
+};
+
 const app = express();
 const port = 80;
 const ipAddress = process.env.SERVER_IP_ADDRESS || 'localhost';
@@ -171,8 +178,12 @@ app.get('/discs', async (req, res) => {
   }
 });
 
-app.listen(port, ipAddress, () => {
-  console.log(`Server running at http://${ipAddress}:${port}/`);
+// app.listen(port, ipAddress, () => {
+//   console.log(`Server running at http://${ipAddress}:${port}/`);
+// });
+const server = https.createServer(options, app);
+server.listen(port, ipAddress, () => {
+  console.log(`Server running at https://${ipAddress}:${port}/`);
 });
 
 
@@ -314,7 +325,7 @@ async function sendResetCodeEmail(email, resetCode) {
     from: 'admin@discsdb.cloud',
     to: email,
     subject: `Password Reset TEST Timestamp: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
-    text: `Please click the following link http://localhost:3000/forgot-password and use this code: ${resetCode} to reset your password`,
+    text: `Please click the following link http://discsdb.cloud/forgot-password and use this code: ${resetCode} to reset your password`,
   };
 
   try {

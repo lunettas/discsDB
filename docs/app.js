@@ -9,7 +9,7 @@ import { engine } from 'express-handlebars';
 import { hashPassword, comparePasswords } from './public/pwHash.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import fs from 'fs/promises';
+import fs from 'fs';
 import { timeStamp } from 'console';
 import https from 'https';
 

@@ -16,9 +16,10 @@ import https from 'https';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const options = {
-  key: fs.readFileSync('./ssl/_.discsdb.cloud_private_key.key'),
-  cert: fs.readFileSync('./ssl/discsdb.cloud_ssl_certificate.cer'),
+  key: fs.readFileSync('/root/discsDB/ssl/_.discsdb.cloud_private_key.key'),
+  cert: fs.readFileSync('/root/discsDB/ssl/discsdb.cloud_ssl_certificate.cer'),
 };
+
 
 const app = express();
 const port = 443;

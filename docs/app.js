@@ -21,7 +21,7 @@ const options = {
 };
 
 const app = express();
-const port = 80;
+const port = 443;
 const ipAddress = process.env.SERVER_IP_ADDRESS || 'localhost';
 
 const SequelizeStore = SequelizeStoreInit(session.Store);
@@ -178,9 +178,7 @@ app.get('/discs', async (req, res) => {
   }
 });
 
-// app.listen(port, ipAddress, () => {
-//   console.log(`Server running at http://${ipAddress}:${port}/`);
-// });
+
 const server = https.createServer(options, app);
 server.listen(port, ipAddress, () => {
   console.log(`Server running at https://${ipAddress}:${port}/`);

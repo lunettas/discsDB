@@ -16,8 +16,9 @@ import https from 'https';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const options = {
-  key: fs.readFileSync(path.resolve(__dirname, '../ssl/_.discsdb.cloud_private_key.key')),
-  cert: fs.readFileSync(path.resolve(__dirname, '../ssl/discsdb.cloud_ssl_certificate.cer')),
+  key: fs.readFileSync('../certs/private.key'), // Path to the private key file
+  cert: fs.readFileSync('../certs/discsdb.cloud_ssl_certificate.cer'), // Path to the SSL certificate file
+  ca: fs.readFileSync('../certs/discsdb.cloud_ssl_certificate_INTERMEDIATE.cer'), // Path to the intermediate certificate file
 };
 
 

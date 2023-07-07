@@ -330,7 +330,7 @@ async function sendResetCodeEmail(email, resetCode) {
   const mailOptions = {
     from: 'admin@discsdb.cloud',
     to: email,
-    subject: `Password Reset TEST Timestamp: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
+    subject: `Password Reset`,
     text: `Please click the following link http://discsdb.cloud/forgot-password and use this code: ${resetCode} to reset your password`,
   };
 

@@ -22,6 +22,28 @@ img {
 .input-form {
  padding: 10px;
 }
+
+.mobile .input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile .input-group .form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.mobile .input-group .form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.API-lookup-form {
+ padding: 10px;
+}
 .form-control:focus {
   background-color: black !important;
 }

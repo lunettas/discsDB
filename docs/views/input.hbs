@@ -20,8 +20,10 @@
     <div id="status-message"></div>
     <!-- Look up the mold with API -->
     <form class="API-lookup-form" id="API-lookup-form" >
+      <div class="mb-3">
       <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here" style="display: inline-block;">
       <button class="btn btn-success" id="api-autocomplete-btn" type="button" style="display: inline-block;">Lookup Mold</button>
+      </div>    
     </form>
 
     <!-- Input additional information and add to db -->
@@ -65,12 +67,15 @@
 
       <!-- Input mold/plastic/brand -->
       <div class="input-group">
-        <span class="input-group-text">Disc Mold</span>
+        {{!-- <label for="inputMold" class="form-label">Disc Mold</label> --}}
         <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
+        {{!-- <label for="inputPlastic" class="form-label">Plastic</label> --}}
         <input type="text" class="form-control" value="baseline" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
+        {{!-- <label for="brand" class="form-label">Brand</label> --}}
         <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
         <div id="moldHelp" class="form-text"></div>
       </div>
+
       <a class="text-success" href="https://www.wrightlife.com/plastic-types-and-descriptions/" target="_blank">Not sure what the plastic type is?</a>
 
       <!-- Flight numbers -->

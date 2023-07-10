@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>discs DB demo</title>
-  </head>
-  <body>
-    <h1>Hello World, Welcome to discsDB</h1>
-    <p>This is a website intended to help you explore the many unique disc golf discs that exist. Users can explore all molds, compare discs on the flightchart and even create a database that is unique to thier personal collection. With an overwhelming amount of molds availible, this tool is designed to help you build the perfect bag for any condition!</p>
-    <img src="/IMG/discs.jpg" alt="a pile of disc golf discs">  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>discs DB demo</title>
+</head>
+<body>
+  <div class="h1container">
     {{#if user}}
-      <p>Welcome, {{user.nickname}}!</p>
+      <h1 class="title mt-3">Welcome, {{user.nickname}}!</h1>
       <!-- Render more elements for signed-in users here -->
+    {{else}}
+      <h1 class="title mt-3">Hello Guest, Welcome to discsDB</h1>
+      <p>This is a website intended to help you explore the many unique disc golf discs that exist. Users can explore all molds, compare discs on the <a href="/flightchart">flightchart</a>, and even create a database that is unique to their personal collection. With an overwhelming amount of molds available, this tool is designed to help you build the perfect bag for any condition! Please <a href="/register">register</a> to experience full database functionality.</p>
+      <img src="/IMG/discs.jpg" alt="a pile of disc golf discs">  
     {{/if}}
-  
-  </body>
+  </div>
+</body>
 </html>
-
-<!-- front page should allow you to view by collection, type, or speed/stability desc -->

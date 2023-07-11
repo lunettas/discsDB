@@ -1,15 +1,16 @@
+/* General styles */
 h1 {
-  padding: 10px;
   display: flex;
   justify-content: center;
-  color: rgb(187, 183, 183);
+  color: rgb(187, 183, 183) !important;
 }
+
 p {
   padding: 20px;
-  display: flex;
   text-align: justify;
   align-items: center;
 }
+
 img {
   padding: 50px;
   max-width: 90%;
@@ -18,9 +19,104 @@ img {
   display: block;
   margin: 0 auto;
 }
+/* Styles specific to mobile devices */
+html.mobile {
+  h1 {
+    font-size: 16px;
+  }
 
+  p {
+    font-size: 14px;
+  }
+}
+
+/* Styles specific to tablet devices */
+html.tablet {
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Styles specific to desktop devices */
+html.desktop {
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+/* Navbar styles */
+.navbar-nav {
+  text-align: right;
+}
+
+.navbtn {
+  margin-left: auto;
+}
+
+.navbar-brand {
+  color: rgb(187, 183, 183) !important;
+}
+
+/* Footer styles */
+/* .bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+} */
+
+/* Flightchart styles */
+#flight-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#flight-chart-inner {
+  max-width: 60%;
+  max-height: 60%;
+  padding: 50px;
+}
+
+#flight-chart text:not(.label) {
+  font-size: 12px;
+  font-family: sans-serif;
+  fill: whitesmoke;
+}
+
+path.domain {
+  stroke: whitesmoke;
+  stroke-width: 1px;
+}
+
+line.tick {
+  stroke: whitesmoke;
+  stroke-width: 1px;
+}
+
+.horizontal-line {
+  stroke: gray;
+  stroke-width: 1;
+  stroke-dasharray: 4;
+}
+
+.vertical-line {
+  stroke: gray;
+  stroke-width: 1;
+  stroke-dasharray: 4;
+}
+
+/* Input form styles */
 .input-form {
- padding: 10px;
+  padding: 10px;
 }
 
 .mobile .input-group {
@@ -40,67 +136,20 @@ img {
   margin-bottom: 10px;
 }
 
-
 .API-lookup-form {
- padding: 10px;
+  padding: 10px;
 }
+
 .form-control:focus {
   background-color: black !important;
 }
 
-
-/* Styling for flightchart */
-#flight-chart {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
+/* Registration page styles */
+.registration {
+  padding: 20px;
 }
 
-#flight-chart-inner {
-  max-width: 60%;
-  max-height: 60%;
-  padding: 50px;
-}
-
-  path.domain {
-    stroke: whitesmoke;
-    stroke-width: 1px;
-  }
-
-  /* Style for tick lines */
-  line.tick {
-    stroke: whitesmoke;
-    stroke-width: 1px;
-  }
-
-  /* Style for tick labels */
-  text {
-    font-size: 12px;
-    font-family: sans-serif;
-    fill: whitesmoke;
-  }
-
-  /* Style for grid lines */
-  .horizontal-line {
-    stroke: gray;
-    stroke-width: 1;
-    stroke-dasharray: 4;
-  }
-
-  .vertical-line {
-    stroke: gray;
-    stroke-width: 1;
-    stroke-dasharray: 4;
-  }
-  
-
-/*registration page*/
-.registration{
-   padding: 20px;
-}
-
-  /* Media queries for larger screens */
+/* Media queries for larger screens */
 @media only screen and (min-width: 768px) {
   text {
     font-size: 16px;
@@ -119,6 +168,7 @@ img {
   }
 }
 
+/* Message styles */
 .success-message {
   color: green;
 }
@@ -126,6 +176,3 @@ img {
 .error-message {
   color: red;
 }
-  
-  
-  

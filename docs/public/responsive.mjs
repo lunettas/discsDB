@@ -1,16 +1,17 @@
 export function checkScreenSize() {
-    const body = document.querySelector('body');
+    const html = document.querySelector('html');
     if (window.innerWidth < 768) {
-        body.classList.add('mobile');
-        body.classList.remove('tablet', 'desktop');
+      html.classList.add('mobile');
+      html.classList.remove('tablet', 'desktop');
     } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-        body.classList.add('tablet');
-        body.classList.remove('mobile', 'desktop');
+      html.classList.add('tablet');
+      html.classList.remove('mobile', 'desktop');
     } else {
-        body.classList.add('desktop');
-        body.classList.remove('mobile', 'tablet');
+      html.classList.add('desktop');
+      html.classList.remove('mobile', 'tablet');
     }
-}
-
-window.addEventListener('resize', checkScreenSize);
-window.addEventListener('DOMContentLoaded', checkScreenSize);
+  }
+  
+  window.addEventListener('resize', checkScreenSize);
+  window.addEventListener('DOMContentLoaded', checkScreenSize);
+  

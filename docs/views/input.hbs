@@ -91,34 +91,55 @@
     </form>
   {{else}}
     <h1 class="title">Hello Guest, Welcome to discsDB</h1>
-    <p>This is a website intended to help you explore the many unique disc golf discs that exist. Users can explore all molds, compare discs on the <a href="/flightchart">flightchart</a>, and even create a database that is unique to their personal collection. With an overwhelming amount of molds available, this tool is designed to help you build the perfect bag for any condition! Please <a href="/register">register</a> to experience full database functionality.</p> 
+    <p>Welcome to the input page! Use this form to look up discs by mold. Registered users can use this tool to add discs to their database. Please <a href="/register">register</a> to experience full database functionality.</p> 
     <!-- Look up the mold with API -->
-    <form class="API-lookup-form" id="API-lookup-form" >
-      <div class="mb-3">
-      <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here" style="display: inline-block;">
-      <button class="btn btn-success" id="api-autocomplete-btn" type="button" style="display: inline-block;">Lookup Mold</button>
-      </div>    
+    <form class="API-lookup-form" id="API-lookup-form">
+      <div class="input-container">
+        <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here">
+        <button class="btn btn-success" id="api-autocomplete-btn" type="button">Lookup Mold</button>
+      </div>
     </form>
-    <form class="input-form" id="submit-to-db" action="/submit" method="POST">
-      
-      <!-- Input mold/plastic/brand -->
-      <div class="input-group">
-        {{!-- <label for="inputMold" class="form-label">Disc Mold</label> --}}
-        <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
-        {{!-- <label for="brand" class="form-label">Brand</label> --}}
-        <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
-        <div id="moldHelp" class="form-text"></div>
-      </div>
 
-      <!-- Flight numbers -->
-      <div class="input-group">
-        <span class="input-group-text">Flight Numbers</span>
-        <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
-        <input type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
-        <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
-        <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
-      </div>
-       </form>
+    <div class="input-form input-guest-disc-info" id="submit-to-db">
+        <div class="input-group table">
+          <div class="input-row table-row">
+            <div class="table-cell">
+              <label for="inputMold" class="form-sublabel">Disc Mold</label>
+              <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="">
+            </div>
+            <div class="table-cell">
+              <label for="brand" class="form-sublabel">Brand</label>
+              <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="">
+            </div>
+          </div>
+          <div class="input-row table-row">
+            <div class="table-cell">
+              <label class="form-sublabel flight-label">Flight Numbers</label>
+            </div>
+          </div>
+          <div class="input-row table-row">
+            <div class="table-cell">
+              <label for="speed" class="form-sublabel">Speed</label>
+              <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="">
+            </div>
+            <div class="table-cell">
+              <label for="glide" class="form-sublabel">Glide</label>
+              <input type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="">
+            </div>
+            <div class="table-cell">
+              <label for="turn" class="form-sublabel">Turn</label>
+              <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="">
+            </div>
+            <div class="table-cell">
+              <label for="fade" class="form-sublabel">Fade</label>
+              <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="">
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+
   {{/if}}
   
    

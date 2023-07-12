@@ -4,6 +4,11 @@ h1 {
   justify-content: center;
   color: rgb(187, 183, 183) !important;
 }
+h4 {
+  display: flex;
+  justify-content: center;
+  color: rgb(187, 183, 183) !important;
+}
 
 p {
   padding: 20px;
@@ -19,38 +24,44 @@ img {
   display: block;
   margin: 0 auto;
 }
-/* Styles specific to mobile devices */
-html.mobile {
-  h1 {
-    font-size: 16px;
-  }
 
-  p {
-    font-size: 14px;
-  }
+/* Styles specific to mobile devices */
+html.mobile h1 {
+  font-size: 16px;
+}
+
+html.mobile p {
+  font-size: 14px;
 }
 
 /* Styles specific to tablet devices */
-html.tablet {
-  h1 {
-    font-size: 20px;
-  }
+html.tablet h1 {
+  font-size: 20px;
+}
 
-  p {
-    font-size: 16px;
-  }
+html.tablet p {
+  font-size: 16px;
 }
 
 /* Styles specific to desktop devices */
 html.desktop {
-  h1 {
-    font-size: 24px;
-  }
-
-  p {
-    font-size: 18px;
-  }
+  display: grid;
+  grid-template-rows: auto auto auto; /* Three equal rows */
+  grid-gap: 20px; /* Gap between grid cells */
 }
+
+html.desktop h1 {
+  padding: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html.desktop .flex-container {
+  display: flex;
+  align-items: center;
+}
+
 /* Navbar styles */
 .navbar-nav {
   text-align: right;
@@ -119,17 +130,17 @@ line.tick {
   padding: 10px;
 }
 
-.mobile .input-group {
+html.mobile .input-group {
   display: flex;
   flex-direction: column;
 }
 
-.mobile .input-group .form-label {
+html.mobile .input-group .form-label {
   display: block;
   margin-bottom: 5px;
 }
 
-.mobile .input-group .form-control {
+html.mobile .input-group .form-control {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -150,21 +161,29 @@ line.tick {
 }
 
 /* Media queries for larger screens */
-@media only screen and (min-width: 768px) {
-  text {
-    font-size: 16px;
+@media only screen and (max-width: 768px) {
+  html.desktop h1 {
+    padding-right: 40px; /* Increase the right padding to make room for the text */
   }
 }
 
 @media only screen and (min-width: 992px) {
-  text {
+  html.mobile h1 {
     font-size: 20px;
+  }
+
+  html.mobile p {
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  text {
+  html.mobile h1 {
     font-size: 24px;
+  }
+
+  html.mobile p {
+    font-size: 18px;
   }
 }
 

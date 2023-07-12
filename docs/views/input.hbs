@@ -12,11 +12,9 @@
     <script type="module" src="/tableSelect"></script>
   </head>
   <body>
-    <h1>Hello World, welcome to discsDB, use this form to add discs to your database!</h1>
-       {{#if user}}
-      <p>Welcome, {{user.nickname}}!</p>
-      <!-- Render more elements for signed-in users here -->
-    {{/if}}
+     {{#if user}}
+    <h1 class="title">Welcome, {{user.nickname}}!</h1>
+    <h4 class="sub-title">Lookup a disc and add it to your collection! </h4>
     <div id="status-message"></div>
     <!-- Look up the mold with API -->
     <form class="API-lookup-form" id="API-lookup-form" >
@@ -91,7 +89,40 @@
       <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
 
     </form>
-    
+  {{else}}
+    <h1 class="title">Hello Guest, Welcome to discsDB</h1>
+    <p>This is a website intended to help you explore the many unique disc golf discs that exist. Users can explore all molds, compare discs on the <a href="/flightchart">flightchart</a>, and even create a database that is unique to their personal collection. With an overwhelming amount of molds available, this tool is designed to help you build the perfect bag for any condition! Please <a href="/register">register</a> to experience full database functionality.</p> 
+    <!-- Look up the mold with API -->
+    <form class="API-lookup-form" id="API-lookup-form" >
+      <div class="mb-3">
+      <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here" style="display: inline-block;">
+      <button class="btn btn-success" id="api-autocomplete-btn" type="button" style="display: inline-block;">Lookup Mold</button>
+      </div>    
+    </form>
+    <form class="input-form" id="submit-to-db" action="/submit" method="POST">
+      
+      <!-- Input mold/plastic/brand -->
+      <div class="input-group">
+        {{!-- <label for="inputMold" class="form-label">Disc Mold</label> --}}
+        <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
+        {{!-- <label for="brand" class="form-label">Brand</label> --}}
+        <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
+        <div id="moldHelp" class="form-text"></div>
+      </div>
+
+      <!-- Flight numbers -->
+      <div class="input-group">
+        <span class="input-group-text">Flight Numbers</span>
+        <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
+        <input type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
+        <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
+        <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
+      </div>
+       </form>
+  {{/if}}
+  
+   
+   
   <script>
   const urlParams = new URLSearchParams(window.location.search);
   const success = urlParams.get('success');

@@ -122,19 +122,16 @@ var discs = svg.selectAll(".disc")
       
 
   // Add labels
+  
   svg.append("text")
-    .attr("x", svgWidth / 2)
-    .attr("y", 20)
-    .attr("text-anchor", "middle")
-    .text("Disc Flight Chart");
-
-  svg.append("text")
+    .classed("label", true)
     .attr("x", svgWidth/2) // center horizontally
     .attr("y", svgHeight * .99) // position below x-axis
     .attr("text-anchor", "middle")
     .text("Stability");
 
     svg.append("text")
+    .classed("label speed-label", true)
     .attr("x", -svgHeight/2) // center vertically
     .attr("y", svgWidth * 0.1) // position left of y-axis
     .attr("text-anchor", "middle")

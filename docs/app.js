@@ -202,7 +202,7 @@ const server = app.listen(port, () => {
 
 
 app.post('/submit', async (req, res) => {
-  const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
+  const { table, collection, color, stamp, weight, sleepyscale, mold, plastic, brand, speed, glide, turn, fade } = req.body;
   console.log('Received form input:', req.body);
   let slot;
   if (speed > 0 && speed <= 4) {
@@ -223,7 +223,7 @@ app.post('/submit', async (req, res) => {
       INSERT INTO ${tableName} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Collection, Color, Stamp, \`Sleepy Scale\`)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, category, color, stamp, sleepyscale];
+    const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, collection, color, stamp, sleepyscale];
     const [result] = await sequelize.query(query, { replacements: values });
 
     console.log('New row inserted:', result);

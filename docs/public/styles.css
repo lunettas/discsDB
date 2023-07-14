@@ -256,7 +256,14 @@ line.tick {
 .form-control {
   width: 100%;
   font-size: 16px;
-  word-wrap: break-word; /* Add this line to break long words and wrap them */
+  word-wrap: break-word;
+  min-width: 200px !important;
+}
+@media only screen and (max-width: 320px) {
+  .input-container button {
+    height: 38px;
+    font-size: 12px;
+  }
 }
 
 html.mobile .input-group {

@@ -36,7 +36,7 @@ export default function apiCall() {
   }
 
   inputField.addEventListener('keypress', function(event) {
-    if (event.key === 13) {
+    if (event.key === 'Enter') {
           event.preventDefault();
           apiCallBtn.click();
         }

@@ -6,6 +6,7 @@ import crypto from 'crypto';
 import SequelizeStoreInit from 'connect-session-sequelize';
 import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
+import Handlebars from 'handlebars';
 import { hashPassword, comparePasswords } from './public/pwHash.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -73,6 +74,13 @@ app.engine('hbs', engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+Handlebars.registerHelper('ifEqual', function(a, b, options) {
+  if (a === b) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 
 app.get('/', async (req, res) => {
   try {
@@ -210,8 +218,9 @@ app.post('/submit', async (req, res) => {
   }
 
   try {
+    const tableName = req.user.nickname;
     const query = `
-      INSERT INTO ${table} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
+      INSERT INTO ${tableName} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Collection, Color, Stamp, \`Sleepy Scale\`)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, category, color, stamp, sleepyscale];

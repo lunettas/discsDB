@@ -17,32 +17,50 @@
     <h4 class="sub-title">Lookup a disc and add it to your collection! </h4>
     <div id="status-message"></div>
     <!-- Look up the mold with API -->
-    <form class="API-lookup-form" id="API-lookup-form" >
-      <div class="mb-3">
-      <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here" style="display: inline-block;">
-      <button class="btn btn-success" id="api-autocomplete-btn" type="button" style="display: inline-block;">Lookup Mold</button>
-      </div>    
+    <form class="API-lookup-form" id="API-lookup-form">
+      <div class="input-container">
+        <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here">
+        <button class="btn btn-success" id="api-autocomplete-btn" type="button">Lookup Mold</button>
+      </div>
     </form>
 
     <!-- Input additional information and add to db -->
    <form class="input-form" id="submit-to-db" action="/submit" method="POST">
+      <!-- Regular User Section -->
+  {{#if user.permission.admin}}
+  <div class="mb-3">
+    <select id="table-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table">
+      <option selected>Choose a table to input the discs into</option>
+    </select>
+  </div>
+{{else}}
+  <div class="mb-3" style="display: none;">
+    <select id="table-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table">
+      <option value="{{user.nickname}}" selected>{{user.nickname}}</option>
+    </select>
+  </div>
+{{/if}}
+
+       <!-- Select category -->
       <div class="mb-3">
-        <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table" id="table-select">
-          <option selected>Choose a table to input the discs into</option>
+        <select id="option-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="collection">
+          <option selected disabled>Choose a collection</option>
+          <option value="Main Bag">Main Bag</option>
+          <option value="Side Bag">Side Bag</option>
+          <option value="Collection">Collection</option>
+          <option value="Backup">Backup</option>
+          <option value="Sale / Trade">Sale / Trade</option>
+          <option value="create_new">Create a new collection</option>
         </select>
+        <input id="new-collection-input" type="text" class="form-control" placeholder="Enter collection name" style="display: none;">
       </div>
 
-      <!-- Select category -->
-      <div class="input-form">
-        <label for="category" class="form-label">Disc Category || Disc Collection </label>
-        <select id="option-select" name="category" class="text-body bg-body"></select>
-      </div>
 
       <!-- Color and stamp -->
       <div class="input-group input-form"> 
         <span class="input-group-text">Color, Stamp, and Weight</span>
-        <input id="color" type="text" value="Pink" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
-        <input id="stamp" type="text" value="Stock" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
+        <input id="color" type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
+        <input id="stamp" type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
         <input id="input-weight" type="number" value="175" min="1" max="200" class="form-control"  aria-describedby="weightHelp" name="weight">          
       </div>
 
@@ -68,7 +86,7 @@
         {{!-- <label for="inputMold" class="form-label">Disc Mold</label> --}}
         <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
         {{!-- <label for="inputPlastic" class="form-label">Plastic</label> --}}
-        <input type="text" class="form-control" value="baseline" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
+        <input type="text" class="form-control" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
         {{!-- <label for="brand" class="form-label">Brand</label> --}}
         <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
         <div id="moldHelp" class="form-text"></div>
@@ -91,7 +109,7 @@
     </form>
   {{else}}
     <h1 class="title">Hello Guest, Welcome to discsDB</h1>
-    <p>Welcome to the input page! Use this form to look up discs by mold. Registered users can use this tool to add discs to their database. Please <a href="/register">register</a> to experience full database functionality.</p> 
+    <p>Welcome to the input page! Use this form to look up discs by mold. Registered users can use this tool to add discs to their database. Please <a href="/registration">register</a> to experience full database functionality.</p> 
     <!-- Look up the mold with API -->
     <form class="API-lookup-form" id="API-lookup-form">
       <div class="input-container">
@@ -155,5 +173,59 @@
     statusMessage.style.color = 'green';
   }
 </script>
-  </body>
+<script>
+  // Get the form and the stamp, color, and plastic input fields
+const form = document.getElementById('submit-to-db');
+const stampInput = document.getElementById('stamp');
+const colorInput = document.getElementById('color');
+const plasticInput = document.getElementById('inputPlastic');
+const newCollectionInput = document.getElementById('new-collection-input');
+
+// Add a submit event listener to the form
+form.addEventListener('submit', function(event) {
+  // Check if the stamp field is empty
+  if (stampInput.value.trim() === '') {
+    // Assign a default value to the stamp field
+    stampInput.value = 'unspecified';
+  }
+
+  // Check if the color field is empty
+  if (colorInput.value.trim() === '') {
+    // Assign a default value to the color field
+    colorInput.value = 'unspecified';
+  }
+
+  // Check if the plastic field is empty
+  if (plasticInput.value.trim() === '') {
+    // Assign a default value to the plastic field
+    plasticInput.value = 'unspecified';
+  }
+
+  // Check if the "Create a new collection" option is selected
+  if (newCollectionInput.style.display !== 'none' && newCollectionInput.value.trim() !== '') {
+    // Set the value of the collection field to the value of the new collection input
+    document.getElementById('option-select').value = newCollectionInput.value;
+  }
+});
+
+</script>
+<script>
+$(document).ready(function() {
+  // Add an event listener to the table-select dropdown
+  $('#option-select').change(function() {
+    const selectedOption = $(this).val();
+    const newCollectionInput = $('#new-collection-input');
+
+    // Check if the "Create a new collection" option is selected
+    if (selectedOption === 'create_new') {
+      newCollectionInput.show().prop('disabled', false);
+    } else {
+      newCollectionInput.hide().prop('disabled', true);
+    }
+  });
+});
+</script>
+
+</script>
+</body>
 </html>

@@ -25,84 +25,86 @@
     </form>
 
     <!-- Input additional information and add to db -->
-   <form class="input-form" id="submit-to-db" action="/submit" method="POST">
-      <!-- Regular User Section -->
-  {{#if user.permission.admin}}
-  <div class="mb-3">
-    <select id="table-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table">
-      <option selected>Choose a table to input the discs into</option>
-    </select>
-  </div>
-{{else}}
-  <div class="mb-3" style="display: none;">
-    <select id="table-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table">
-      <option value="{{user.nickname}}" selected>{{user.nickname}}</option>
-    </select>
-  </div>
-{{/if}}
-      <!-- Select category -->
-        <div class="mb-3">
-          <select required id="option-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="collection">
-            <option value="" selected disabled>Choose a collection</option>
-            <option value="Main Bag">Main Bag</option>
-            <option value="Side Bag">Side Bag</option>
-            <option value="Collection">Collection</option>
-            <option value="Backup">Backup</option>
-            <option value="Sale / Trade">Sale / Trade</option>
-          </select>
+   <div class="form-container">
+    <form class="input-form" id="submit-to-db" action="/submit" method="POST">
+        <!-- Regular User Section -->
+    {{#if user.permission.admin}}
+    <div>
+      <select id="table-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table">
+        <option selected>Choose a table to input the discs into</option>
+      </select>
+    </div>
+  {{else}}
+    <div style="display: none;">
+      <select id="table-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="table">
+        <option value="{{user.nickname}}" selected>{{user.nickname}}</option>
+      </select>
+    </div>
+  {{/if}}
+        <!-- Select category -->
+          <div>
+            <select required id="option-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="collection">
+              <option value="" selected disabled>Choose a collection</option>
+              <option value="Main Bag">Main Bag</option>
+              <option value="Side Bag">Side Bag</option>
+              <option value="Collection">Collection</option>
+              <option value="Backup">Backup</option>
+              <option value="Sale / Trade">Sale / Trade</option>
+            </select>
+          </div>
+
+
+
+        <!-- Color and stamp -->
+        <div class="input-group input-group-center input-form"> 
+          <span class="input-group-text">Color, Stamp, and Weight</span>
+          <input id="color" type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
+          <input id="stamp" type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
+          <input id="input-weight" type="number" value="175" min="1" max="200" class="form-control"  aria-describedby="weightHelp" name="weight">          
         </div>
 
 
+        <!-- Sleepyscale -->
+        <div class="input-form">
+          <label>How worn is this discs? Choose the value that you feel like most represents the wear of the disc</label>
+          <select type="number" value="10" class="form-select form-select-sm form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyscale">
+            <option value="1">1 - Basically a beat up paper plate</option>
+            <option value="2">2 - Questionable</option>
+            <option value="3">3 - Beat but usable</option>
+            <option value="4">4 - Beat up turnover disc with some evident war story wear</option>
+            <option value="5">5 - Kinda beat, significant wear, has lost a good bit of its stability</option>
+            <option value="6">6 - Typical used disc with the usual dings, scratches but still worthy</option>
+            <option value="7">7 - Used with some minor dings or scuffs but still in</option>
+            <option value="8">8 - Lightly used with very minimal wear</option>
+            <option value="9">9 - Field tested or used for one or two rounds, no ink.</option>
+            <option selected value="10">10 - Never thrown, no ink, brand new condition</option>
+          </select>
+        </div>
 
-      <!-- Color and stamp -->
-      <div class="input-group input-form"> 
-        <span class="input-group-text">Color, Stamp, and Weight</span>
-        <input id="color" type="text" aria-label="Disc Color" class="form-control" name="color" placeholder="Color">
-        <input id="stamp" type="text" aria-label="Stamp" class="form-control" name="stamp" placeholder="Stamp">
-        <input id="input-weight" type="number" value="175" min="1" max="200" class="form-control"  aria-describedby="weightHelp" name="weight">          
-      </div>
+        <!-- Input mold/plastic/brand -->
+        <div class="input-group input-group-center">
+          <input required type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
+          <input type="text" class="form-control" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
+          <input required type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
+          <div id="moldHelp" class="form-text"></div>
+        </div>
 
+        <a class="text-success" href="https://www.wrightlife.com/plastic-types-and-descriptions/" target="_blank">Not sure what the plastic type is?</a>
 
-      <!-- Sleepyscale -->
-      <div class="mb-3 input-form">
-        <label>How worn is this discs? Choose the value that you feel like most represents the wear of the disc</label>
-        <select type="number" value="10" class="form-select form-select-sm form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyscale">
-          <option value="1">1 - Basically a beat up paper plate</option>
-          <option value="2">2 - Questionable</option>
-          <option value="3">3 - Beat but usable</option>
-          <option value="4">4 - Beat up turnover disc with some evident war story wear</option>
-          <option value="5">5 - Kinda beat, significant wear, has lost a good bit of its stability</option>
-          <option value="6">6 - Typical used disc with the usual dings, scratches but still worthy</option>
-          <option value="7">7 - Used with some minor dings or scuffs but still in</option>
-          <option value="8">8 - Lightly used with very minimal wear</option>
-          <option value="9">9 - Field tested or used for one or two rounds, no ink.</option>
-          <option selected value="10">10 - Never thrown, no ink, brand new condition</option>
-        </select>
-      </div>
-
-      <!-- Input mold/plastic/brand -->
-      <div class="input-group">
-        <input required type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
-        <input type="text" class="form-control" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
-        <input required type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
-        <div id="moldHelp" class="form-text"></div>
-      </div>
-
-      <a class="text-success" href="https://www.wrightlife.com/plastic-types-and-descriptions/" target="_blank">Not sure what the plastic type is?</a>
-
-      <!-- Flight numbers -->
-      <div class="input-group">
-        <span class="input-group-text">Flight Numbers</span>
-        <input required type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
-        <input required type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
-        <input required type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
-        <input required type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
-      </div>
-   
+        <!-- Flight numbers -->
+        <div class="input-group input-group-center">
+          <span class="input-group-text">Flight Numbers</span>
+          <input required type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
+          <input required type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
+          <input required type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
+          <input required type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
+        </div>
     
-      <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
+      
+        <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
 
-    </form>
+      </form>
+  </div>
   {{else}}
     <h1 class="title">Hello Guest, Welcome to discsDB</h1>
     <p>Welcome to the input page! Use this form to look up discs by mold. Registered users can use this tool to add discs to their database. Please <a href="/registration">register</a> to experience full database functionality.</p> 
@@ -221,10 +223,6 @@
 
 
   });
-</script>
-
-</script>
-
 </script>
 </body>
 </html>

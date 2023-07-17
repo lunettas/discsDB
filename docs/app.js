@@ -218,9 +218,9 @@ app.post('/submit', async (req, res) => {
   }
 
   try {
-    const tableName = req.user.nickname;
+    const tableName = req.session.user.nickname;
     const query = `
-      INSERT INTO ${tableName} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Collection, Color, Stamp, \`Sleepy Scale\`)
+      INSERT INTO ${tableName} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, collection, color, stamp, sleepyscale];

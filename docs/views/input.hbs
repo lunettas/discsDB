@@ -40,20 +40,18 @@
     </select>
   </div>
 {{/if}}
+      <!-- Select category -->
+        <div class="mb-3">
+          <select required id="option-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="collection">
+            <option value="" selected disabled>Choose a collection</option>
+            <option value="Main Bag">Main Bag</option>
+            <option value="Side Bag">Side Bag</option>
+            <option value="Collection">Collection</option>
+            <option value="Backup">Backup</option>
+            <option value="Sale / Trade">Sale / Trade</option>
+          </select>
+        </div>
 
-       <!-- Select category -->
-      <div class="mb-3">
-        <select id="option-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="collection">
-          <option selected disabled>Choose a collection</option>
-          <option value="Main Bag">Main Bag</option>
-          <option value="Side Bag">Side Bag</option>
-          <option value="Collection">Collection</option>
-          <option value="Backup">Backup</option>
-          <option value="Sale / Trade">Sale / Trade</option>
-          <option value="create_new">Create a new collection</option>
-        </select>
-        <input id="new-collection-input" type="text" class="form-control" placeholder="Enter collection name" style="display: none;">
-      </div>
 
 
       <!-- Color and stamp -->
@@ -67,10 +65,11 @@
 
       <!-- Sleepyscale -->
       <div class="mb-3 input-form">
+        <label>How worn is this discs? Choose the value that you feel like most represents the wear of the disc</label>
         <select type="number" value="10" class="form-select form-select-sm form-control" id="inputSleepyScale" aria-describedby="sleepyScaleHelp" name="sleepyscale">
-          <option value="1">1 - Beat to Hades dog chew toy</option>
-          <option value="2">2 - or under Beat to Hades dog chew toy</option>
-          <option value="3">3 - or under Beat to Hades dog chew toy</option>
+          <option value="1">1 - Basically a beat up paper plate</option>
+          <option value="2">2 - Questionable</option>
+          <option value="3">3 - Beat but usable</option>
           <option value="4">4 - Beat up turnover disc with some evident war story wear</option>
           <option value="5">5 - Kinda beat, significant wear, has lost a good bit of its stability</option>
           <option value="6">6 - Typical used disc with the usual dings, scratches but still worthy</option>
@@ -83,12 +82,9 @@
 
       <!-- Input mold/plastic/brand -->
       <div class="input-group">
-        {{!-- <label for="inputMold" class="form-label">Disc Mold</label> --}}
-        <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
-        {{!-- <label for="inputPlastic" class="form-label">Plastic</label> --}}
+        <input required type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
         <input type="text" class="form-control" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
-        {{!-- <label for="brand" class="form-label">Brand</label> --}}
-        <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
+        <input required type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
         <div id="moldHelp" class="form-text"></div>
       </div>
 
@@ -97,10 +93,10 @@
       <!-- Flight numbers -->
       <div class="input-group">
         <span class="input-group-text">Flight Numbers</span>
-        <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
-        <input type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
-        <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
-        <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
+        <input required type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
+        <input required type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
+        <input required type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
+        <input required type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
       </div>
    
     
@@ -174,56 +170,59 @@
   }
 </script>
 <script>
-  // Get the form and the stamp, color, and plastic input fields
-const form = document.getElementById('submit-to-db');
-const stampInput = document.getElementById('stamp');
-const colorInput = document.getElementById('color');
-const plasticInput = document.getElementById('inputPlastic');
-const newCollectionInput = document.getElementById('new-collection-input');
+  const form = document.getElementById('submit-to-db');
+  const stampInput = document.getElementById('stamp');
+  const collection = document.getElementById('option-select');
+  const colorInput = document.getElementById('color');
+  const plasticInput = document.getElementById('inputPlastic');
+  const moldInput = document.getElementById('inputMold');
+  const brandInput = document.getElementById('brand');
+  const speedInput = document.getElementById('speed');
+  const glideInput = document.getElementById('glide');
+  const turnInput = document.getElementById('turn');
+  const fadeInput = document.getElementById('fade');
 
-// Add a submit event listener to the form
-form.addEventListener('submit', function(event) {
-  // Check if the stamp field is empty
-  if (stampInput.value.trim() === '') {
-    // Assign a default value to the stamp field
-    stampInput.value = 'unspecified';
-  }
-
-  // Check if the color field is empty
-  if (colorInput.value.trim() === '') {
-    // Assign a default value to the color field
-    colorInput.value = 'unspecified';
-  }
-
-  // Check if the plastic field is empty
-  if (plasticInput.value.trim() === '') {
-    // Assign a default value to the plastic field
-    plasticInput.value = 'unspecified';
-  }
-
-  // Check if the "Create a new collection" option is selected
-  if (newCollectionInput.style.display !== 'none' && newCollectionInput.value.trim() !== '') {
-    // Set the value of the collection field to the value of the new collection input
-    document.getElementById('option-select').value = newCollectionInput.value;
-  }
-});
-
-</script>
-<script>
-$(document).ready(function() {
-  // Add an event listener to the table-select dropdown
-  $('#option-select').change(function() {
-    const selectedOption = $(this).val();
-    const newCollectionInput = $('#new-collection-input');
-
-    // Check if the "Create a new collection" option is selected
-    if (selectedOption === 'create_new') {
-      newCollectionInput.show().prop('disabled', false);
-    } else {
-      newCollectionInput.hide().prop('disabled', true);
+  // Add a submit event listener to the form
+  form.addEventListener('submit', function(event) {
+    // Check if the stamp field is empty
+    if (stampInput.value.trim() === '') {
+      // Assign a default value to the stamp field
+      stampInput.value = 'unspecified';
     }
+
+    // Check if the color field is empty
+    if (colorInput.value.trim() === '') {
+      // Assign a default value to the color field
+      colorInput.value = 'unspecified';
+    }
+
+    // Check if the plastic field is empty
+    if (plasticInput.value.trim() === '') {
+      // Assign a default value to the plastic field
+      plasticInput.value = 'unspecified';
+    }
+
+    // Check if any required fields are empty
+    if (
+          moldInput.value.trim() === '' ||
+          brandInput.value.trim() === '' ||
+          speedInput.value.trim() === '' ||
+          glideInput.value.trim() === '' ||
+          turnInput.value.trim() === '' ||
+          fadeInput.value.trim() === '' ||
+          collection.value === ''
+        ) {
+          // Prevent the form from submitting
+          event.preventDefault();
+
+          // Show an error message or provide visual feedback to the user
+          alert('Please fill in all required fields before submitting the form.');
+        }
+
+
   });
-});
+</script>
+
 </script>
 
 </script>

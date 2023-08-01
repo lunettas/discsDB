@@ -62,7 +62,16 @@ tableDropdown.addEventListener('change', async (event) => {
     optionElement.text = option;
     optionDropdown.appendChild(optionElement);
   });
+
+  // Check if only one option is available and automatically select it
+  if (options.length === 1) {
+    optionDropdown.value = options[0];
+  }
+
+  // Manually trigger the 'change' event on the optionDropdown to render the chart
+  optionDropdown.dispatchEvent(new Event('change'));
 });
+
 
 
 

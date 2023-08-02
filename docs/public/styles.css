@@ -1,4 +1,7 @@
 /* General styles */
+/* body {
+  min-height: 100vh;
+} */
 h1 {
   display: flex;
   justify-content: center;
@@ -24,6 +27,19 @@ img {
   display: block;
   margin: 0 auto;
 }
+/* styles for outer columns*/
+
+.col-1 {
+  background-color: #1e6438;
+  padding: 20px; /* Add padding to the left and right columns */
+}
+
+/* Remove extra top and bottom padding from .row to fill full height */
+.row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 
 /* Styles specific to mobile devices */
 html.mobile h1 {
@@ -76,13 +92,23 @@ html.desktop .flex-container {
 }
 
 /* Footer styles */
+.footer-container {
+  background-color: #1e6438;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+.footer-container .nav-link {
+  color: #000000; /* Change this to your desired color */
+}
 
-
-/* Flightchart styles */
+/* Flight chart styles */
 #flight-chart {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-grow: 1; /* Allow the chart container to fill the remaining height within the column */
 }
 
 #flight-chart-inner {
@@ -90,6 +116,7 @@ html.desktop .flex-container {
   max-height: 60%;
   padding: 50px;
 }
+
 /* Default style for the label */
 #flight-chart .label {
   /* General styles */
@@ -121,7 +148,6 @@ html.mobile #flight-chart .label.speed-label {
   text-align: center;
 }
 
-
 /* Styles specific to tablet devices */
 html.tablet #flight-chart .label {
   font-size: 16px;
@@ -131,7 +157,6 @@ html.tablet #flight-chart .label {
 html.desktop #flight-chart .label {
   font-size: 18px;
 }
-
 
 path.domain {
   stroke: whitesmoke;
@@ -191,13 +216,14 @@ line.tick {
   padding: 5px 10px;
   font-size: 14px;
 }
+
 .table {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  /*height: 100%; Remove height property to allow content to expand the column */
 }
 
 .table-row {
@@ -253,6 +279,7 @@ line.tick {
   word-wrap: break-word;
   min-width: 200px !important;
 }
+
 @media only screen and (max-width: 320px) {
   .input-container button {
     height: 38px;

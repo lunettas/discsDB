@@ -112,10 +112,7 @@ html.tablet p {
 .footer-container .nav-link {
   color: #000000; /* Change this to your desired color */
 }
-/* Add the following styles to make the footer stick to the bottom */
-/* html, body {
-  height: 100%;
-} */
+
 
 /* Styles to make the content flex container fill the remaining vertical space */
 body > .container-fluid {
@@ -284,11 +281,16 @@ line.tick {
 .input-group {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .input-row {
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+.input-label{
+  flex: 1;
 }
 
 .form-label {

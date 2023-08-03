@@ -92,13 +92,26 @@
         <a class="text-success" href="https://www.wrightlife.com/plastic-types-and-descriptions/" target="_blank">Not sure what the plastic type is?</a>
 
         <!-- Flight numbers -->
-        <div class="input-group input-group-center">
-          <span class="input-group-text">Flight Numbers</span>
-          <input required type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="Speed">
-          <input required type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="Glide">
-          <input required type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="Turn">
-          <input required type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="Fade">
-        </div>
+   <div class="container input-group input-group-center">
+      <div class="row input-row">
+        <label class="col input-label" for="speed">Speed:</label>
+        <input required type="number" id="speed" step=".5" min="1" class="col form-control" name="speed">
+      </div>
+      <div class="row input-row">
+        <label class="col input-label" for="glide">Glide:</label>
+        <input required type="number" id="glide" step=".5" min="1" class="col form-control" name="glide">
+      </div>
+      <div class="row input-row">
+        <label class="col input-label" for="turn">Turn:</label>
+        <input required type="number" id="turn" step=".5" class="col form-control" name="turn">
+      </div>
+      <div class="row input-row">
+        <label class="col input-label" for="fade">Fade:</label>
+        <input required type="number" id="fade" step=".5" class="col form-control" name="fade">
+      </div>
+    </div>
+
+
     
       
         <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>

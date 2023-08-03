@@ -1,7 +1,13 @@
 /* General styles */
-/* body {
-  min-height: 100vh;
-} */
+body {
+  flex-direction: column;
+  margin: 0;
+}
+
+.page-wrapper {
+  flex: 1;
+  flex-direction: column;
+}
 h1 {
   display: flex;
   justify-content: center;
@@ -33,6 +39,10 @@ img {
   background-color: #1e6438;
   padding: 20px; /* Add padding to the left and right columns */
 }
+.col-10 {
+  padding: 20px 0;
+  min-height: 80vh; /* Add this line to make sure it fills the available space */
+}
 
 /* Remove extra top and bottom padding from .row to fill full height */
 .row {
@@ -60,27 +70,28 @@ html.tablet p {
 }
 
 /* Styles specific to desktop devices */
-html.desktop {
+/* html.desktop {
   display: grid;
   grid-template-rows: auto auto auto; /* Three equal rows */
-  grid-gap: 20px; /* Gap between grid cells */
-}
+  /* grid-gap: 20px; /* Gap between grid cells */
 
-html.desktop h1 {
+
+/* html.desktop h1 {
   padding: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */
 
-html.desktop .flex-container {
-  display: flex;
+/* html.desktop .flex-container {
+  display: flex; 
   align-items: center;
-}
+} */
 
 /* Navbar styles */
 .navbar-nav {
   text-align: right;
+  
 }
 
 .navbtn {
@@ -94,15 +105,36 @@ html.desktop .flex-container {
 /* Footer styles */
 .footer-container {
   background-color: #1e6438;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   z-index: 100;
+  min-height: 20vh;
 }
 .footer-container .nav-link {
   color: #000000; /* Change this to your desired color */
 }
+/* Add the following styles to make the footer stick to the bottom */
+/* html, body {
+  height: 100%;
+} */
 
+/* Styles to make the content flex container fill the remaining vertical space */
+body > .container-fluid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Styles for the header container (optional, adjust as needed) */
+.header-container {
+  background-color: #1e6438;
+  padding-top: 20px;
+}
+
+
+/* Styles for the footer container (optional, adjust as needed) */
+.footer-container {
+  /* Add some padding to the bottom of the footer, adjust as needed */
+  padding-bottom: 20px;
+}
 /* Flight chart styles */
 #flight-chart {
   display: flex;

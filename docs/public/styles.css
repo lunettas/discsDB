@@ -37,10 +37,10 @@ img {
 
 .col-1 {
   background-color: #1e6438;
-  padding: 20px; /* Add padding to the left and right columns */
+  
 }
 .col-10 {
-  padding: 20px 0;
+  padding: 0;
   min-height: 80vh; /* Add this line to make sure it fills the available space */
 }
 
@@ -107,6 +107,7 @@ html.tablet p {
   background-color: #1e6438;
   z-index: 100;
   min-height: 20vh;
+  box-sizing: border-box;
 }
 .footer-container .nav-link {
   color: #000000; /* Change this to your desired color */
@@ -127,6 +128,7 @@ body > .container-fluid {
 .header-container {
   background-color: #1e6438;
   padding-top: 20px;
+  box-sizing: border-box;
 }
 
 

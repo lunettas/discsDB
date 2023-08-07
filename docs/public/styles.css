@@ -1,94 +1,24 @@
 /* General styles */
-body {
-  flex-direction: column;
-  margin: 0;
-}
 
-.page-wrapper {
-  flex: 1;
-  flex-direction: column;
-}
-h1 {
-  display: flex;
-  justify-content: center;
+h1.text {
   color: rgb(187, 183, 183) !important;
 }
-h4 {
-  display: flex;
-  justify-content: center;
+h4.text {
   color: rgb(187, 183, 183) !important;
 }
 
-p {
-  padding: 50px;
-  text-align: justify;
-  align-items: center;
-}
-
-img {
-  padding: 50px;
-  max-width: 90%;
-  max-height: 90%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
 /* styles for outer columns*/
 
-.col-1 {
+.col {
   background-color: #1e6438;
   
 }
-.col-10 {
-  padding: 0;
-  min-height: 80vh; /* Add this line to make sure it fills the available space */
-}
-
-/* Remove extra top and bottom padding from .row to fill full height */
-.row {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-
-/* Styles specific to mobile devices */
-html.mobile h1 {
-  font-size: 16px;
-}
-
-html.mobile p {
-  font-size: 14px;
-}
-
-/* Styles specific to tablet devices */
-html.tablet h1 {
-  font-size: 20px;
-}
-
-html.tablet p {
-  font-size: 16px;
-}
-
-/* Styles specific to desktop devices */
-/* html.desktop {
-  display: grid;
-  grid-template-rows: auto auto auto; /* Three equal rows */
-  /* grid-gap: 20px; /* Gap between grid cells */
-
-
-/* html.desktop h1 {
-  padding: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
-
-/* html.desktop .flex-container {
-  display: flex; 
-  align-items: center;
-} */
 
 /* Navbar styles */
+.header-container {
+  background-color: #1e6438;
+
+}
 .navbar-nav {
   text-align: right;
   
@@ -105,48 +35,19 @@ html.tablet p {
 /* Footer styles */
 .footer-container {
   background-color: #1e6438;
-  z-index: 100;
-  min-height: 20vh;
-  box-sizing: border-box;
 }
 .footer-container .nav-link {
-  color: #000000; /* Change this to your desired color */
+  color: #000000;
 }
 
 
-/* Styles to make the content flex container fill the remaining vertical space */
-body > .container-fluid {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Styles for the header container (optional, adjust as needed) */
-.header-container {
-  background-color: #1e6438;
-  padding-top: 20px;
-  box-sizing: border-box;
-}
 
 
-/* Styles for the footer container (optional, adjust as needed) */
-.footer-container {
-  /* Add some padding to the bottom of the footer, adjust as needed */
-  padding-bottom: 20px;
-}
+
 /* Flight chart styles */
-#flight-chart {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1; /* Allow the chart container to fill the remaining height within the column */
-}
 
-#flight-chart-inner {
-  max-width: 60%;
-  max-height: 60%;
-  padding: 50px;
-}
+
+
 
 /* Default style for the label */
 #flight-chart .label {
@@ -162,32 +63,6 @@ body > .container-fluid {
   font-size: 14px;
 }
 
-/* Styles specific to mobile devices */
-html.mobile #flight-chart .label {
-  font-size: 16px;
-}
-
-html.mobile #flight-chart .label.speed-label {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-90);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  text-align: center;
-}
-
-/* Styles specific to tablet devices */
-html.tablet #flight-chart .label {
-  font-size: 16px;
-}
-
-/* Styles specific to desktop devices */
-html.desktop #flight-chart .label {
-  font-size: 18px;
-}
 
 path.domain {
   stroke: whitesmoke;
@@ -211,179 +86,11 @@ line.tick {
   stroke-dasharray: 4;
 }
 
-/* Input form styles */
-.API-lookup-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  margin-bottom: 20px;
-  height: 200px;
-}
-
-.API-lookup-form .input-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.API-lookup-form .input-container input {
-  flex: 1;
-}
-
-.input-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.input-container input {
-  flex: 1;
-}
-
-.input-container button {
-  height: auto;
-  padding: 5px 10px;
-  font-size: 14px;
-}
-
-.table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  /*height: 100%; Remove height property to allow content to expand the column */
-}
-
-.table-row {
-  display: flex;
-  justify-content: center;
-}
-
-.table-cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-}
-
-.input-group.table .form-sublabel {
-  margin-bottom: 5px;
-  white-space: nowrap; /* Add this line to prevent text from wrapping */
-}
-
-.input-group.table .flight-label {
-  display: block;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.input-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.input-label{
-  flex: 1;
-}
-
-.form-label {
-  display: flex;
-  font-weight: bold;
-  align-items: baseline;
-  justify-content: center;
-}
-
-.form-sublabel {
-  align-items: center;
-  white-space: nowrap; /* Add this line to prevent text from wrapping */
-}
-
-.input-form {
-  padding: 10px;
-}
-/* Responsive styles for input boxes */
-.form-control {
-  width: 100%;
-  font-size: 16px;
-  word-wrap: break-word;
-  min-width: 200px !important;
-}
-
-@media only screen and (max-width: 320px) {
-  .input-container button {
-    height: 38px;
-    font-size: 12px;
-  }
-}
-
-html.mobile .input-group {
-  display: flex;
-  flex-direction: column;
-}
-
-html.mobile .input-group .form-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-html.mobile .input-group .form-control {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 10px;
-  min-width: 35px; /* Set the minimum width for input boxes on mobile devices */
-}
-
-html.mobile .input-group .form-sublabel {
-  font-size: 12px; /* Modify the font size for mobile devices */
-}
-
-.API-lookup-form {
-  padding: 10px;
-}
-
 .form-control:focus {
   background-color: black !important;
 }
 
-/* Registration page styles */
-.registration {
-  padding: 20px;
-}
 
-/* Media queries for larger screens */
-@media only screen and (max-width: 768px) {
-  html.desktop h1 {
-    padding-right: 40px; /* Increase the right padding to make room for the text */
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  html.mobile h1 {
-    font-size: 20px;
-  }
-
-  html.mobile p {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  html.mobile h1 {
-    font-size: 24px;
-  }
-
-  html.mobile p {
-    font-size: 18px;
-  }
-}
 
 /* Message styles */
 .success-message {

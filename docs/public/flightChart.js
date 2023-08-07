@@ -13,59 +13,61 @@ function drawChart(data) {
   console.log(data);
   var container = d3.select("#flight-chart");
 
+  // Get container dimensions
+  var containerWidth = container.node().getBoundingClientRect().width;
+
   // Remove any existing chart
   container.selectAll("*").remove();
 
-  // Calculate SVG dimensions based on viewport size
-  svgWidth = window.innerWidth;
-  svgHeight = window.innerHeight;
+  // Calculate SVG dimensions based on container size
+  svgWidth = containerWidth; // Use container width
+  svgHeight = svgWidth * 0.8; // Set SVG height to 80% of the width
 
   var svg = container.append("svg")
     .attr("width", svgWidth)
-    .attr("height", svgHeight)
-    .style("margin", "auto");
+    .attr("height", svgHeight);
 
-  // Update scales to use relative values based on SVG dimensions
- // Update scales to use stability and speed properties
- xAxis = d3.scaleLinear()
- .domain([7, -4])
- .range([0, svgWidth * 0.8]);
+// Update scales to use relative values based on SVG dimensions
+// Update scales to use stability and speed properties
+xAxis = d3.scaleLinear()
+    .domain([7, -4])
+    .range([0, svgWidth * 0.8]);
 
-yAxis = d3.scaleLinear()
- .domain([0, 15])
- .range([svgHeight * 0.8, 0]);
+  yAxis = d3.scaleLinear()
+    .domain([0, 15])
+    .range([0, svgHeight * 0.8]); 
 
-var xAxisGroup = svg.append("g")
- .attr("class", "x-axis")
- .attr("transform", "translate(" + svgWidth * 0.1 + "," + (svgHeight * 0.9) + ")")
- .call(d3.axisBottom(xAxis).tickFormat(d => d.toFixed(1))); // add tick formatting
+  var xAxisGroup = svg.append("g")
+  .attr("class", "x-axis")
+  .attr("transform", "translate(" + svgWidth * 0.1 + "," + (svgHeight * 0.9) + ")")
+  .call(d3.axisBottom(xAxis).tickFormat(d => d.toFixed(1))); // add tick formatting
 
-var yAxisGroup = svg.append("g")
- .attr("class", "y-axis")
- .attr("transform", "translate(" + svgWidth * 0.1 + "," + svgHeight * 0.1 + ")")
- .call(d3.axisLeft(yAxis).tickValues(d3.range(0, 16, 1)));
+  var yAxisGroup = svg.append("g")
+  .attr("class", "y-axis")
+  .attr("transform", "translate(" + svgWidth * 0.1 + "," + svgHeight * 0.1 + ")")
+  .call(d3.axisLeft(yAxis).tickValues(d3.range(0, 16, 1)));
 
-// Draw grid lines
-svg.selectAll(".horizontal-line")
- .data(yAxisGroup.selectAll(".tick").data())
- .enter()
- .append("line")
- .attr("class", "horizontal-line")
- .attr("x1", svgWidth * 0.1)
- .attr("y1", function(d){ return yAxis(d) + svgHeight * 0.1; }) // add svgHeight * 0.1 to account for y-axis position
- .attr("x2", svgWidth * 0.9)
- .attr("y2", function(d){ return yAxis(d) + svgHeight * 0.1; }); // add svgHeight * 0.1 to account for y-axis position
+  // Draw grid lines
+  svg.selectAll(".horizontal-line")
+  .data(yAxisGroup.selectAll(".tick").data())
+  .enter()
+  .append("line")
+  .attr("class", "horizontal-line")
+  .attr("x1", svgWidth * 0.1)
+  .attr("y1", function(d){ return yAxis(d) + svgHeight * 0.1; }) // add svgHeight * 0.1 to account for y-axis position
+  .attr("x2", svgWidth * 0.9)
+  .attr("y2", function(d){ return yAxis(d) + svgHeight * 0.1; }); // add svgHeight * 0.1 to account for y-axis position
 
 
-svg.selectAll(".vertical-line")
- .data(xAxis.ticks())
- .enter()
- .append("line")
- .attr("class", "vertical-line")
- .attr("x1", function(d){ return xAxis(d) + svgWidth * 0.1; })
- .attr("y1", svgHeight * 0.1)
- .attr("x2", function(d){ return xAxis(d) + svgWidth * 0.1; })
- .attr("y2", svgHeight * 0.9);
+  svg.selectAll(".vertical-line")
+  .data(xAxis.ticks())
+  .enter()
+  .append("line")
+  .attr("class", "vertical-line")
+  .attr("x1", function(d){ return xAxis(d) + svgWidth * 0.1; })
+  .attr("y1", svgHeight * 0.1)
+  .attr("x2", function(d){ return xAxis(d) + svgWidth * 0.1; })
+  .attr("y2", svgHeight * 0.9);
 
  const handleMouseover = (event, d) => {
   d3.select(event.currentTarget).attr("r", 10);

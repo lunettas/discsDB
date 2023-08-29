@@ -11,12 +11,26 @@ h4.text {
 
 .col {
   background-color: #1e6438;
+  border: none;
   
 }
+.outer-border {
+  background-color: #1e6438;
+  border: none;
+  
+}
+.col.outer-border,
+.body-container .col {
+  height: 100vh;
+}
 
+.body-container {
+  padding: 0; 
+ }
 /* Navbar styles */
 .header-container {
   background-color: #1e6438;
+  height: 10vh;
 
 }
 .navbar-nav {
@@ -34,6 +48,14 @@ h4.text {
 
 /* Footer styles */
 .footer-container {
+  position: fixed;
+  bottom: 0;
+  background-color: #1e6438;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #1e6438;
 }
 .footer-container .nav-link {

@@ -1,5 +1,15 @@
 /* General styles */
+body{
+  background-color: #1e6438;
+}
 
+.col-10 {
+  background-color: #000; 
+}
+
+h1,p{
+  text-align: center;
+}
 h1.text {
   color: rgb(187, 183, 183) !important;
 }
@@ -9,24 +19,10 @@ h4.text {
 
 /* styles for outer columns*/
 
-.col {
+.outer-border{
   background-color: #1e6438;
-  border: none;
-  
-}
-.outer-border {
-  background-color: #1e6438;
-  border: none;
-  
-}
-.col.outer-border,
-.body-container .col {
-  height: 100vh;
 }
 
-.body-container {
-  padding: 0; 
- }
 /* Navbar styles */
 .header-container {
   background-color: #1e6438;
@@ -46,9 +42,33 @@ h4.text {
   color: rgb(187, 183, 183) !important;
 }
 
+/* Apply background color for .navbar-collapse on screens 990px and below */
+@media (max-width: 990px) {
+  .navbar-collapse::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 665px;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background-color: rgb(0, 0, 0, .85);
+    z-index: 0;
+  }
+  #loginButton {
+    position: relative;
+    z-index: 1; /* Set this value higher than the z-index of the background */
+  }
+  .navbar-nav .nav-link {
+    position: relative;
+    z-index: 1; /* Set this value higher than the z-index of the background */
+  }
+}
+
+
 /* Footer styles */
 .footer-container {
-  position: fixed;
+  position: relative;
   bottom: 0;
   background-color: #1e6438;
   width: 100%;

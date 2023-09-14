@@ -1,11 +1,11 @@
 /* General styles */
 body {
-  background-color: #1e6438;
+  background-color: #1e6438 !important;
   margin: 0;
   padding: 0;
 }
 .body-container{
-  margin: 10px;
+  margin: 0;
 }
 .col-10 {
   background-color: #000; 
@@ -20,7 +20,11 @@ h1.text {
 h4.text {
   color: rgb(187, 183, 183) !important;
 }
-
+.container-fluid {
+  padding: 0;
+  margin: 0;
+  
+}
 /* styles for outer columns*/
 
 .outer-border{
@@ -67,6 +71,7 @@ h4.text {
   justify-content: center;
   align-items: center;
   background-color: #1e6438;
+  margin: 0;
 }
 .footer-container .nav-link {
   color: #000000;

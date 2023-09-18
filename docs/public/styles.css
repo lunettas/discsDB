@@ -94,12 +94,36 @@ h4.text {
   align-items: center;
   font-family: sans-serif;
   fill: rgb(187, 183, 183);
-}
-
-#flight-chart .label {
   font-size: 14px;
 }
 
+
+@media (max-width: 576px) {
+  #flight-chart svg {
+    width: 100%; /* Make the chart fill the container width */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+@media (max-width: 425px) {
+  #flight-chart svg {
+    width: 100%; /* Make the chart fill the container width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  #switch-axis {
+    font-size: small;
+  }
+  #table-names-dropdown{
+    font-size:medium;
+  }
+  #body-container {
+    height: 600px;
+    padding: 0;
+  }
+  #body-container svg {
+    width: 100%;
+    height: auto;
+  }
+}
 
 path.domain {
   stroke: whitesmoke;

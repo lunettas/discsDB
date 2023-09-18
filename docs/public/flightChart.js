@@ -15,6 +15,7 @@ function drawChart(data) {
 
   // Get container dimensions
   var containerWidth = container.node().getBoundingClientRect().width;
+  
 
   // Remove any existing chart
   container.selectAll("*").remove();
@@ -34,7 +35,7 @@ xAxis = d3.scaleLinear()
     .range([0, svgWidth * 0.8]);
 
   yAxis = d3.scaleLinear()
-    .domain([0, 15])
+    .domain([15, 0])
     .range([0, svgHeight * 0.8]); 
 
   var xAxisGroup = svg.append("g")
@@ -127,6 +128,7 @@ var discs = svg.selectAll(".disc")
   
   svg.append("text")
     .classed("label", true)
+    .attr("id", "stability-label")
     .attr("x", svgWidth/2) // center horizontally
     .attr("y", svgHeight * .99) // position below x-axis
     .attr("text-anchor", "middle")
@@ -134,6 +136,7 @@ var discs = svg.selectAll(".disc")
 
     svg.append("text")
     .classed("label speed-label", true)
+    .attr("id", "speed-label")
     .attr("x", -svgHeight/2) // center vertically
     .attr("y", svgWidth * 0.1) // position left of y-axis
     .attr("text-anchor", "middle")

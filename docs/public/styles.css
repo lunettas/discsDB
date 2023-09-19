@@ -5,6 +5,7 @@ body {
   padding: 0;
 }
 .body-container{
+  height: auto;
   margin: 0;
 }
 .col-10 {
@@ -29,6 +30,7 @@ h4.text {
 
 .outer-border{
   background-color: #1e6438;
+  
 }
 
 /* Navbar styles */
@@ -77,38 +79,44 @@ h4.text {
   color: #000000;
 }
 
-
-
-
-
 /* Flight chart styles */
-
-
-
-
-/* Default style for the label */
+#select-table-and-option {
+  padding-top: 10px;
+}
+#flight-chart-container {
+  padding: 5px;
+}
 #flight-chart .label {
-  /* General styles */
-  padding: 50px;
-  text-align: justify;
-  align-items: center;
   font-family: sans-serif;
   fill: rgb(187, 183, 183);
-  font-size: 14px;
+  
+}
+#switch-axis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin: 0;
 }
 
+@media (max-width: 400px) {
+  /* Reduce font size for labels */
+  #flight-chart .label {
+    font-size: x-small;
+  }
+  #table-names-dropdown,
+  #option-names-dropdown {
+    font-size: small;
+    height: auto; 
+  }
 
-@media (max-width: 576px) {
-  #flight-chart svg {
-    width: 100%; /* Make the chart fill the container width */
-    height: auto; /* Maintain aspect ratio */
+  /* Reduce font size for option names in both dropdowns */
+  #table-names-dropdown option,
+  #option-names-dropdown option {
+    font-size: small;
   }
 }
 @media (max-width: 425px) {
-  #flight-chart svg {
-    width: 100%; /* Make the chart fill the container width */
-    height: auto; /* Maintain aspect ratio */
-  }
   #switch-axis {
     font-size: small;
   }
@@ -116,7 +124,7 @@ h4.text {
     font-size:medium;
   }
   #body-container {
-    height: 600px;
+    height: auto;
     padding: 0;
   }
   #body-container svg {

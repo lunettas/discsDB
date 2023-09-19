@@ -10,19 +10,21 @@ var svgWidth, svgHeight;
 
 // Function to draw chart
 function drawChart(data) {
-  console.log(data);
   var container = d3.select("#flight-chart");
 
-  // Get container dimensions
-  var containerWidth = container.node().getBoundingClientRect().width;
+ // Get container dimensions
+ var containerWidth = container.node().getBoundingClientRect().width;
+ var containerHeight = container.node().getBoundingClientRect().height;
   
 
   // Remove any existing chart
   container.selectAll("*").remove();
 
   // Calculate SVG dimensions based on container size
-  svgWidth = containerWidth; // Use container width
-  svgHeight = svgWidth * 0.8; // Set SVG height to 80% of the width
+  svgWidth = containerWidth;
+  svgHeight = containerWidth;
+
+  console.log(svgWidth);
 
   var svg = container.append("svg")
     .attr("width", svgWidth)
@@ -132,6 +134,7 @@ var discs = svg.selectAll(".disc")
     .attr("x", svgWidth/2) // center horizontally
     .attr("y", svgHeight * .99) // position below x-axis
     .attr("text-anchor", "middle")
+    .attr("transform", "translate(-20, 0)")
     .text("Stability");
 
     svg.append("text")
@@ -140,14 +143,18 @@ var discs = svg.selectAll(".disc")
     .attr("x", -svgHeight/2) // center vertically
     .attr("y", svgWidth * 0.1) // position left of y-axis
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(-50, 0) rotate(-90)") // move text left by 50 pixels and rotate
+    .attr("transform", "translate(-20, 0) rotate(-90)") // move text left by 50 pixels and rotate
     .text("Speed");
   
 
+  let resizeTimer;
 
   // Add event listener to re-render chart on window resize
   window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
     drawChart(data);
+    }, 300);
   });
  }
 

@@ -10,11 +10,7 @@
   </head>
 
   <body>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div>
-          <h1>Flight Chart</h1>
+    <div id="flight-chart-container">
           {{#if user}}
             <p>Welcome, {{user.nickname}}!</p>
             <!-- Render more elements for signed-in users here -->
@@ -26,14 +22,9 @@
             <select class="form-select form-select-lg mb-3 bg-dark" id="option-names-dropdown">
             </select>
           </form>
-          <button class="btn btn-success" id="switch-axis">Switch to LHBH/RHFH</button>
-          <div id="flight-chart">
-            <div id="flight-chart-inner"></div>
-          </div>
-        </div>
-      </div>
+          <div id="flight-chart"></div>
+          <button class="btn btn-success d-block mx-auto" id="switch-axis" title="Left Hand Back Hand or Right Hand Fore Hand">Switch to LHBH/RHFH</button>
     </div>
-
     <script>
       
       drawChart(discData);
@@ -126,6 +117,8 @@ switchAxisButton.addEventListener('click', () => {
 
   const buttonText = isAxisReversed ? 'Switch to RHBH/LHFH' : 'Switch to RHFH/LHBH';
   switchAxisButton.textContent = buttonText;
+
+  switchAxisButton.title = isAxisReversed ? 'Right Hand Back Hand or Left Hand Fore Hand': 'Left Hand Back Hand or Right Hand Fore Hand';
 
   const svg = d3.select('#flight-chart svg');
 

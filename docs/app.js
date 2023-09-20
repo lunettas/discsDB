@@ -6,6 +6,7 @@ import crypto from 'crypto';
 import SequelizeStoreInit from 'connect-session-sequelize';
 import { sequelize, User } from './public/db.mjs';
 import { engine } from 'express-handlebars';
+import Handlebars from 'handlebars';
 import { hashPassword, comparePasswords } from './public/pwHash.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -73,6 +74,13 @@ app.engine('hbs', engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+Handlebars.registerHelper('ifEqual', function(a, b, options) {
+  if (a === b) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 
 app.get('/', async (req, res) => {
   try {
@@ -189,8 +197,10 @@ server.listen(port, ipAddress, () => {
 });
 
 
+
+
 app.post('/submit', async (req, res) => {
-  const { table, mold, plastic, brand, weight, speed, glide, turn, fade, category, color, stamp, sleepyscale } = req.body;
+  const { table, collection, color, stamp, weight, sleepyscale, mold, plastic, brand, speed, glide, turn, fade } = req.body;
   console.log('Received form input:', req.body);
   let slot;
   if (speed > 0 && speed <= 4) {
@@ -206,11 +216,12 @@ app.post('/submit', async (req, res) => {
   }
 
   try {
+    const tableName = req.session.user.nickname;
     const query = `
-      INSERT INTO ${table} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
+      INSERT INTO ${tableName} (Mold, Plastic, Brand, Weight, Speed, Glide, Turn, Fade, Slot, Category, Color, Stamp, \`Sleepy Scale\`)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, category, color, stamp, sleepyscale];
+    const values = [mold, plastic, brand, weight, speed, glide, turn, fade, slot, collection, color, stamp, sleepyscale];
     const [result] = await sequelize.query(query, { replacements: values });
 
     console.log('New row inserted:', result);
@@ -326,7 +337,7 @@ async function sendResetCodeEmail(email, resetCode) {
   const mailOptions = {
     from: 'admin@discsdb.cloud',
     to: email,
-    subject: `Password Reset TEST Timestamp: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
+    subject: `Password Reset`,
     text: `Please click the following link http://discsdb.cloud/forgot-password and use this code: ${resetCode} to reset your password`,
   };
 

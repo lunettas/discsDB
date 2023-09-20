@@ -4,29 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>discs DB demo</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="/flightChart.js"></script>
   </head>
-  <body>
-    <h1>Hello World, welcome to discsDB's flight chart!</h1>
-     {{#if user}}
-      <p>Welcome, {{user.nickname}}!</p>
-      <!-- Render more elements for signed-in users here -->
-    {{/if}}
-    <form id="select-table-and-option" style="display: flex; flex-direction: row;">
-      <select class="form-select form-select-lg mb-3 bg-dark" id="table-names-dropdown" style="margin-right: 10px;">
-        <option value="" selected>Please select a table to display</option>
-      </select>
-      <select class="form-select form-select-lg mb-3 bg-dark" id="option-names-dropdown">
-      </select>
-</form>
-<button class="btn btn-success" id="switch-axis" >Switch to LHBH/RHFH</button>
-    <div id="flight-chart" >
-      <div id="flight-chart-inner"></div>
-    </div>
 
+  <body>
+    <div id="flight-chart-container">
+          {{#if user}}
+            <p>Welcome, {{user.nickname}}!</p>
+            <!-- Render more elements for signed-in users here -->
+          {{/if}}
+          <form id="select-table-and-option" style="display: flex; flex-direction: row;">
+            <select class="form-select form-select-lg mb-3 bg-dark" id="table-names-dropdown" style="margin-right: 10px;">
+              <option value="" selected>Please select a table to display</option>
+            </select>
+            <select class="form-select form-select-lg mb-3 bg-dark" id="option-names-dropdown">
+            </select>
+          </form>
+          <div id="flight-chart"></div>
+          <button class="btn btn-success d-block mx-auto" id="switch-axis" title="Left Hand Back Hand or Right Hand Fore Hand">Switch to LHBH/RHFH</button>
+    </div>
     <script>
       
       drawChart(discData);
@@ -62,7 +60,16 @@ tableDropdown.addEventListener('change', async (event) => {
     optionElement.text = option;
     optionDropdown.appendChild(optionElement);
   });
+
+  // Check if only one option is available and automatically select it
+  if (options.length === 1) {
+    optionDropdown.value = options[0];
+  }
+
+  // Manually trigger the 'change' event on the optionDropdown to render the chart
+  optionDropdown.dispatchEvent(new Event('change'));
 });
+
 
 
 
@@ -110,6 +117,8 @@ switchAxisButton.addEventListener('click', () => {
 
   const buttonText = isAxisReversed ? 'Switch to RHBH/LHFH' : 'Switch to RHFH/LHBH';
   switchAxisButton.textContent = buttonText;
+
+  switchAxisButton.title = isAxisReversed ? 'Right Hand Back Hand or Left Hand Fore Hand': 'Left Hand Back Hand or Right Hand Fore Hand';
 
   const svg = d3.select('#flight-chart svg');
 

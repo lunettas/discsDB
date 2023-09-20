@@ -50,8 +50,6 @@ app.use(async (req, res, next) => {
       const user = await User.findByPk(req.session.userId);
       if (user) {
         req.session.user = user.get({ plain: true }); // Store the plain user object in the session
-        console.log('User stored in session:', req.session.user);
-
       }
       req.session.save();
       next();
@@ -66,7 +64,7 @@ app.use(async (req, res, next) => {
 
 
 app.use(express.static(path.resolve('public'), { extensions: ['html', 'htm', 'mjs', 'jpg'] }));
-console.log('Static files served from:', path.join(__dirname, 'public'));
+
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -162,7 +160,6 @@ app.get('/input-table-names', async (req, res) => {
 app.get('/table-options', async (req, res) => {
   try {
     const selectedTable = req.query.table;
-    console.log('Selected Table:', selectedTable);
 
     const options = await sequelize.query(`SELECT DISTINCT category FROM ${selectedTable}`);
     const optionsRows = options[0];
@@ -236,10 +233,8 @@ app.post('/submit', async (req, res) => {
 
 app.post('/register', async (req, res) => {
   const { email, plaintextPassword, nickname } = req.body;
-  console.log('Received form input:', req.body);
   
   try {
-    console.log('Plaintext Password:', plaintextPassword);
     const hashedPassword = await hashPassword(plaintextPassword);
     const user = await User.create({ email, password: hashedPassword, nickname });
     console.log('User created:', user.email);
@@ -287,7 +282,6 @@ app.post('/login', async (req, res) => {
 
     if (!user) {
       const errorMessage = 'Invalid email or password';
-      console.log('Invalid user');
       res.render('index', { loginFailed: true, errorMessage });
       return;
     }
@@ -296,15 +290,12 @@ app.post('/login', async (req, res) => {
 
     if (!passwordMatch) {
       const errorMessage = 'Invalid email or password';
-      console.log('Invalid password');
       res.render('index', { loginFailed: true, errorMessage });
       return;
     }
 
     req.session.userId = user.id;
     res.redirect('/');
-    console.log('Valid user');
-    console.log('Found user:', user);
 
   } catch (error) {
     console.error('Error during login:', error);

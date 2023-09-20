@@ -76,7 +76,7 @@ tableDropdown.addEventListener('change', async (event) => {
 optionDropdown.addEventListener('change', async () => {
   const selectedTable = tableDropdown.value;
   const selectedOption = optionDropdown.value;
-  console.log('Selected Option', selectedOption);
+ 
 
   let query = `SELECT DISTINCT * FROM ${selectedTable}`;
   let url = `/discs?table=${encodeURIComponent(selectedTable)}`;

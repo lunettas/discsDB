@@ -50,6 +50,7 @@ h4.text {
 
 .navbar-brand {
   color: rgb(187, 183, 183) !important;
+  padding-left: 5%;
 }
 
 .navbar {
@@ -60,7 +61,9 @@ h4.text {
 .navbar-nav .nav-item {
   display: inline-block; /* Make each menu item only as wide as its content */
 }
-
+.nav-bar-container{
+  padding-right: 5%;
+}
 
 /* Footer styles */
 .footer-container {

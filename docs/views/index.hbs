@@ -8,7 +8,7 @@
 <body>
   {{#if user}}
     <h1 class="title text-center text-body">Welcome, {{user.nickname}}!</h1>
-    <!-- Render more elements for signed-in users here -->
+   <p class="text-center"> Get started by looking at the <a href="/flightchart">flightchart</a>, and then head over to <a href="/input">input</a> to create your own unique personal collection.</p>
   {{else}}
     <h1 class="title text-center">Hello Guest, Welcome to discsDB</h1>
     <p class="text-center">This is a website intended to help you explore the many unique disc golf discs that exist. Users can explore all molds, compare discs on the <a href="/flightchart">flightchart</a>, and even create a database that is unique to their personal collection. With an overwhelming amount of molds available, this tool is designed to help you build the perfect bag for any condition! Please <a href="/register">register</a> to experience full database functionality.</p>

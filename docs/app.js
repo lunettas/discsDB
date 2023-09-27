@@ -1,7 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import { DATABASE, HOST, USERNAME, PASSWORD, SESSION_SECRET, EMAIL_PASSWORD, SERVER_IP_ADDRESS, SSL_KEY_PATH, SSL_CERT_PATH, SSL_CA_PATH, PORT } from './config.mjs';
 import crypto from 'crypto';
 import SequelizeStoreInit from 'connect-session-sequelize';
 import { sequelize, User } from './public/db.mjs';
@@ -16,22 +16,14 @@ import https from 'https';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const options = {
-  key: fs.readFileSync('/root/discsDB/certs/_.discsdb.cloud_private_key.key'), // Path to the private key file
-  cert: fs.readFileSync(path.join(__dirname, '..', 'certs', 'discsdb.cloud_ssl_certificate.cer')), // Path to the SSL certificate file
-  ca: fs.readFileSync(path.join(__dirname, '..', 'certs', '_.discsdb.cloud_ssl_certificate_INTERMEDIATE.cer')), // Path to the intermediate certificate file
-};
-
-
-
 
 const app = express();
-const port = 443;
+const port = process.env.PORT;
 const ipAddress = process.env.SERVER_IP_ADDRESS || 'localhost';
 
 const SequelizeStore = SequelizeStoreInit(session.Store);
 
-dotenv.config();
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -186,12 +178,30 @@ app.get('/discs', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+const serverIpAddress = process.env.SERVER_IP_ADDRESS;
+const sslKeyPath = process.env.SSL_KEY_PATH;
+const sslCertPath = process.env.SSL_CERT_PATH;
+const sslCaPath = process.env.SSL_CA_PATH;
+// Read SSL certificate files asynchronously
+try {
+  const privateKey = await fs.promises.readFile(sslKeyPath, 'utf8');
+  const certificate = await fs.promises.readFile(sslCertPath, 'utf8');
+  const ca = await fs.promises.readFile(sslCaPath, 'utf8');
 
+  const options = {
+    key: privateKey,
+    cert: certificate,
+    ca: ca,
+  };
 
-const server = https.createServer(options, app);
-server.listen(port, ipAddress, () => {
-  console.log(`Server running at https://${ipAddress}:${port}/`);
-});
+  const server = https.createServer(options, app);
+  server.listen(port, serverIpAddress, () => {
+    console.log(`Server running at https://${serverIpAddress}:${port}/`);
+  });
+} catch (error) {
+  console.error('Error reading SSL certificate files:', error);
+}
+
 
 
 

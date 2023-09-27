@@ -1,8 +1,19 @@
+# Ignore node_modules directory
 node_modules/
-.DS_Store
-.env
+
+# Ignore .env files
+.env.dev
+.env.prod
+
+# Ignore any key files
 *.key
+
+# Ignore SSL certificate files
 discsdb.cloud_ssl_certificate.cer
+
+# Ignore temporary or generated files
+.DS_Store
+
+# Ignore specific project-related files or documentation
 notes and ideas.md
 form-submissions.txt
-

@@ -93,8 +93,17 @@ app.get('/input', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', { user: req.session.user });
+  fs.readFile('changelog.txt', 'utf-8', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Err reading changelog.txt');
+    } else {
+      const changelogEntries = data.split(/\n(?=Version)/g);
+      res.render('about', { user: req.session.user, changelogData: changelogEntries });
+    }
+  });
 });
+
 
 app.get('/flightchart', (req, res) => {
   res.render('flightchart', { user: req.session.user });
@@ -178,6 +187,7 @@ app.get('/discs', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 const serverIpAddress = process.env.SERVER_IP_ADDRESS;
 const sslKeyPath = process.env.SSL_KEY_PATH;
 const sslCertPath = process.env.SSL_CERT_PATH;

@@ -1,0 +1,7 @@
+Version 1.0.0 (MM/DD/YYYY)
+- Added feature X
+- Fixed bug Y
+
+Version 1.1.0 (MM/DD/YYYY)
+- Improved performance
+- Updated documentation

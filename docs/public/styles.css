@@ -172,3 +172,11 @@ line.tick {
 .error-message {
   color: red;
 }
+
+
+.changelog-body{
+  max-height: 200px; /* Adjust the height as needed */
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

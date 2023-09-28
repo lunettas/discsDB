@@ -16,7 +16,13 @@
         {{!-- check out the github for more technical information --}}
         Head over to the <a href="/flightchart">flightchart</a> to see what we bag
     </p>
+    <div class="changelog">
+      <h3>Changelog</h3>
+      <div class="changelog-body">
+          {{#each changelogData}}
+                <p>{{this}}</p>
+            {{/each}}
+      </div>
+    </div>
   </body>
 </html>
-
-<!-- front page should allow you to view by collection, type, or speed/stability desc -->

@@ -5,3 +5,6 @@ Version 1.0.0 (MM/DD/YYYY)
 Version 1.1.0 (MM/DD/YYYY)
 - Improved performance
 - Updated documentation
+
+Version 1.1.0 (MM/DD/YYYY)
+- testing for source control purposes

@@ -1,4 +1,12 @@
 /* General styles */
+/* https://colorswall.com/palette/268148
+--color-1:	#1e6438;	
+--color-crusoe:	#1a5832;	
+--color-2:	#001e00;	
+--color-3:	#bbb7b7;	
+--color-4:	#bbdbb7;	 */
+
+
 body {
   background-color: #1e6438 !important;
   margin: 0;
@@ -12,7 +20,7 @@ body {
   background-color: #000; 
 }
 
-h1,p{
+h1,h3,p{
   text-align: center;
 }
 h1.text {
@@ -49,7 +57,7 @@ h4.text {
 }
 
 .navbar-brand {
-  color: rgb(187, 183, 183) !important;
+  color: #bbb7b7 !important;
   padding-left: 5%;
 }
 

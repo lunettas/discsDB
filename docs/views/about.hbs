@@ -16,12 +16,16 @@
         {{!-- check out the github for more technical information --}}
         Head over to the <a href="/flightchart">flightchart</a> to see what we bag
     </p>
+    <div class="about-me">
+      <h3>About Silas</h3>
+      <p>An avid disc golfer and former teacher, Silas recently discovered his passion for programming. When he isn't out on the course, Silas is learning programming. This project was created as a way to sharpen and apply his skills while also providing a valuable tool for fellow disc golfers. To learn more about Silas and his coding journey, or to contact him, please connect with him on <a href="https://www.linkedin.com/in/silas-dasilva-lunetta/">LinkedIn</a>.</p>
+    </div>
     <div class="changelog">
       <h3>Changelog</h3>
       <div class="changelog-body">
-          {{#each changelogData}}
-                <p>{{this}}</p>
-            {{/each}}
+          {{#each changelogLines}}
+        <p>{{this}}</p>
+        {{/each}}
       </div>
     </div>
   </body>

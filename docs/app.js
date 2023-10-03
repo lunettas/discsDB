@@ -98,8 +98,9 @@ app.get('/about', (req, res) => {
       console.log(err);
       res.status(500).send('Err reading changelog.txt');
     } else {
-      const changelogEntries = data.split(/\n(?=Version)/g);
-      res.render('about', { user: req.session.user, changelogData: changelogEntries });
+      const formattedChangelog = data.replace(/\n/g, '<br>');
+      const changelogLines = data.split('\n'); // Split the changelog data into an array of lines
+      res.render('about', { user: req.session.user, changelogData: formattedChangelog, changelogLines });
     }
   });
 });

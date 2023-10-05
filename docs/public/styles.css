@@ -1,14 +1,15 @@
 /* General styles */
-/* https://colorswall.com/palette/268148
---color-1:	#1e6438;	
---color-crusoe:	#1a5832;	
---color-2:	#001e00;	
---color-3:	#bbb7b7;	
---color-4:	#bbdbb7;	 */
-
+:root {
+--bg:	#1e6438;	
+--darker-green:	#1a5832;	
+--body-bg:	#001e00;	
+--title:	#bbb7b7;	
+--font:	#bbdbb7b6;
+--link: #bbdbb7;
+}
 
 body {
-  background-color: #1e6438 !important;
+  background-color: var(--bg)!important;
   margin: 0;
   padding: 0;
 }
@@ -17,33 +18,84 @@ body {
   margin: 0;
 }
 .col-10 {
-  background-color: #000; 
+  background-color: var(--body-bg); 
 }
 
 h1,h3,p{
   text-align: center;
 }
-h1.text {
-  color: rgb(187, 183, 183) !important;
+h1,h3,h4.text, h1,h3,h4.sub-title  {
+  color:var(--title) !important;
 }
-h4.text {
-  color: rgb(187, 183, 183) !important;
+label, .label{
+  color:var(--title) !important;
+}
+p{
+  color: var(--font);
+}
+a{
+  color: var(--link);
+}
+select {
+  background-color: var(--body-bg) !important;
+}
+.registration-form,.input-form, .input-form select{
+  background-color: var(--body-bg) !important;
+  color: var(--body-bg);
+}
+.container.input-form label,
+.container.input-form input,
+.container.input-form select {
+  background-color: var(--body-bg) !important;
+  color: var(--body-bg);
+}
+.col.form-control {
+  color: var(--title) !important;
+}
+
+.input-group.input-form input[type="text"],
+.input-group.input-form input[type="number"],
+.input-group.input-form span.input-group-text {
+  background-color: var(--body-bg) !important;
+}
+.input-group.input-form span.input-group-text {
+  color: var(--title);
+}
+select.form-select {
+  color: var(--title);
+}
+
+.input-guest-disc-info .input-form {
+  background-color: var(--body-bg) !important;
+  color: var(--body-bg) !important;
+}
+.input-guest-disc-info label {
+  background-color: var(--body-bg) !important;
+  color: var(--title) !important;
+}
+.input-guest-disc-info input {
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  background-color: var(--body-bg);
 }
 .container-fluid {
   padding: 0;
   margin: 0;
   
 }
+
+
 /* styles for outer columns*/
 
 .outer-border{
-  background-color: #1e6438;
+  background-color:var(--bg);
   
 }
 
 /* Navbar styles */
 .header-container {
-  background-color: #1e6438;
+  background-color:var(--bg);
   height: auto;
 
 }
@@ -57,12 +109,12 @@ h4.text {
 }
 
 .navbar-brand {
-  color: #bbb7b7 !important;
+  color:var(--title) !important;
   padding-left: 5%;
 }
 
 .navbar {
-  background-color: #1e6438; /* Set your desired background color */
+  background-color:var(--bg); /* Set your desired background color */
   width: 100%; /* Make the navbar full-width */
 }
 
@@ -77,17 +129,16 @@ h4.text {
 .footer-container {
   position: relative;
   bottom: 0;
-  background-color: #1e6438;
+  background-color: var(--bg);
   width: 100%;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1e6438;
   margin: 0;
 }
 .footer-container .nav-link {
-  color: #000000;
+  color: var(--title);
 }
 
 /* Flight chart styles */
@@ -99,8 +150,8 @@ h4.text {
 }
 #flight-chart .label {
   font-family: sans-serif;
-  fill: rgb(187, 183, 183);
-  
+  fill: var(--title);
+    
 }
 #switch-axis {
   display: flex;
@@ -166,9 +217,6 @@ line.tick {
   stroke-dasharray: 4;
 }
 
-.form-control:focus {
-  background-color: black !important;
-}
 
 
 
@@ -185,6 +233,7 @@ line.tick {
 .changelog-body{
   max-height: 200px; /* Adjust the height as needed */
   overflow-y: scroll;
-  border: 1px solid #ccc;
+  border: 1px solid var(--darker-green);
   padding: 10px;
+  margin-bottom: 10px;
 }

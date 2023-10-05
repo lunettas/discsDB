@@ -24,8 +24,6 @@ function drawChart(data) {
   svgWidth = containerWidth;
   svgHeight = containerWidth;
 
-  console.log(svgWidth);
-
   var svg = container.append("svg")
     .attr("width", svgWidth)
     .attr("height", svgHeight);

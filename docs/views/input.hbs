@@ -19,7 +19,7 @@
     <!-- Look up the mold with API -->
     <form class="API-lookup-form" id="API-lookup-form">
       <div class="input-container">
-        <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here">
+        <input class="input-form form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here">
         <button class="btn btn-success" id="api-autocomplete-btn" type="button">Lookup Mold</button>
       </div>
     </form>
@@ -43,7 +43,7 @@
   {{/if}}
         <!-- Select category -->
           <div>
-            <select required id="option-select" class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select-lg example" name="collection">
+            <select required id="option-select" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example" name="collection">
               <option value="" selected disabled>Choose a collection</option>
               <option value="Main Bag">Main Bag</option>
               <option value="Side Bag">Side Bag</option>
@@ -82,7 +82,7 @@
         </div>
 
         <!-- Input mold/plastic/brand -->
-        <div class="input-group input-group-center">
+        <div class="input-group input-group-center input-form">
           <input required type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="Mold">
           <input type="text" class="form-control" id="inputPlastic" aria-label="plastic" name="plastic" placeholder="Plastic">
           <input required type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="Brand">
@@ -92,7 +92,7 @@
         <a class="text-success" href="https://www.wrightlife.com/plastic-types-and-descriptions/" target="_blank">Not sure what the plastic type is?</a>
 
         <!-- Flight numbers -->
-   <div class="container input-group input-group-center">
+   <div class="container input-group input-group-center input-form">
       <div class="row input-row">
         <label class="col input-label" for="speed">Speed:</label>
         <input required type="number" id="speed" step=".5" min="1" class="col form-control" name="speed">
@@ -110,21 +110,16 @@
         <input required type="number" id="fade" step=".5" class="col form-control" name="fade">
       </div>
     </div>
-
-
-    
-      
         <button type="submit" id="submit-btn" class="btn btn-success">Submit to database</button>
-
       </form>
   </div>
   {{else}}
     <h1 class="title">Hello Guest, Welcome to discsDB</h1>
     <p>Welcome to the input page! Use this form to look up discs by mold. Registered users can use this tool to add discs to their database. Please <a href="/registration">register</a> to experience full database functionality.</p> 
     <!-- Look up the mold with API -->
-    <form class="API-lookup-form" id="API-lookup-form">
+    <form class="input-form API-lookup-form" id="API-lookup-form">
       <div class="input-container">
-        <input class="bg-dark form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here">
+        <input class="input-form form-control" id="inputField" type="text" name="q" placeholder="Enter disc mold here">
         <button class="btn btn-success" id="api-autocomplete-btn" type="button">Lookup Mold</button>
       </div>
     </form>
@@ -134,11 +129,11 @@
           <div class="input-row table-row">
             <div class="table-cell">
               <label for="inputMold" class="form-sublabel">Disc Mold</label>
-              <input type="text" class="form-control" id="inputMold" aria-label="mold" name="mold" placeholder="">
+              <input type="text" class="input-guest-disc-info" id="inputMold" aria-label="mold" name="mold" placeholder="">
             </div>
             <div class="table-cell">
               <label for="brand" class="form-sublabel">Brand</label>
-              <input type="text" class="form-control" id="brand" aria-label="brand" name="brand" placeholder="">
+              <input type="text" class="input-guest-disc-info" id="brand" aria-label="brand" name="brand" placeholder="">
             </div>
           </div>
           <div class="input-row table-row">
@@ -149,23 +144,22 @@
           <div class="input-row table-row">
             <div class="table-cell">
               <label for="speed" class="form-sublabel">Speed</label>
-              <input type="number" aria-label="Speed" step=".5" min="1" class="form-control" name="speed" placeholder="">
+              <input type="number" aria-label="Speed" step=".5" min="1" class="input-guest-disc-info" name="speed" placeholder="">
             </div>
             <div class="table-cell">
               <label for="glide" class="form-sublabel">Glide</label>
-              <input type="number" aria-label="Glide" step=".5" min="1" class="form-control" name="glide" placeholder="">
+              <input type="number" aria-label="Glide" step=".5" min="1" class="input-guest-disc-info" name="glide" placeholder="">
             </div>
             <div class="table-cell">
               <label for="turn" class="form-sublabel">Turn</label>
-              <input type="number" step=".5" aria-label="Turn" class="form-control" name="turn" placeholder="">
+              <input type="number" step=".5" aria-label="Turn" class="input-guest-disc-info" name="turn" placeholder="">
             </div>
             <div class="table-cell">
               <label for="fade" class="form-sublabel">Fade</label>
-              <input type="number" step=".5" aria-label="Fade" class="form-control" name="fade" placeholder="">
+              <input type="number" step=".5" aria-label="Fade" class="input-guest-disc-info" name="fade" placeholder="">
             </div>
           </div>
         </div>
-
     </div>
 
 

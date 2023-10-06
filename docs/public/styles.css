@@ -85,6 +85,53 @@ select.form-select {
   
 }
 
+button{
+  padding: 10px 0 !important;
+}
+.container.input-form .input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; 
+}
+
+.container.input-form .input-label {
+  flex: 1;
+  margin-right: 10px; 
+  text-align: right; 
+}
+
+.container.input-form .form-control { 
+  flex: 2; 
+}
+
+
+.container.input-form select {
+  width: 100%;
+  
+}
+
+#speed,
+#glide,
+#turn,
+#fade {
+  width: 50px;
+  margin-right: 10px;
+  color: var(--title);
+}
+.input-group.input-form .input-label {
+  margin-left: 10px;
+}
+.input-row.table-row{
+  background-color: var(--body-bg);
+}
+.input-form{
+  color: var(--title) !important;
+}
+.input-guest-disc-info #inputMold,
+.input-guest-disc-info #brand {
+  color: var(--title) !important;
+}
 
 /* styles for outer columns*/
 
@@ -124,7 +171,10 @@ select.form-select {
 .nav-bar-container{
   padding-right: 5%;
 }
-
+#loginForm input{
+  background-color: var(--body-bg);
+  color: var(--title);
+}
 /* Footer styles */
 .footer-container {
   position: relative;

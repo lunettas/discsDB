@@ -125,42 +125,36 @@
     </form>
 
     <div class="input-form input-guest-disc-info" id="submit-to-db">
-        <div class="input-group table">
-          <div class="input-row table-row">
-            <div class="table-cell">
-              <label for="inputMold" class="form-sublabel">Disc Mold</label>
-              <input type="text" class="input-guest-disc-info" id="inputMold" aria-label="mold" name="mold" placeholder="">
-            </div>
-            <div class="table-cell">
-              <label for="brand" class="form-sublabel">Brand</label>
-              <input type="text" class="input-guest-disc-info" id="brand" aria-label="brand" name="brand" placeholder="">
-            </div>
+      <div class="input-group table">
+        <div class="input-row table-row">
+          <div class="table-cell">
+            <label for="inputMold" class="form-sublabel">Disc Mold</label>
+            <input type="text" class="input-guest-disc-info" id="inputMold" aria-label="mold" name="mold" placeholder="">
+            <label for="brand" class="form-sublabel">Brand</label>
+            <input type="text" class="input-guest-disc-info" id="brand" aria-label="brand" name="brand" placeholder="">
           </div>
-          <div class="input-row table-row">
-            <div class="table-cell">
-              <label class="form-sublabel flight-label">Flight Numbers</label>
-            </div>
-          </div>
-          <div class="input-row table-row">
-            <div class="table-cell">
-              <label for="speed" class="form-sublabel">Speed</label>
-              <input type="number" aria-label="Speed" step=".5" min="1" class="input-guest-disc-info" name="speed" placeholder="">
-            </div>
-            <div class="table-cell">
-              <label for="glide" class="form-sublabel">Glide</label>
-              <input type="number" aria-label="Glide" step=".5" min="1" class="input-guest-disc-info" name="glide" placeholder="">
-            </div>
-            <div class="table-cell">
-              <label for="turn" class="form-sublabel">Turn</label>
-              <input type="number" step=".5" aria-label="Turn" class="input-guest-disc-info" name="turn" placeholder="">
-            </div>
-            <div class="table-cell">
-              <label for="fade" class="form-sublabel">Fade</label>
-              <input type="number" step=".5" aria-label="Fade" class="input-guest-disc-info" name="fade" placeholder="">
+        </div>
+        <div class="input-row table-row">
+          <div class="table-cell">
+            <label class="form-sublabel flight-label">Flight Numbers:</label>
+            <div class="input-row table-row">
+              <div class="table-cell">
+                <label for="speed" class="form-sublabel">Speed</label>
+                <input type="number" aria-label="Speed" step=".5" min="1" id="speed" class="input-guest-disc-info" name="speed" placeholder="">
+                <label for="glide" class="form-sublabel">Glide</label>
+                <input type="number" aria-label="Glide" step=".5" min="1" id="glide" class="input-guest-disc-info" name="glide" placeholder="">
+                <label for="turn" class="form-sublabel">Turn</label>
+                <input type="number" step=".5" id="turn" aria-label="Turn" class="input-guest-disc-info" name="turn" placeholder="">
+                <label for="fade" class="form-sublabel">Fade</label>
+                <input type="number" step=".5" id="fade" aria-label="Fade" class="input-guest-disc-info" name="fade" placeholder="">
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
+
+  
 
 
   {{/if}}

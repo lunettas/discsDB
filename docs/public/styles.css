@@ -21,10 +21,10 @@ body {
   background-color: var(--body-bg); 
 }
 
-h1,h3,p{
+h1,h2,h3,p{
   text-align: center;
 }
-h1,h3,h4.text, h1,h3,h4.sub-title  {
+h1,h2, h3,h4.text, h1,h3,h4.sub-title  {
   color:var(--title) !important;
 }
 label, .label{
@@ -39,9 +39,24 @@ a{
 select {
   background-color: var(--body-bg) !important;
 }
+.btn{
+  margin: 20px 0  !important;
+}
+#body-container{
+  margin: 10px;
+}
 .registration-form,.input-form, .input-form select{
   background-color: var(--body-bg) !important;
-  color: var(--body-bg);
+  color: var(--title);
+}
+
+.registration-form{
+  margin: 1em 1em;
+  
+}
+
+.registration-form input{
+  width: 75%;
 }
 .container.input-form label,
 .container.input-form input,
@@ -49,6 +64,9 @@ select {
   background-color: var(--body-bg) !important;
   color: var(--body-bg);
 }
+
+
+
 .col.form-control {
   color: var(--title) !important;
 }
@@ -85,9 +103,7 @@ select.form-select {
   
 }
 
-button{
-  padding: 10px 0 !important;
-}
+
 .container.input-form .input-row {
   display: flex;
   align-items: center;

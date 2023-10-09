@@ -39,9 +39,19 @@ a{
 select {
   background-color: var(--body-bg) !important;
 }
+.btn{
+  margin: 20px 0  !important;
+}
+#body-container{
+  margin: 10px;
+}
 .registration-form,.input-form, .input-form select{
   background-color: var(--body-bg) !important;
-  color: var(--body-bg);
+  color: var(--title);
+}
+
+.registration-form{
+  margin-bottom: 1em;
 }
 .container.input-form label,
 .container.input-form input,
@@ -49,6 +59,11 @@ select {
   background-color: var(--body-bg) !important;
   color: var(--body-bg);
 }
+
+.registration-form btn{
+  margin: 50px !important;
+}
+
 .col.form-control {
   color: var(--title) !important;
 }
@@ -85,9 +100,7 @@ select.form-select {
   
 }
 
-button{
-  padding: 10px 0 !important;
-}
+
 .container.input-form .input-row {
   display: flex;
   align-items: center;

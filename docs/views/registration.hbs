@@ -28,17 +28,17 @@
         <!-- Render more elements for signed-in users here -->
       {{else}}
         <form class="registration" action="/register" method="POST">
-          <div class="form-group mb-3 bg-dark">
+          <div class="form-group mb-3 registration-form">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" autocomplete="username" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" autocomplete="username" class="form-control registration-form" name="email" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We won't share your email with anyone!</small>
           </div>
-          <div class="form-group  mb-3 bg-dark">
-            <input class="form-control" name="nickname" placeholder="Nickname" autocomplete="off">
+          <div class="form-group  mb-3 registration-form">
+            <input class="form-control registration-form" name="nickname" placeholder="Nickname" autocomplete="off">
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" autocomplete="new-password" class="form-control" name="plaintextPassword" placeholder="Password">
+            <input type="password" autocomplete="new-password" class="form-control registration-form" name="plaintextPassword" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-success">Submit</button>
         </form>

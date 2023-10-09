@@ -13,7 +13,7 @@
         <div style="display: flex; justify-content: center; align-items: center;">
           <div style="display: block; text-align: center; margin: 0 auto;">
             <h2>Registration Successful!</h2>
-            <div>You are the best!</div>
+            <h3>You are the best!</h3>
             <img src="/IMG/champs.jpg" alt="two random disc golfers with trophies" style="padding: 50px; max-width: 90%; max-height: 90%; height: auto; display: block; margin: 0 auto; margin-bottom: 10px;">
             <p style="font-size: 12px; margin: 0;">
               Photo by <a href="https://www.flickr.com/photos/pdga/52360198176/in/album-72177720302119915/">Justin Anderson / PDGA</a> under a <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0 license</a>. 
@@ -30,15 +30,15 @@
         <form class="registration" action="/register" method="POST">
           <div class="form-group mb-3 registration-form">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" autocomplete="username" class="form-control registration-form" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" autocomplete="username" class="form-control registration-form" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
             <small id="emailHelp" class="form-text text-muted">We won't share your email with anyone!</small>
           </div>
           <div class="form-group  mb-3 registration-form">
-            <input class="form-control registration-form" name="nickname" placeholder="Nickname" autocomplete="off">
+            <input class="form-control registration-form" name="nickname" placeholder="Nickname" autocomplete="off" required>
           </div>
-          <div class="form-group">
+          <div class="form-group registration-form">
             <label>Password</label>
-            <input type="password" autocomplete="new-password" class="form-control registration-form" name="plaintextPassword" placeholder="Password">
+            <input type="password" autocomplete="new-password" class="form-control registration-form" name="plaintextPassword" placeholder="Password" required>
           </div>
           <button type="submit" class="btn btn-success">Submit</button>
         </form>

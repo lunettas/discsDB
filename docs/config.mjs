@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-const envPath = path.join(process.cwd(), '.env.prod');
+const envPath = path.join(process.cwd(), '.env.dev');
 
 dotenv.config({ path: envPath });
 

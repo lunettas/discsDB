@@ -49,10 +49,12 @@ select {
 .registration{
   display: flex;
   flex-direction: column;
+  align-self: center;
 }
 #registrationbtn{
-  width: 25%;
- align-self:center ;
+  margin-left: 2em !important;
+  width: 20%;
+
 }
 
 .registration-form,.input-form, .input-form select{
@@ -61,6 +63,7 @@ select {
 }
 
 .registration-form{
+
   margin: 1em 1em;
   
 }

@@ -1,13 +1,13 @@
 import express from 'express';
 import session from 'express-session';
 import nodemailer from 'nodemailer';
-import { DATABASE, HOST, USERNAME, PASSWORD, SESSION_SECRET, EMAIL_PASSWORD, SERVER_IP_ADDRESS, SSL_KEY_PATH, SSL_CERT_PATH, SSL_CA_PATH, PORT } from './config.mjs';
+import { DATABASE, HOST, USERNAME, PASSWORD, SESSION_SECRET, EMAIL_PASSWORD, SERVER_IP_ADDRESS, SSL_KEY_PATH, SSL_CERT_PATH, SSL_CA_PATH, PORT } from './config/config.mjs';
 import crypto from 'crypto';
 import SequelizeStoreInit from 'connect-session-sequelize';
-import { sequelize, User } from './public/db.mjs';
+import { sequelize, User } from './config/db.mjs';
 import { engine } from 'express-handlebars';
 import Handlebars from 'handlebars';
-import { hashPassword, comparePasswords } from './public/pwHash.mjs';
+import { hashPassword, comparePasswords } from './config/pwHash.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';

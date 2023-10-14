@@ -1,5 +1,5 @@
 import { Sequelize} from 'sequelize';
-import { HOST, DATABASE, USERNAME, PASSWORD } from '../config.mjs'; // Import the database-related variables from config.js
+import { HOST, DATABASE, USERNAME, PASSWORD } from './config.mjs'; 
 
 // Use the variables to establish a connection
 const sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD, {

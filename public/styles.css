@@ -45,12 +45,25 @@ select {
 #body-container{
   margin: 10px;
 }
+
+.registration{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+#registrationbtn{
+  margin-left: 2em !important;
+  width: 20%;
+
+}
+
 .registration-form,.input-form, .input-form select{
   background-color: var(--body-bg) !important;
   color: var(--title);
 }
 
 .registration-form{
+
   margin: 1em 1em;
   
 }
@@ -303,3 +316,8 @@ line.tick {
   padding: 10px;
   margin-bottom: 10px;
 }
+
+.champs{
+  margin-bottom: 10px;
+}
+
